@@ -119,6 +119,79 @@ npm run agent-log -- \
 Set the same Supabase environment variables in the deployment environment. Keep
 `SUPABASE_SERVICE_ROLE_KEY` server-only.
 
+## Manual Supabase Setup
+
+Use this sequence for a fresh Supabase project:
+
+1. Create a Supabase project.
+2. Add environment variables:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+3. Run migrations from `supabase/migrations`.
+4. Create Eric through Supabase Auth.
+5. Create David through Supabase Auth.
+6. Add both users to `profiles`.
+7. Create the first project.
+8. Add Eric to `project_members` as `owner`.
+9. Add David to `project_members` as `commenter`.
+10. Create an ingest token for Eric's project.
+11. Store the hashed token in `ingest_tokens`.
+12. Put the raw token in Eric's local `.env.local` as `COMMAND_CENTER_INGEST_TOKEN`.
+
+Suggested seed shape:
+
+```sql
+-- Replace these UUIDs with actual auth.users IDs.
+
+insert into public.profiles (id, email, full_name)
+values
+  ('ERIC_AUTH_USER_ID', 'ericzhu0702@gmail.com', 'Eric Zhu'),
+  ('DAVID_AUTH_USER_ID', 'zzdd3125@gmail.com', 'David')
+on conflict (id) do nothing;
+
+insert into public.projects (name, slug, description, mission, created_by)
+values (
+  'Command Center',
+  'command-center',
+  'Workflow observability dashboard for Eric and David.',
+  'Give David visibility into Eric''s work across projects with read/comment access only.',
+  'ERIC_AUTH_USER_ID'
+)
+returning id;
+
+insert into public.project_members (project_id, user_id, role)
+values
+  ('PROJECT_ID', 'ERIC_AUTH_USER_ID', 'owner'),
+  ('PROJECT_ID', 'DAVID_AUTH_USER_ID', 'commenter');
+```
+
+To create an Eric ingest token, generate a raw token locally, hash it, and store
+only the hash:
+
+```sql
+insert into public.ingest_tokens (
+  project_id,
+  owner_user_id,
+  source_provider,
+  name,
+  token_hash
+)
+values (
+  'PROJECT_ID',
+  'ERIC_AUTH_USER_ID',
+  'codex',
+  'Eric local Codex',
+  encode(digest('RAW_TOKEN_VALUE', 'sha256'), 'hex')
+);
+```
+
+Eric's local `.env.local` should contain the raw value:
+
+```bash
+COMMAND_CENTER_INGEST_TOKEN=RAW_TOKEN_VALUE
+```
+
 ## Supabase Model
 
 The migration creates:
@@ -215,6 +288,31 @@ npm run agent-log -- \
 npm run lint
 npm run build
 ```
+
+Recommended checkpoint workflow:
+
+1. Use one Codex session per milestone.
+2. Run the same verification after every session:
+
+```bash
+npm run lint
+npm run build
+git status
+git add .
+git commit -m "<checkpoint message>"
+```
+
+Suggested session order:
+
+- Session 1: `AGENTS.md` and repo inspection
+- Session 2: schema and RLS
+- Session 3: auth and Supabase utilities
+- Session 4: ingest API
+- Session 5: `agent-log` CLI
+- Session 6: dashboard UI
+- Session 7: comments
+- Session 8: realtime/polling
+- Session 9: deployment readiness
 
 Final readiness checklist:
 
