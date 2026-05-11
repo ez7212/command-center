@@ -19,7 +19,12 @@ export default async function DecisionsPage({ params }: DecisionsPageProps) {
           Product and workflow decisions David can review and discuss.
         </p>
       </div>
-      <DecisionList decisions={workspace.decisions} />
+      <DecisionList
+        comments={workspace.comments}
+        decisions={workspace.decisions}
+        path={`/dashboard/${projectSlug}/decisions`}
+        project={workspace.project}
+      />
     </main>
   );
 }

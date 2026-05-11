@@ -41,6 +41,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
         <CommentThread
           comments={workspace.comments}
+          path={`/dashboard/${projectSlug}`}
+          project={workspace.project}
           targetId={workspace.project.id}
           targetType="project"
         />
@@ -85,7 +87,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             </Link>
           </div>
           <ActivityFeed
+            comments={workspace.comments}
             events={workspace.events.slice(0, 3)}
+            path={`/dashboard/${projectSlug}`}
             project={workspace.project}
             sessions={workspace.sessions}
           />

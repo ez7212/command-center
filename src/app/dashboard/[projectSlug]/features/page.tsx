@@ -19,7 +19,12 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
           Read-only feature visibility for David.
         </p>
       </div>
-      <FeatureBoard features={workspace.features} />
+      <FeatureBoard
+        comments={workspace.comments}
+        features={workspace.features}
+        path={`/dashboard/${projectSlug}/features`}
+        project={workspace.project}
+      />
     </main>
   );
 }

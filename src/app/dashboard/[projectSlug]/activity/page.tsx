@@ -20,7 +20,9 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
         </p>
       </div>
       <ActivityFeed
+        comments={workspace.comments}
         events={workspace.events}
+        path={`/dashboard/${projectSlug}/activity`}
         project={workspace.project}
         sessions={workspace.sessions}
       />

@@ -29,7 +29,7 @@ function profileFromUser(user: SupabaseUser): Profile {
 
 export async function getCurrentUser(): Promise<Profile | null> {
   if (!hasSupabaseEnv()) {
-    return mockProfiles[0];
+    return mockProfiles[1];
   }
 
   const supabase = await createSupabaseServerClient();

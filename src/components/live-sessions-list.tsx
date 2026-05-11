@@ -1,13 +1,19 @@
 import { AgentSessionTree } from "@/components/agent-session-tree";
 import { EmptyState } from "@/components/empty-state";
-import type { ActivityEvent, AgentSession } from "@/lib/types";
+import type { ActivityEvent, AgentSession, Comment, Project } from "@/lib/types";
 
 export function LiveSessionsList({
   sessions,
   events,
+  comments,
+  project,
+  path,
 }: {
   sessions: AgentSession[];
   events: ActivityEvent[];
+  comments: Comment[];
+  project: Project;
+  path: string;
 }) {
   if (sessions.length === 0) {
     return (
@@ -20,7 +26,12 @@ export function LiveSessionsList({
 
   return (
     <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
-      <AgentSessionTree sessions={sessions} />
+      <AgentSessionTree
+        comments={comments}
+        path={path}
+        project={project}
+        sessions={sessions}
+      />
       <aside className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm">
         <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-500">
           Recent session events

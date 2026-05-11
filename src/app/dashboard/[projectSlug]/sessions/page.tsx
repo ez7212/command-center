@@ -19,7 +19,13 @@ export default async function SessionsPage({ params }: SessionsPageProps) {
           Eric is the only telemetry source in v0.
         </p>
       </div>
-      <LiveSessionsList events={workspace.events} sessions={workspace.sessions} />
+      <LiveSessionsList
+        comments={workspace.comments}
+        events={workspace.events}
+        path={`/dashboard/${projectSlug}/sessions`}
+        project={workspace.project}
+        sessions={workspace.sessions}
+      />
     </main>
   );
 }

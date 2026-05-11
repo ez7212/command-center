@@ -19,7 +19,12 @@ export default async function DocumentsPage({ params }: DocumentsPageProps) {
           Mission, strategy, branding, distribution, memos, and docs.
         </p>
       </div>
-      <DocumentList documents={workspace.documents} />
+      <DocumentList
+        comments={workspace.comments}
+        documents={workspace.documents}
+        path={`/dashboard/${projectSlug}/documents`}
+        project={workspace.project}
+      />
     </main>
   );
 }

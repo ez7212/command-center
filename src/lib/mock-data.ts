@@ -37,7 +37,7 @@ export const mockProjects: Project[] = [
     createdBy: mockProfiles[0].id,
     createdAt: "2026-05-12T06:00:00.000Z",
     updatedAt: now,
-    role: "owner",
+    role: "commenter",
   },
 ];
 
@@ -271,4 +271,25 @@ export function getMockWorkspace(projectSlug = "dalya") {
   }
 
   return mockWorkspace;
+}
+
+export function addMockComment(input: {
+  projectId: string;
+  targetType: string;
+  targetId: string;
+  authorId: string;
+  authorName: string;
+  body: string;
+}) {
+  mockComments.unshift({
+    id: crypto.randomUUID(),
+    projectId: input.projectId,
+    targetType: input.targetType,
+    targetId: input.targetId,
+    authorId: input.authorId,
+    authorName: input.authorName,
+    body: input.body,
+    createdAt: new Date().toISOString(),
+    updatedAt: null,
+  });
 }
