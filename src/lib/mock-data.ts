@@ -33,7 +33,7 @@ export const mockProjects: Project[] = [
     slug: "dalya",
     description: "Workflow visibility for Eric's active product work.",
     mission:
-      "Make Eric's work visible to David without requiring David-owned telemetry in v0.",
+      "Build a read/comment observability dashboard where David can see Eric's work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.",
     createdBy: mockProfiles[0].id,
     createdAt: "2026-05-12T06:00:00.000Z",
     updatedAt: now,
@@ -212,7 +212,8 @@ export const mockDocuments: Document[] = [
     projectId: mockProjects[0].id,
     title: "Dalya Mission",
     kind: "mission",
-    bodyMd: "Make Eric's work visible to David with a low-friction command center.",
+    bodyMd:
+      "Build a read/comment observability dashboard where David can see Eric's work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.",
     externalUrl: null,
     createdAt: "2026-05-12T06:05:00.000Z",
     updatedAt: "2026-05-12T06:05:00.000Z",

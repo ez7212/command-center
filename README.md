@@ -2,6 +2,10 @@
 
 Workflow command center v0 for making Eric's work visible to David.
 
+North star: build a read/comment observability dashboard where David can see
+Eric's work across projects, including agent sessions, activity, features,
+docs, and decisions, without giving David edit access to core content.
+
 This version is intentionally narrow:
 
 - Eric is the only telemetry source.
@@ -155,7 +159,7 @@ values (
   'Command Center',
   'command-center',
   'Workflow observability dashboard for Eric and David.',
-  'Give David visibility into Eric''s work across projects with read/comment access only.',
+  'Build a read/comment observability dashboard where David can see Eric''s work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.',
   'ERIC_AUTH_USER_ID'
 )
 returning id;
