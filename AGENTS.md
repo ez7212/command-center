@@ -2,9 +2,9 @@
 
 ## Product
 
-This repo is a workflow command center for Eric and David.
+This repo is a co-work command center for Eric and David.
 
-Version 0 is scoped to making Eric's work visible to David.
+Version 0 starts with Eric's telemetry, but the product direction is a shared progress dashboard for Eric and David.
 
 David can read and comment, but cannot edit core content.
 
@@ -12,24 +12,24 @@ David can read and comment, but cannot edit core content.
 
 Build v0 only:
 
-- Eric's projects
+- shared project dashboard
 - Eric's Codex / Claude / manual work events
 - Eric's active agent sessions
-- Eric's features
-- Eric's docs
-- Eric's decisions
-- Eric's mission statements
-- Eric's branding notes
-- Eric's distribution plans
+- project features
+- project docs
+- project decisions
+- project mission statements
+- project branding notes
+- project distribution plans
 - David read/comment access
 
-Do not implement David-owned Codex or Claude session linking yet.
+Do not implement second-user Codex or Claude session linking yet.
 
 ## Future scope
 
-Later, we will allow David to link his own Codex and Claude sessions.
+Later, we will allow additional users, including David, to link their own Codex and Claude sessions.
 
-For now, keep the data model lightly future-proofed with actor/source fields, but do not build David machine telemetry.
+For now, keep the data model lightly future-proofed with actor/source fields, but do not build second-machine telemetry.
 
 ## Stack
 
@@ -110,7 +110,7 @@ It should:
 - use server-side Supabase credentials only
 - never expose service role keys to browser
 
-In v0, ingest tokens are for Eric's work only.
+In v0, ingest tokens are provisioned for Eric's local telemetry only.
 
 ## UI
 

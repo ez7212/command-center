@@ -16,7 +16,7 @@ export default async function DecisionsPage({ params }: DecisionsPageProps) {
       <div className="mb-4">
         <h2 className="text-xl font-semibold tracking-tight">Decisions</h2>
         <p className="mt-1 text-sm text-stone-600">
-          Product and workflow decisions David can review and discuss.
+          Product and workflow decisions for shared review and discussion.
         </p>
       </div>
       <DecisionList

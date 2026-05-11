@@ -459,8 +459,8 @@ using (public.can_manage_project(project_id));
 -- on conflict (id) do update set email = excluded.email, full_name = excluded.full_name;
 --
 -- insert into public.projects (name, slug, description, mission, created_by)
--- select 'Dalya', 'dalya', 'Eric-to-David workflow visibility command center.',
---   'Make Eric''s work visible to David without adding David-owned telemetry in v0.',
+-- select 'Dalya', 'dalya', 'Shared progress command center.',
+--   'Build a shared read/comment observability dashboard where Eric and David can track progress across projects, including agent sessions, activity, features, docs, and decisions, without giving commenter roles edit access to core content.',
 --   id
 -- from public.profiles
 -- where email = 'ericzhu0702@gmail.com'
@@ -482,7 +482,7 @@ using (public.can_manage_project(project_id));
 --
 -- Store only a SHA-256 hex token hash. Example:
 -- insert into public.ingest_tokens (project_id, owner_user_id, source_provider, name, token_hash)
--- select p.id, pr.id, 'codex', 'Eric local Codex', encode(digest('plain-token-value', 'sha256'), 'hex')
+-- select p.id, pr.id, 'codex', 'Local Codex', encode(digest('plain-token-value', 'sha256'), 'hex')
 -- from public.projects p
 -- join public.profiles pr on pr.email = 'ericzhu0702@gmail.com'
 -- where p.slug = 'dalya';

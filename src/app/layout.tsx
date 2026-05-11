@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Command Center",
-  description: "Workflow visibility for Eric and David.",
+  description: "Shared progress dashboard for Eric and David.",
 };
 
 export default function RootLayout({

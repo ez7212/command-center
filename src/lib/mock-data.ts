@@ -31,9 +31,9 @@ export const mockProjects: Project[] = [
     id: "11111111-1111-4111-8111-111111111111",
     name: "Dalya",
     slug: "dalya",
-    description: "Workflow visibility for Eric's active product work.",
+    description: "Shared progress visibility for active product work.",
     mission:
-      "Build a read/comment observability dashboard where David can see Eric's work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.",
+      "Build a shared read/comment observability dashboard where Eric and David can track progress across projects, including agent sessions, activity, features, docs, and decisions, without giving commenter roles edit access to core content.",
     createdBy: mockProfiles[0].id,
     createdAt: "2026-05-12T06:00:00.000Z",
     updatedAt: now,
@@ -104,7 +104,7 @@ export const mockEvents: ActivityEvent[] = [
     actorName: "Eric",
     type: "agent_started",
     title: "Started Codex session",
-    body: "Beginning implementation of the Eric-to-David command center.",
+    body: "Beginning implementation of the shared co-work command center.",
     source: "codex",
     sourceProvider: "codex",
     metadata: { checkpoint: "schema" },
@@ -135,8 +135,8 @@ export const mockEvents: ActivityEvent[] = [
     actorUserId: mockProfiles[0].id,
     actorName: "Eric",
     type: "decision_logged",
-    title: "Scoped David to dashboard use only",
-    body: "David can read and comment, but v0 does not ingest David-owned telemetry.",
+    title: "Scoped v0 to shared review and comments",
+    body: "The dashboard supports shared review and comments, while v0 does not ingest additional user telemetry.",
     source: "manual",
     sourceProvider: "manual",
     metadata: {},
@@ -153,7 +153,7 @@ export const mockComments: Comment[] = [
     targetId: mockEvents[0].id,
     authorId: mockProfiles[1].id,
     authorName: "David",
-    body: "This is the right level of visibility for v0.",
+    body: "This is the right level of shared visibility for v0.",
     createdAt: "2026-05-12T06:40:00.000Z",
     updatedAt: null,
   },
@@ -174,8 +174,8 @@ export const mockFeatures: Feature[] = [
   {
     id: "66666666-6666-4666-8666-666666666661",
     projectId: mockProjects[0].id,
-    title: "David commenter RLS",
-    description: "David can read project content and add comments without editing core records.",
+    title: "Commenter RLS",
+    description: "Commenters can read project content and add comments without editing core records.",
     status: "shipped",
     owner: "Eric",
     shippedAt: "2026-05-12T07:08:00.000Z",
@@ -185,7 +185,7 @@ export const mockFeatures: Feature[] = [
   {
     id: "66666666-6666-4666-8666-666666666662",
     projectId: mockProjects[0].id,
-    title: "Eric telemetry ingest",
+    title: "Local telemetry ingest",
     description: "Accept Codex and Claude Code events through a project token.",
     status: "in_progress",
     owner: "Eric",
@@ -213,7 +213,7 @@ export const mockDocuments: Document[] = [
     title: "Dalya Mission",
     kind: "mission",
     bodyMd:
-      "Build a read/comment observability dashboard where David can see Eric's work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.",
+      "Build a shared read/comment observability dashboard where Eric and David can track progress across projects, including agent sessions, activity, features, docs, and decisions, without giving commenter roles edit access to core content.",
     externalUrl: null,
     createdAt: "2026-05-12T06:05:00.000Z",
     updatedAt: "2026-05-12T06:05:00.000Z",
@@ -223,7 +223,8 @@ export const mockDocuments: Document[] = [
     projectId: mockProjects[0].id,
     title: "v0 Scope Notes",
     kind: "strategy",
-    bodyMd: "Eric is the only telemetry source. David is dashboard read/comment-only.",
+    bodyMd:
+      "V0 starts with Eric as the only telemetry source while the dashboard is designed for shared progress review.",
     externalUrl: null,
     createdAt: "2026-05-12T06:20:00.000Z",
     updatedAt: "2026-05-12T06:20:00.000Z",
@@ -234,11 +235,11 @@ export const mockDecisions: Decision[] = [
   {
     id: "88888888-8888-4888-8888-888888888881",
     projectId: mockProjects[0].id,
-    title: "No David-owned telemetry in v0",
+    title: "No additional user telemetry in v0",
     decision:
-      "David can use the dashboard but cannot link Codex or Claude Code sessions yet.",
+      "The dashboard supports shared review now, but additional user Codex or Claude Code session linking is not implemented yet.",
     rationale:
-      "The first version should prove visibility and commenting before adding multi-source telemetry.",
+      "The first version should prove shared visibility and commenting before adding multi-source telemetry.",
     status: "active",
     createdAt: "2026-05-12T06:25:00.000Z",
   },
@@ -249,7 +250,7 @@ export const mockDecisions: Decision[] = [
     decision:
       "Browser-side data access is acceptable when table policies enforce membership and role boundaries.",
     rationale:
-      "This keeps the app simple while preserving David's read/comment-only access.",
+      "This keeps the app simple while preserving commenter read/comment-only access.",
     status: "active",
     createdAt: "2026-05-12T06:35:00.000Z",
   },

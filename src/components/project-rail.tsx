@@ -32,7 +32,7 @@ export function ProjectRail({
         <Link className="block text-base font-semibold tracking-tight" href="/dashboard">
           Command Center
         </Link>
-        <p className="mt-1 text-xs text-stone-400">Eric visible to David</p>
+        <p className="mt-1 text-xs text-stone-400">Shared progress</p>
       </div>
 
       <div className="border-t border-stone-800 px-3 py-3">

@@ -16,7 +16,7 @@ export default async function FeaturesPage({ params }: FeaturesPageProps) {
       <div className="mb-4">
         <h2 className="text-xl font-semibold tracking-tight">Features</h2>
         <p className="mt-1 text-sm text-stone-600">
-          Read-only feature visibility for David.
+          Shared feature progress with read/comment access for collaborators.
         </p>
       </div>
       <FeatureBoard

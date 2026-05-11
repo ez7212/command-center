@@ -1,16 +1,17 @@
 # Command Center
 
-Workflow command center v0 for making Eric's work visible to David.
+Co-work command center v0 for Eric and David to share progress across projects.
 
-North star: build a read/comment observability dashboard where David can see
-Eric's work across projects, including agent sessions, activity, features,
-docs, and decisions, without giving David edit access to core content.
+North star: build a shared read/comment observability dashboard where Eric and
+David can track progress across projects, including agent sessions, activity,
+features, docs, and decisions, without giving commenter roles edit access to
+core content.
 
 This version is intentionally narrow:
 
-- Eric is the only telemetry source.
+- V0 has one configured telemetry source: Eric's local machine.
 - David is a dashboard user with read and comment access.
-- David-owned Codex or Claude Code session linking is not implemented.
+- Additional user Codex or Claude Code session linking is not implemented yet.
 - The app uses mock Dalya data when Supabase environment variables are absent.
 
 ## Setup
@@ -88,14 +89,14 @@ select
   p.id,
   pr.id,
   'codex',
-  'Eric local Codex',
+  'Local Codex',
   encode(digest('plain-token-value', 'sha256'), 'hex')
 from public.projects p
 join public.profiles pr on pr.email = 'ericzhu0702@gmail.com'
 where p.slug = 'dalya';
 ```
 
-Use the plaintext token only in Eric's local environment:
+Use the plaintext token only in the local environment:
 
 ```bash
 COMMAND_CENTER_INGEST_TOKEN=plain-token-value
@@ -115,7 +116,7 @@ Open `http://localhost:3000/dashboard/dalya`.
 npm run agent-log -- \
   --type manual_note \
   --title "Test ingest" \
-  --body "Verifying Eric telemetry ingest."
+  --body "Verifying local telemetry ingest."
 ```
 
 10. Deploy.
@@ -139,9 +140,9 @@ Use this sequence for a fresh Supabase project:
 7. Create the first project.
 8. Add Eric to `project_members` as `owner`.
 9. Add David to `project_members` as `commenter`.
-10. Create an ingest token for Eric's project.
+10. Create an ingest token for the project.
 11. Store the hashed token in `ingest_tokens`.
-12. Put the raw token in Eric's local `.env.local` as `COMMAND_CENTER_INGEST_TOKEN`.
+12. Put the raw token in the local `.env.local` as `COMMAND_CENTER_INGEST_TOKEN`.
 
 Suggested seed shape:
 
@@ -159,7 +160,7 @@ values (
   'Command Center',
   'command-center',
   'Workflow observability dashboard for Eric and David.',
-  'Build a read/comment observability dashboard where David can see Eric''s work across projects, including agent sessions, activity, features, docs, and decisions, without giving David edit access to core content.',
+  'Build a shared read/comment observability dashboard where Eric and David can track progress across projects, including agent sessions, activity, features, docs, and decisions, without giving commenter roles edit access to core content.',
   'ERIC_AUTH_USER_ID'
 )
 returning id;
@@ -185,12 +186,12 @@ values (
   'PROJECT_ID',
   'ERIC_AUTH_USER_ID',
   'codex',
-  'Eric local Codex',
+  'Local Codex',
   encode(digest('RAW_TOKEN_VALUE', 'sha256'), 'hex')
 );
 ```
 
-Eric's local `.env.local` should contain the raw value:
+The local `.env.local` should contain the raw value:
 
 ```bash
 COMMAND_CENTER_INGEST_TOKEN=RAW_TOKEN_VALUE
@@ -224,7 +225,8 @@ build verification before Supabase is configured.
 
 ## Agent Log CLI
 
-The `agent-log` script posts Eric's local work telemetry to `/api/ingest`.
+The `agent-log` script posts local work telemetry to `/api/ingest`. In v0 this
+is configured for Eric's machine only.
 Configure it with environment variables:
 
 ```bash
@@ -244,7 +246,7 @@ npm run agent-log -- \
   --session-title "Build command center MVP" \
   --session-status active \
   --title "Started Codex session" \
-  --body "Beginning implementation of Eric-to-David command center."
+  --body "Beginning implementation of the shared co-work command center."
 ```
 
 Research/web event:
@@ -273,7 +275,7 @@ Feature shipped:
 npm run agent-log -- \
   --type feature_shipped \
   --title "Shipped comments MVP" \
-  --body "David can now comment on events, sessions, features, documents, decisions, and projects."
+  --body "Comments are now available on events, sessions, features, documents, decisions, and projects."
 ```
 
 Session completed:
@@ -333,10 +335,10 @@ Final readiness checklist:
 
 ## Out Of Scope For v0
 
-- David's Codex hook setup
-- David's Claude hook setup
-- David-owned ingest tokens
-- David source-provider onboarding
+- Second-user Codex hook setup
+- Second-user Claude hook setup
+- Second-user ingest tokens
+- Second-user source-provider onboarding
 - Per-user telemetry settings
 - Transcript parsing
 - Organization-level source management

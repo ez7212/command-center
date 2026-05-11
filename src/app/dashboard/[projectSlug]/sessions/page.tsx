@@ -16,7 +16,7 @@ export default async function SessionsPage({ params }: SessionsPageProps) {
       <div className="mb-4">
         <h2 className="text-xl font-semibold tracking-tight">Live Sessions</h2>
         <p className="mt-1 text-sm text-stone-600">
-          Eric is the only telemetry source in v0.
+          V0 starts with Eric&apos;s local telemetry while the dashboard moves toward shared progress.
         </p>
       </div>
       <LiveSessionsList
