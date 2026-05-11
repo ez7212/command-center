@@ -1,5 +1,6 @@
 import { ProjectHeader } from "@/components/project-header";
 import { ProjectRail } from "@/components/project-rail";
+import { ProjectUpdateBridge } from "@/components/project-update-bridge";
 import {
   getCurrentUserProjects,
   getProjectWorkspace,
@@ -29,6 +30,7 @@ export default async function ProjectLayout({
     <div className="flex min-h-[calc(100vh-57px)] flex-col md:flex-row">
       <ProjectRail currentProject={currentProject} projects={projects} />
       <div className="min-w-0 flex-1">
+        <ProjectUpdateBridge projectId={workspace.project.id} />
         <ProjectHeader project={workspace.project} role={currentProject.role} />
         {children}
       </div>
