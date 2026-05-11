@@ -1,0 +1,37 @@
+import { EmptyState } from "@/components/empty-state";
+import { StatusBadge } from "@/components/status-badge";
+import { shortDate } from "@/lib/format";
+import type { Decision } from "@/lib/types";
+
+export function DecisionList({ decisions }: { decisions: Decision[] }) {
+  if (decisions.length === 0) {
+    return <EmptyState title="No decisions yet" />;
+  }
+
+  return (
+    <div className="space-y-3">
+      {decisions.map((decision) => (
+        <article
+          className="rounded-lg border border-stone-200 bg-white p-4 shadow-sm"
+          key={decision.id}
+        >
+          <div className="flex flex-wrap items-center gap-2">
+            <StatusBadge status={decision.status} />
+            <span className="text-xs text-stone-500">
+              {shortDate(decision.createdAt)}
+            </span>
+          </div>
+          <h2 className="mt-3 text-base font-semibold">{decision.title}</h2>
+          <p className="mt-2 text-sm leading-6 text-stone-700">
+            {decision.decision}
+          </p>
+          {decision.rationale ? (
+            <p className="mt-2 text-sm leading-6 text-stone-500">
+              {decision.rationale}
+            </p>
+          ) : null}
+        </article>
+      ))}
+    </div>
+  );
+}
