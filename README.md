@@ -14,6 +14,10 @@ This version is intentionally narrow:
 - Additional user Codex or Claude Code session linking is not implemented yet.
 - The app uses mock Dalya data when Supabase environment variables are absent.
 
+See [docs/BACKLOG.md](docs/BACKLOG.md) for the product backlog, including
+multi-project local directory sync, non-coding work tracking, and the agentic
+view roadmap.
+
 ## Setup
 
 1. Install dependencies:
