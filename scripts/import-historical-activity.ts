@@ -223,15 +223,26 @@ function buildBody(item: HistoricalEvent) {
   ];
 
   if (item.priorIssues.length > 0) {
-    sections.push(`Prior issues: ${item.priorIssues.join(" ")}`);
+    sections.push(
+      ["Prior issues:", ...item.priorIssues.map((issue) => `- ${issue}`)].join(
+        "\n",
+      ),
+    );
   }
 
   if (item.issuesIdentified.length > 0) {
-    sections.push(`Issues identified: ${item.issuesIdentified.join(" ")}`);
+    sections.push(
+      [
+        "Issues identified:",
+        ...item.issuesIdentified.map((issue) => `- ${issue}`),
+      ].join("\n"),
+    );
   }
 
   if (item.fixesMade.length > 0) {
-    sections.push(`Fixes made: ${item.fixesMade.join(" ")}`);
+    sections.push(
+      ["Fixes made:", ...item.fixesMade.map((fix) => `- ${fix}`)].join("\n"),
+    );
   }
 
   sections.push(`Outcome: ${item.outcome}`);

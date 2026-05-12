@@ -8,6 +8,7 @@ import {
   Search,
 } from "lucide-react";
 
+import { ActivityEventDetails } from "@/components/activity-event-details";
 import { CommentThread } from "@/components/comment-thread";
 import { SourceBadge } from "@/components/source-badge";
 import { WorkBadge } from "@/components/work-badge";
@@ -64,11 +65,7 @@ export function ActivityEventCard({
             <h2 className="mt-2 text-base font-semibold tracking-tight">
               {event.title}
             </h2>
-            {event.body ? (
-              <p className="mt-1 text-sm leading-6 text-stone-600">
-                {event.body}
-              </p>
-            ) : null}
+            <ActivityEventDetails event={event} />
             <div className="mt-3 flex flex-wrap gap-2">
               <WorkBadge value={event.workType} variant="type" />
               {event.workLabels.map((label) => (
@@ -81,16 +78,6 @@ export function ActivityEventCard({
               {session ? <span>Session: {session.title}</span> : null}
               <span>Comments: {event.commentCount ?? 0}</span>
             </div>
-            {Object.keys(event.metadata).length > 0 ? (
-              <details className="mt-3 rounded-md border border-stone-200 bg-stone-50 p-3 text-xs">
-                <summary className="cursor-pointer font-medium text-stone-600">
-                  Metadata
-                </summary>
-                <pre className="mt-2 overflow-auto whitespace-pre-wrap text-stone-600">
-                  {JSON.stringify(event.metadata, null, 2)}
-                </pre>
-              </details>
-            ) : null}
           </div>
         </div>
       </div>
