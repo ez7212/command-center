@@ -263,6 +263,37 @@ work means.
 - Add semantic search later after the operational model is stable.
 - Add "why did this happen?" context view linking events to decisions and docs.
 
+## P2: Periodic Chat Summaries
+
+Goal: periodically summarize ongoing chats and session context inside each
+project and sync those summaries to the dashboard without depending on raw
+transcript dumps.
+
+Target sources:
+
+- Codex app chats within each project folder
+- ChatGPT webpage chats related to a project
+- Claude webpage chats related to a project
+
+Planned behavior:
+
+- Capture or export project-scoped chat sessions from each source.
+- Periodically summarize them into structured artifacts:
+  - objective
+  - summary
+  - decisions
+  - blockers
+  - next steps
+  - linked files, docs, features, and decisions
+- Sync those summaries to the dashboard as session artifacts or derived events.
+- Keep transcript parsing and raw transcript storage out of the first version.
+
+Constraints:
+
+- Do not build this until the ingestion and agentic dashboard model are more stable.
+- Prefer summary-first sync, not full transcript-first sync.
+- Keep project routing aligned with the local directory registry.
+
 ## P2: Integrations
 
 Do not build these until the core workflow is stable:
