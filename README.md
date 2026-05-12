@@ -21,6 +21,8 @@ view roadmap.
 See [docs/SUPABASE_CREDENTIALS.md](docs/SUPABASE_CREDENTIALS.md) for the
 database credential setup checklist.
 
+See [PROJECT_BRIEF.md](PROJECT_BRIEF.md) for the living 5-minute product brief.
+
 ## Setup
 
 1. Install dependencies:

@@ -214,5 +214,45 @@
       "/Users/eric/surrogacy-site/BACKLOG.md",
       "/Users/eric/surrogacy-website-research/BACKLOG.md"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-project-briefs",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Added living project briefs across tracked projects",
+    "startedAt": "2026-05-12T12:10:00Z",
+    "endedAt": "2026-05-12T12:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "operations",
+    "workLabels": [
+      "documentation",
+      "project-briefs",
+      "agent-instructions"
+    ],
+    "purpose": "Create a lightweight living document format that lets an outside reader understand each project in five minutes and keeps product context separate from agent operating instructions.",
+    "processSummary": "Added PROJECT_BRIEF.md for Command Center and each tracked project folder, updated Command Center AGENTS.md with the project brief standard, and inserted project brief maintenance instructions into external AGENTS.md and CLAUDE.md files.",
+    "priorIssues": [
+      "AGENTS.md was at risk of becoming a mixed product brief and agent instruction file",
+      "External project folders did not have a consistent high-level living brief"
+    ],
+    "issuesIdentified": [
+      "Project context needs to stay readable for humans while remaining concise enough for agents to maintain"
+    ],
+    "fixesMade": [
+      "Created dedicated PROJECT_BRIEF.md files",
+      "Documented that AGENTS.md and CLAUDE.md remain operating instructions",
+      "Added update triggers for mission, features, backlog, users, positioning, distribution, decisions, artifacts, and open questions"
+    ],
+    "outcome": "Each tracked project now has a living five-minute project brief and future agent sessions are instructed to keep it current whenever meaningful product, feature, strategy, marketing, or distribution work changes.",
+    "confidence": "high",
+    "evidence": [
+      "PROJECT_BRIEF.md",
+      "AGENTS.md",
+      "README.md",
+      "/Users/eric/dalya-ai/PROJECT_BRIEF.md",
+      "/Users/eric/buriza-website/PROJECT_BRIEF.md",
+      "/Users/eric/surrogacy-site/PROJECT_BRIEF.md",
+      "/Users/eric/surrogacy-website-research/PROJECT_BRIEF.md"
+    ]
   }
 ]

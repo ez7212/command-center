@@ -123,6 +123,28 @@ Each record should explain:
 
 Use this as the standard for Command Center, Dalya, Buriza, Zaya Life, and future projects.
 
+## Project Brief Standard
+
+Keep `PROJECT_BRIEF.md` as the living 5-minute overview of this product. It is
+for a smart outside reader who needs to understand the project quickly.
+
+Update `PROJECT_BRIEF.md` whenever meaningful work changes or clarifies:
+
+- mission
+- current product scope
+- features built
+- ongoing work
+- backlog
+- users/customers
+- positioning
+- marketing or distribution plan
+- key decisions
+- important links or artifacts
+- open questions
+
+Do not overload `AGENTS.md` with project brief content. `AGENTS.md` is for agent
+operating instructions; `PROJECT_BRIEF.md` is for product/business context.
+
 ## Ingestion
 
 Create a secure `/api/ingest` endpoint.
