@@ -9,7 +9,8 @@
     "lint": "eslint",
     "agent-log": "tsx scripts/agent-log.ts",
     "activity-log": "tsx scripts/activity-log.ts",
-    "import-historical-activity": "tsx scripts/import-historical-activity.ts"
+    "import-historical-activity": "tsx scripts/import-historical-activity.ts",
+    "sync-project-content": "tsx scripts/sync-project-content.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",

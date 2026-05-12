@@ -376,6 +376,22 @@ agentic workflow, build a capture path for it instead of relying on manual JSON
 edits. Start with `activity-log`; graduate recurring patterns to local hooks,
 watchers, or scheduled sync jobs.
 
+## Project Content Sync
+
+After Supabase is configured, sync local project briefs, backlog docs, task-board
+cards, decisions, and agent rows into the database:
+
+```bash
+npm run sync-project-content -- --dry-run
+npm run sync-project-content
+```
+
+Historical activity events are imported separately:
+
+```bash
+npm run import-historical-activity -- --actor-email ez7212@gmail.com --actor-name "Eric Zhu"
+```
+
 Session start:
 
 ```bash

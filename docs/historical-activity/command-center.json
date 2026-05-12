@@ -323,5 +323,40 @@
       "scripts/agent-log.ts",
       "scripts/activity-log.ts"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-supabase-data-upload",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Uploaded project content and historical activity to Supabase",
+    "startedAt": "2026-05-12T13:20:00Z",
+    "endedAt": "2026-05-12T13:40:00Z",
+    "timePrecision": "approximate",
+    "workType": "setup",
+    "workLabels": [
+      "supabase",
+      "data-sync",
+      "content-import"
+    ],
+    "purpose": "Move local structured project data into Supabase so the dashboard shows real project content instead of relying only on mock data.",
+    "processSummary": "Added an idempotent sync-project-content script, dry-ran it, synced agents, project briefs, backlog docs, task cards, decisions, then imported all historical activity events using the seeded owner profile.",
+    "priorIssues": [
+      "Supabase had users, projects, memberships, and ingest tokens, but documents, task cards, decisions, agents, and historical events were still mostly local/mock data"
+    ],
+    "issuesIdentified": [
+      "The sync needed to be idempotent so reruns update existing documents, features, decisions, and agents rather than creating duplicates"
+    ],
+    "fixesMade": [
+      "Created scripts/sync-project-content.ts",
+      "Added npm script and README instructions",
+      "Synced 8 agents, 18 documents, 19 features, 4 decisions, and imported 41 historical events"
+    ],
+    "outcome": "Supabase now contains actual dashboard data across Command Center, Dalya, Buriza, and Zaya Life, with per-project row counts verified after import.",
+    "confidence": "high",
+    "evidence": [
+      "scripts/sync-project-content.ts",
+      "README.md",
+      "docs/historical-activity/"
+    ]
   }
 ]
