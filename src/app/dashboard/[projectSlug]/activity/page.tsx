@@ -1,6 +1,8 @@
 import { ActivityFeed } from "@/components/activity-feed";
+import { ManualEventComposer } from "@/components/manual-event-composer";
 import { WorkFilterBar } from "@/components/work-filter-bar";
-import { getProjectWorkspace } from "@/lib/projects";
+import { hasSupabaseEnv } from "@/lib/env";
+import { getCurrentUserProjects, getProjectWorkspace } from "@/lib/projects";
 import {
   collectWorkFilters,
   displayWorkValue,
@@ -24,7 +26,13 @@ export default async function ActivityPage({
 }: ActivityPageProps) {
   const { projectSlug } = await params;
   const { workType, workLabel } = await searchParams;
-  const workspace = await getProjectWorkspace(projectSlug);
+  const [workspace, currentProjects] = await Promise.all([
+    getProjectWorkspace(projectSlug),
+    getCurrentUserProjects(),
+  ]);
+  const currentProject = currentProjects.find(
+    (project) => project.id === workspace.project.id,
+  );
   const filters = collectWorkFilters(workspace.events);
   const filteredEvents = workspace.events.filter((event) =>
     matchesWorkFilter(event, workType, workLabel),
@@ -48,6 +56,13 @@ export default async function ActivityPage({
         </p>
         <p className="mt-1 text-xs text-stone-500">{activeFilterText}</p>
       </div>
+      <ManualEventComposer
+        mockPreview={!hasSupabaseEnv()}
+        path={`/dashboard/${projectSlug}/activity`}
+        project={workspace.project}
+        role={currentProject?.role}
+        sessions={workspace.sessions}
+      />
       <WorkFilterBar
         currentWorkLabel={workLabel}
         currentWorkType={workType}

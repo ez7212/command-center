@@ -438,3 +438,36 @@ export function addMockComment(input: {
     updatedAt: null,
   });
 }
+
+export function addMockEvent(input: {
+  projectId: string;
+  sessionId?: string | null;
+  actorUserId: string;
+  actorName: string;
+  type: ActivityEvent["type"];
+  title: string;
+  body?: string | null;
+  source?: string;
+  sourceProvider?: string;
+  workType: string;
+  workLabels: string[];
+  metadata?: Record<string, unknown>;
+}) {
+  mockEvents.unshift({
+    id: crypto.randomUUID(),
+    projectId: input.projectId,
+    sessionId: input.sessionId ?? null,
+    actorUserId: input.actorUserId,
+    actorName: input.actorName,
+    type: input.type,
+    title: input.title,
+    body: input.body ?? null,
+    source: input.source ?? "manual",
+    sourceProvider: input.sourceProvider ?? "manual",
+    workType: input.workType,
+    workLabels: input.workLabels,
+    metadata: input.metadata ?? {},
+    createdAt: new Date().toISOString(),
+    commentCount: 0,
+  });
+}

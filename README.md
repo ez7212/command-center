@@ -247,6 +247,10 @@ Each session or event can be tagged with a `workType` plus optional labels so
 the dashboard can filter coding, research, marketing, distribution, and other
 work.
 
+Owner/editor roles can also log manual activity directly from the project's
+`Activity` page in the dashboard. In mock mode this is available as a preview
+composer.
+
 ```bash
 npm run agent-log -- \
   --type search_run \
