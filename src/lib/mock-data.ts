@@ -34,7 +34,8 @@ export const mockProjects: Project[] = [
     id: "11111111-1111-4111-8111-111111111110",
     name: "Command Center",
     slug: "command-center",
-    description: "Shared progress observability dashboard for our work.",
+    description:
+      "A shared dashboard for parallel visibility into progress, activities, workflows, and documents across projects.",
     mission: sharedMission,
     createdBy: mockProfiles[0].id,
     createdAt: "2026-05-12T06:00:00.000Z",
@@ -46,7 +47,7 @@ export const mockProjects: Project[] = [
     name: "Dalya",
     slug: "dalya",
     description:
-      "Build AI software that helps real estate brokerages operate with better speed, visibility, and client follow-through.",
+      "The AI layer for real estate brokerages to handle buyer inquiries, automate property listing tasks, and surface community intelligence.",
     mission:
       "Build AI software that helps real estate brokerages operate with better speed, visibility, and client follow-through.",
     createdBy: mockProfiles[0].id,
@@ -58,7 +59,7 @@ export const mockProjects: Project[] = [
     id: "11111111-1111-4111-8111-111111111112",
     name: "Buriza",
     slug: "buriza",
-    description: "Liquidity management for UAE businesses.",
+    description: "Liquidity management for UAE businesses and individuals.",
     mission:
       "Help UAE businesses manage liquidity, cash timing, and working capital decisions with clearer operating visibility.",
     createdBy: mockProfiles[0].id,
@@ -70,7 +71,8 @@ export const mockProjects: Project[] = [
     id: "11111111-1111-4111-8111-111111111113",
     name: "Zaya Life",
     slug: "zaya-life",
-    description: "UAE-licensed surrogacy clinic.",
+    description:
+      "UAE-licensed surrogacy matching clinic that partners with an approved IVF center.",
     mission:
       "Build a trusted UAE-licensed surrogacy clinic experience across research, patient education, operations, and distribution.",
     createdBy: mockProfiles[0].id,
