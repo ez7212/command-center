@@ -32,6 +32,11 @@ directory above is the default source of truth.
 Going forward, every meaningful feature, fix, bug, review, new strategy,
 non-coding workstream, or key event should become a dashboard activity record.
 
+If the same kind of event will happen repeatedly or continuously add to the
+agentic workflow, do not leave it as a manual JSON habit. Build an automatic
+capture path for it, such as a CLI helper, local hook, watcher, or scheduled
+sync job.
+
 For each record, capture:
 
 - purpose

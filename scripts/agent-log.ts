@@ -51,6 +51,14 @@ function defaultRegistryPath() {
   );
 }
 
+function defaultWorkingDir() {
+  return (
+    process.env.COMMAND_CENTER_WORKING_DIR ??
+    process.env.INIT_CWD ??
+    process.cwd()
+  );
+}
+
 function parseArgs(args: string[]) {
   const command = args[0] && !args[0].startsWith("--") ? args[0] : "log";
   const flagArgs = command === "log" ? args : args.slice(1);
@@ -240,7 +248,7 @@ function tokenFromProvider(provider: ProviderConfig | undefined) {
 async function initProject(flags: Flags) {
   const registryPath = stringValue(flags, "registry", defaultRegistryPath());
   const registry = await readRegistry(registryPath);
-  const cwd = normalizePath(stringValue(flags, "cwd", process.cwd()) ?? process.cwd());
+  const cwd = normalizePath(stringValue(flags, "cwd", defaultWorkingDir()) ?? defaultWorkingDir());
   const projectSlug = requireValue("--project", stringValue(flags, "project"));
   const name = stringValue(flags, "name", projectSlug);
   const defaultProvider = stringValue(flags, "provider", "codex") ?? "codex";
@@ -295,7 +303,7 @@ async function listProjects(flags: Flags) {
 async function doctor(flags: Flags) {
   const registryPath = stringValue(flags, "registry", defaultRegistryPath());
   const registry = await readRegistry(registryPath);
-  const cwd = normalizePath(stringValue(flags, "cwd", process.cwd()) ?? process.cwd());
+  const cwd = normalizePath(stringValue(flags, "cwd", defaultWorkingDir()) ?? defaultWorkingDir());
   const match = findRegistryEntry(registry, cwd);
   const provider = providerFromEntry(match?.entry, flags);
   const ingestUrl = process.env.COMMAND_CENTER_INGEST_URL;
@@ -325,7 +333,7 @@ async function doctor(flags: Flags) {
 
 async function logEvent(flags: Flags) {
   const registry = await readRegistry(stringValue(flags, "registry"));
-  const cwd = normalizePath(stringValue(flags, "cwd", process.cwd()) ?? process.cwd());
+  const cwd = normalizePath(stringValue(flags, "cwd", defaultWorkingDir()) ?? defaultWorkingDir());
   const match = findRegistryEntry(registry, cwd);
   const entry = match?.entry;
   const provider = providerFromEntry(entry, flags);

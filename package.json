@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "agent-log": "tsx scripts/agent-log.ts",
+    "activity-log": "tsx scripts/activity-log.ts",
     "import-historical-activity": "tsx scripts/import-historical-activity.ts"
   },
   "dependencies": {

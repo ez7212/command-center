@@ -322,6 +322,55 @@ npm --prefix /Users/eric/command-center run agent-log -- \
 Use `--provider claude` from the same directory to route Claude Code events
 through the Claude provider token.
 
+## Activity Log CLI
+
+`activity-log` is the local automation layer for durable project history. It
+appends a structured record to the right per-project file under
+`docs/historical-activity/`, using the same directory registry as `agent-log`
+when possible.
+
+Use it when a feature, fix, bug, review, strategy change, or non-coding
+workstream should become part of the long-term dashboard history:
+
+```bash
+npm run activity-log -- \
+  --project dalya \
+  --title "Hardened chatbot test flow" \
+  --work-type testing \
+  --labels chatbot,qa \
+  --purpose "Verify the chatbot after fixing response fallback behavior." \
+  --process "Ran persona tests, reviewed failures, adjusted fallback copy, and reran the suite." \
+  --prior-issues "Fallback answers were too generic; Test logs did not explain failure context" \
+  --issues "One persona still triggered an incomplete answer" \
+  --fixes "Tightened fallback prompt; Added clearer verification notes" \
+  --outcome "The suite passed with clearer traceability for the next review." \
+  --evidence "/Users/eric/dalya-ai/reports/chatbot_progress.log"
+```
+
+Useful flags:
+
+- `--project`: dashboard project slug. If omitted, the CLI tries the local
+  directory registry, then `COMMAND_CENTER_PROJECT_SLUG`.
+- `--project-name`: display name when creating a new project log file.
+- `--started-at` and `--ended-at`: ISO timestamps. `startedAt` defaults to now.
+- `--time-precision`: defaults to `exact`.
+- `--confidence`: `high`, `medium`, or `low`. Defaults to `medium`.
+- `--prior-issues`, `--issues`, `--fixes`, and `--evidence`: semicolon-separated
+  strings or JSON arrays.
+- `--test-run`: JSON object for test metadata.
+- `--replace`: update an existing record with the same id.
+- `--dry-run`: print the record without writing.
+- `--sync`: after writing, run `import-historical-activity` for that project.
+
+For new projects, create the dashboard/Supabase project first, register the
+local directory with `agent-log init-project`, then run `activity-log`. If the
+project JSON file does not exist yet, the CLI creates it.
+
+Automation rule: if a repeated event pattern continuously adds value to the
+agentic workflow, build a capture path for it instead of relying on manual JSON
+edits. Start with `activity-log`; graduate recurring patterns to local hooks,
+watchers, or scheduled sync jobs.
+
 Session start:
 
 ```bash

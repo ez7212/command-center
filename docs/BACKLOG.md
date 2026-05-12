@@ -23,6 +23,8 @@ Baseline implemented:
   presence.
 - `agent-log` can infer `projectSlug`, `source`, `sourceProvider`, and token
   env from the current directory.
+- `activity-log` appends structured future/history records to the right
+  per-project JSON file and can trigger a project import with `--sync`.
 - The dashboard shows a per-project `Setup` page with mapped local directories,
   provider health, recent events, and token-env status.
 
@@ -61,6 +63,8 @@ Remaining work:
 
 ### CLI Improvements
 
+- Add local hooks or scheduled jobs for repeated event patterns that should be
+  captured automatically instead of manually appended.
 - Make `agent-log doctor` verify server-side state:
   - dashboard URL is reachable
   - project slug exists

@@ -17,6 +17,9 @@
     ],
     "purpose": "Create the first working version of the shared progress dashboard with Supabase schema, RLS, auth, ingest, and the local agent-log CLI.",
     "processSummary": "Built the data model and RLS policies, added server/browser/service Supabase clients, protected dashboard auth flow, implemented the /api/ingest route, and added the TypeScript CLI to post events from local work.",
+    "priorIssues": [],
+    "issuesIdentified": [],
+    "fixesMade": [],
     "outcome": "The project gained a working v0 architecture: Postgres schema, permissions, secure ingest path, and a CLI that could route Eric's local telemetry into the dashboard.",
     "confidence": "high",
     "evidence": [
@@ -43,6 +46,9 @@
     ],
     "purpose": "Turn the foundation into a real dashboard David could read and comment on across projects.",
     "processSummary": "Built the main dashboard pages and components, added comments on core objects, added realtime/polling updates, documented manual Supabase setup and deployment steps, and reframed the product as a shared co-work dashboard instead of a one-way Eric view.",
+    "priorIssues": [],
+    "issuesIdentified": [],
+    "fixesMade": [],
     "outcome": "The product became a coherent review tool with project pages, comments, live updates, and deployment/readiness docs, while keeping read/comment-only permissions intact.",
     "confidence": "high",
     "evidence": [
@@ -70,6 +76,9 @@
     ],
     "purpose": "Make the dashboard useful across multiple local project directories and support labeled work beyond pure coding.",
     "processSummary": "Added the local project registry flow for multiple folders, created source setup and health views, added workType/workLabel tagging through ingest and the CLI, added session detail views, and added a manual activity composer for non-coding work.",
+    "priorIssues": [],
+    "issuesIdentified": [],
+    "fixesMade": [],
     "outcome": "The dashboard now supports Command Center, Dalya, Buriza, and Zaya Life as distinct projects, with filterable work labels and owner/editor manual event logging.",
     "confidence": "high",
     "evidence": [
@@ -77,6 +86,47 @@
       "/Users/eric/command-center/src/app/dashboard/[projectSlug]/setup/page.tsx",
       "/Users/eric/command-center/src/lib/work.ts",
       "/Users/eric/command-center/src/components/manual-event-composer.tsx"
+    ]
+  },
+  {
+    "id": "command-center-2026-05-12-activity-log-automation",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Added activity-log automation for future work capture",
+    "startedAt": "2026-05-12T10:45:00Z",
+    "endedAt": "2026-05-12T11:05:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "automation",
+      "logging",
+      "agentic-workflow"
+    ],
+    "purpose": "Make future features, fixes, bugs, reviews, strategy changes, and non-coding work easier to capture in the dashboard without hand-editing project JSON files.",
+    "processSummary": "Added a TypeScript activity-log CLI that resolves the project from flags, env, or the local directory registry, appends validated records to docs/historical-activity/<projectSlug>.json, creates new project log files when needed, and can optionally trigger the Supabase historical importer.",
+    "priorIssues": [
+      "Future activity capture depended on manual JSON edits",
+      "New projects needed a clear path for creating their own historical activity file"
+    ],
+    "issuesIdentified": [
+      "The existing agent-log cwd behavior did not account for npm --prefix usage from other project directories"
+    ],
+    "fixesMade": [
+      "Added activity-log",
+      "Added package script",
+      "Updated docs and backlog",
+      "Updated agent-log to prefer COMMAND_CENTER_WORKING_DIR or INIT_CWD before process.cwd",
+      "Added an automation-first rule for recurring workflow events"
+    ],
+    "outcome": "Future project work can now be captured with npm run activity-log and imported per project, while repeated event patterns are documented as candidates for hooks, watchers, or scheduled sync jobs.",
+    "confidence": "high",
+    "evidence": [
+      "scripts/activity-log.ts",
+      "scripts/agent-log.ts",
+      "README.md",
+      "AGENTS.md",
+      "docs/HISTORICAL_ACTIVITY_BACKFILL.md",
+      "docs/BACKLOG.md"
     ]
   }
 ]

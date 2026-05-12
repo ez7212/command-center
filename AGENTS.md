@@ -100,9 +100,16 @@ Event examples:
 
 Going forward, every meaningful feature, fix, bug, review, strategy change, non-coding workstream, and key event should be recorded, summarized, and displayed in the dashboard.
 
+If an event pattern is repetitive or continuously contributes to the agentic workflow, design an automatic capture path for it instead of relying on manual JSON edits. Prefer scripts, local hooks, watchers, or scheduled sync jobs when the same kind of activity will recur.
+
 Historical and reconstructed activity records live by project under:
 
 - `docs/historical-activity/<projectSlug>.json`
+
+For meaningful Command Center work, run `npm run activity-log` before the final
+response so the completed feature, fix, review, or strategy change is captured.
+Use `--sync` only when Supabase env vars are configured and the event should be
+imported immediately.
 
 Each record should explain:
 
