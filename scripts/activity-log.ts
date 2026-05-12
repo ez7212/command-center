@@ -320,8 +320,9 @@ async function main() {
   const projectSlug = normalizeSlug(
     requireValue(
       "--project, COMMAND_CENTER_PROJECT_SLUG, or registry mapping",
-      stringValue(flags, "project", process.env.COMMAND_CENTER_PROJECT_SLUG) ??
-        match?.entry.projectSlug,
+      stringValue(flags, "project") ??
+        match?.entry.projectSlug ??
+        process.env.COMMAND_CENTER_PROJECT_SLUG,
     ),
   );
   const projectName =

@@ -286,5 +286,42 @@
     "evidence": [
       "scripts/agent-log.ts"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-ingest-token-verification",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Verified Command Center ingest token and fixed registry precedence",
+    "startedAt": "2026-05-12T13:00:00Z",
+    "endedAt": "2026-05-12T13:15:00Z",
+    "timePrecision": "approximate",
+    "workType": "setup",
+    "workLabels": [
+      "ingest",
+      "configuration",
+      "cli"
+    ],
+    "purpose": "Verify the updated Command Center Codex ingest token and fix the CLI path that routed the event to the wrong project slug.",
+    "processSummary": "Diagnosed a 500 caused by duplicate active token hashes, patched /api/ingest to handle multiple hash matches by selecting the requested project/provider, then found agent-log was letting COMMAND_CENTER_PROJECT_SLUG override the directory registry and fixed project slug precedence in agent-log and activity-log.",
+    "priorIssues": [
+      "Command Center Codex token initially returned token/project mismatch",
+      "duplicate active token hashes caused maybeSingle to produce a generic server error"
+    ],
+    "issuesIdentified": [
+      "COMMAND_CENTER_PROJECT_SLUG=dalya overrode the /Users/eric/command-center registry mapping, causing agent-log to send the Command Center token with projectSlug dalya"
+    ],
+    "fixesMade": [
+      "Updated ingest token lookup to handle duplicate hash rows",
+      "Improved ingest error logging",
+      "Changed CLI project resolution priority to flags, then registry, then env fallback",
+      "Verified a Command Center Codex event inserted successfully"
+    ],
+    "outcome": "Command Center Codex ingest is verified and project-specific directory registry routing now works even when COMMAND_CENTER_PROJECT_SLUG is set for defaults.",
+    "confidence": "high",
+    "evidence": [
+      "src/app/api/ingest/route.ts",
+      "scripts/agent-log.ts",
+      "scripts/activity-log.ts"
+    ]
   }
 ]

@@ -397,8 +397,9 @@ async function logEvent(flags: Flags) {
   );
   const projectSlug = requireValue(
     "--project, COMMAND_CENTER_PROJECT_SLUG, or registry mapping",
-    stringValue(flags, "project", process.env.COMMAND_CENTER_PROJECT_SLUG) ??
-      entry?.projectSlug,
+    stringValue(flags, "project") ??
+      entry?.projectSlug ??
+      process.env.COMMAND_CENTER_PROJECT_SLUG,
   );
   const source = requireValue(
     "--source, COMMAND_CENTER_SOURCE, or registry provider source",

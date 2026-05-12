@@ -117,32 +117,39 @@ function completedAtForStatus(status: string) {
 async function findIngestToken(payload: IngestPayload, tokenHash: string) {
   const supabase = createSupabaseServiceClient();
 
-  const { data: token, error } = await supabase
+  const { data: tokens, error } = await supabase
     .from("ingest_tokens")
     .select(
       "id, project_id, owner_user_id, source_provider, revoked_at, projects(slug)",
     )
     .eq("token_hash", tokenHash)
-    .is("revoked_at", null)
-    .maybeSingle();
+    .is("revoked_at", null);
 
   if (error) {
     throw error;
   }
 
-  if (!token) {
+  if (!tokens || tokens.length === 0) {
     return { status: "invalid" as const, token: null };
   }
 
-  const project = Array.isArray(token.projects)
-    ? token.projects[0]
-    : token.projects;
+  const projectMatches = tokens.filter((token) => {
+    const project = Array.isArray(token.projects)
+      ? token.projects[0]
+      : token.projects;
 
-  if (!project || project.slug !== payload.projectSlug) {
-    return { status: "mismatch" as const, token };
+    return project?.slug === payload.projectSlug;
+  });
+
+  if (projectMatches.length === 0) {
+    return { status: "mismatch" as const, token: tokens[0] };
   }
 
-  return { status: "valid" as const, token };
+  const providerMatch = projectMatches.find(
+    (token) => token.source_provider === payload.sourceProvider,
+  );
+
+  return { status: "valid" as const, token: providerMatch ?? projectMatches[0] };
 }
 
 async function upsertSession(
@@ -297,7 +304,12 @@ export async function POST(request: Request) {
 
     return jsonResponse({ ok: true, eventId, sessionId }, 200);
   } catch (error) {
-    console.error("Ingest failed", error);
+    console.error(
+      "Ingest failed",
+      error instanceof Error
+        ? { message: error.message, name: error.name, stack: error.stack }
+        : error,
+    );
     return jsonResponse({ ok: false, error: "Server error" }, 500);
   }
 }
