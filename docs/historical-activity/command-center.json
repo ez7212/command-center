@@ -168,5 +168,51 @@
       "/Users/eric/surrogacy-website-research/AGENTS.md",
       "/Users/eric/surrogacy-website-research/CLAUDE.md"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-project-task-boards",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Added project task boards and backlog pages",
+    "startedAt": "2026-05-12T11:35:00Z",
+    "endedAt": "2026-05-12T12:05:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "dashboard",
+      "backlog",
+      "tasks",
+      "comments"
+    ],
+    "purpose": "Give each tracked project a high-level Trello-style task board with completed, ongoing, and backlog lanes, plus clickable task details and comments.",
+    "processSummary": "Added a project task board component, created /dashboard/[projectSlug]/tasks and /tasks/[taskId] routes, populated richer mock backlog items for Command Center, Dalya, Buriza, and Zaya Life, added project rail navigation, added local BACKLOG.md artifacts in tracked project folders, and documented Supabase credential setup.",
+    "priorIssues": [
+      "Project work was visible through activity and features, but there was no simple project-level task board",
+      "New project folders did not all have local backlog files",
+      "Supabase credential setup was spread across README sections"
+    ],
+    "issuesIdentified": [
+      "Browser runtime control was unavailable in this session and the local dev server was locked by an existing isolated Next process, so visual route verification could not be completed"
+    ],
+    "fixesMade": [
+      "Added task board and detail pages",
+      "Reused feature comments for task discussions",
+      "Added labels and richer project backlog mock data",
+      "Created docs/SUPABASE_CREDENTIALS.md",
+      "Added BACKLOG.md files or sections for tracked project folders"
+    ],
+    "outcome": "Each project now has a task-board route in Command Center, cards open into detail/comment pages, mock mode is populated across all tracked projects, and local project folders have backlog artifacts for future agent sessions.",
+    "confidence": "high",
+    "evidence": [
+      "src/app/dashboard/[projectSlug]/tasks/page.tsx",
+      "src/app/dashboard/[projectSlug]/tasks/[taskId]/page.tsx",
+      "src/components/project-task-board.tsx",
+      "src/lib/mock-data.ts",
+      "docs/SUPABASE_CREDENTIALS.md",
+      "/Users/eric/dalya-ai/BACKLOG.md",
+      "/Users/eric/buriza-website/BACKLOG.md",
+      "/Users/eric/surrogacy-site/BACKLOG.md",
+      "/Users/eric/surrogacy-website-research/BACKLOG.md"
+    ]
   }
 ]

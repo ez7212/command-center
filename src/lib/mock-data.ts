@@ -307,38 +307,146 @@ export const mockComments: Comment[] = [
   },
 ];
 
-const featureByProject: Record<string, Pick<Feature, "title" | "description" | "status">[]> = {
+const featureByProject: Record<
+  string,
+  Pick<Feature, "title" | "description" | "status" | "labels">[]
+> = {
   "command-center": [
     {
-      title: "Local project registry",
-      description: "Infer dashboard project routing from the current local directory.",
+      title: "Activity logging automation",
+      description:
+        "Use per-project instruction files and activity-log to capture meaningful future work.",
+      status: "shipped",
+      labels: ["automation", "logging"],
+    },
+    {
+      title: "Supabase production setup",
+      description:
+        "Configure database credentials, run migrations, seed users/projects, and create ingest tokens.",
       status: "in_progress",
+      labels: ["database", "setup"],
+    },
+    {
+      title: "Project task boards",
+      description:
+        "Create Trello-style project task views with details and comments.",
+      status: "review",
+      labels: ["dashboard", "workflow"],
     },
     {
       title: "Agentic overview",
-      description: "Surface health, stale work, open review, and next actions.",
+      description:
+        "Surface health, stale work, open review, and next actions across projects.",
       status: "planned",
+      labels: ["agentic-view", "review"],
+    },
+    {
+      title: "Recurring workflow automation",
+      description:
+        "Promote repeated event patterns into hooks, watchers, or scheduled sync jobs.",
+      status: "planned",
+      labels: ["automation", "backlog"],
     },
   ],
   dalya: [
     {
       title: "Brokerage workflow map",
       description: "Identify the highest-value AI workflow for real estate brokerages.",
+      status: "in_progress",
+      labels: ["research", "brokerage"],
+    },
+    {
+      title: "Chatbot QA history reconstruction",
+      description:
+        "Maintain detailed run-level history for persona tests, fixes, failures, and outcomes.",
+      status: "shipped",
+      labels: ["testing", "chatbot"],
+    },
+    {
+      title: "CRM and dashboard workflow",
+      description:
+        "Clarify operator CRM flows, lead visibility, and brokerage follow-up tasks.",
       status: "planned",
+      labels: ["crm", "operations"],
+    },
+    {
+      title: "Website and positioning refresh",
+      description:
+        "Turn brokerage AI positioning into public-facing site copy and product narrative.",
+      status: "planned",
+      labels: ["marketing", "website"],
+    },
+    {
+      title: "Distribution plan",
+      description:
+        "Build a repeatable go-to-market plan for brokerage outreach and pilot customers.",
+      status: "planned",
+      labels: ["distribution", "sales"],
     },
   ],
   buriza: [
     {
       title: "Liquidity landing page",
       description: "Explain liquidity management for UAE business operators.",
+      status: "shipped",
+      labels: ["website", "messaging"],
+    },
+    {
+      title: "Executive brief refinement",
+      description:
+        "Translate the executive brief into sharper buyer pains, outcomes, and proof points.",
+      status: "in_progress",
+      labels: ["strategy", "copy"],
+    },
+    {
+      title: "Distribution channels",
+      description:
+        "Identify UAE business audiences, outreach channels, and first test campaigns.",
       status: "planned",
+      labels: ["distribution", "marketing"],
+    },
+    {
+      title: "Liquidity workflow model",
+      description:
+        "Define the operational workflows Buriza should track beyond the website.",
+      status: "planned",
+      labels: ["product", "operations"],
     },
   ],
   "zaya-life": [
     {
       title: "Clinic trust narrative",
       description: "Connect UAE licensing, patient education, and research-backed positioning.",
+      status: "in_progress",
+      labels: ["trust", "positioning"],
+    },
+    {
+      title: "Website responsiveness fixes",
+      description:
+        "Keep the public site mobile-friendly and aligned with clinic credibility.",
+      status: "shipped",
+      labels: ["website", "mobile"],
+    },
+    {
+      title: "Research evidence base",
+      description:
+        "Maintain surrogacy market research, references, and patient education inputs.",
+      status: "in_progress",
+      labels: ["research", "education"],
+    },
+    {
+      title: "Patient intake workflow",
+      description:
+        "Define the intake flow, questions, triage logic, and follow-up operations.",
       status: "planned",
+      labels: ["operations", "intake"],
+    },
+    {
+      title: "Distribution and ads plan",
+      description:
+        "Plan ethical distribution, search intent, paid channels, and clinic referral paths.",
+      status: "planned",
+      labels: ["distribution", "ads"],
     },
   ],
 };
@@ -350,6 +458,7 @@ export const mockFeatures: Feature[] = mockProjects.flatMap((project, projectInd
     title: feature.title,
     description: feature.description,
     status: feature.status,
+    labels: feature.labels,
     owner: "Eric",
     shippedAt: feature.status === "shipped" ? "2026-05-12T07:08:00.000Z" : null,
     createdAt: "2026-05-12T06:05:00.000Z",

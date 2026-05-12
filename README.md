@@ -18,6 +18,9 @@ See [docs/BACKLOG.md](docs/BACKLOG.md) for the product backlog, including
 multi-project local directory sync, non-coding work tracking, and the agentic
 view roadmap.
 
+See [docs/SUPABASE_CREDENTIALS.md](docs/SUPABASE_CREDENTIALS.md) for the
+database credential setup checklist.
+
 ## Setup
 
 1. Install dependencies:

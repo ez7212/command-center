@@ -13,6 +13,7 @@ import type { Project } from "@/lib/types";
 
 const links = [
   { label: "Overview", href: "", icon: LayoutDashboard },
+  { label: "Tasks", href: "/tasks", icon: ListChecks },
   { label: "Activity", href: "/activity", icon: Activity },
   { label: "Live Sessions", href: "/sessions", icon: GitBranch },
   { label: "Features", href: "/features", icon: ListChecks },

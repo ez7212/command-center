@@ -28,6 +28,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const inProgressFeatures = workspace.features.filter(
     (feature) => feature.status === "in_progress",
   );
+  const openTasks = workspace.features.filter(
+    (feature) => feature.status !== "shipped",
+  );
 
   return (
     <main className="space-y-6 px-4 py-6 md:px-6">
@@ -66,10 +69,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           value={workspace.events.length}
         />
         <MetricCard
-          href={`/dashboard/${projectSlug}/features`}
-          icon={<StatusBadge status="shipped" />}
-          label="Shipped features"
-          value={shippedFeatures.length}
+          href={`/dashboard/${projectSlug}/tasks`}
+          icon={<StatusBadge status="in_progress" />}
+          label="Open tasks"
+          value={openTasks.length}
         />
         <MetricCard
           href={`/dashboard/${projectSlug}/setup`}
@@ -82,6 +85,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           icon={<FileText size={18} />}
           label="Docs and decisions"
           value={workspace.documents.length + workspace.decisions.length}
+        />
+        <MetricCard
+          href={`/dashboard/${projectSlug}/features`}
+          icon={<StatusBadge status="shipped" />}
+          label="Completed work"
+          value={shippedFeatures.length}
         />
       </section>
 

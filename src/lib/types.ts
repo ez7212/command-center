@@ -102,6 +102,7 @@ export type Feature = {
   title: string;
   description: string | null;
   status: FeatureStatus;
+  labels?: string[];
   owner: string | null;
   shippedAt: string | null;
   createdAt: string;
