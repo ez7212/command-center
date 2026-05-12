@@ -350,6 +350,13 @@ const featureByProject: Record<
       status: "planned",
       labels: ["automation", "backlog"],
     },
+    {
+      title: "Conversation summary automation",
+      description:
+        "Brainstorm ways to periodically summarize project conversations from Claude web app, Codex app, and ChatGPT web app into the dashboard.",
+      status: "planned",
+      labels: ["automation", "conversation-sync", "research"],
+    },
   ],
   dalya: [
     {
