@@ -81,12 +81,23 @@ The main themes visible from logs and artifacts:
 5. repeated persona-based chatbot test runs, now reconstructed as individual
    run-level events
 6. knowledge-base audits and fact correction work
+7. marketing website, brand, and positioning work
+8. multilingual SEO/content strategy and publishing plan
+9. community research pipeline and KB scaling infrastructure
+10. operational hardening for summary workers, queues, bridge APIs, and DB
+    resilience
 
 The repeated `_progress.log` files in `reports/` are especially valuable
 because they show real test cadence and timestamps from May 5 through May 11.
 The companion `VERIFICATION.md` and `_aggregate.json` files provide the reason
 for each run, the known issue list going in, the fixes being verified, and the
 outcome.
+
+Dalya is now the highest-resolution project in the backfill. The JSON contains
+separate records for the website/frontend system, auth/app shell, seller
+dashboard, CRM, listing-detail pages, community research pipeline, multilingual
+content strategy, payment fact modeling, parser/data-model hardening, docs, and
+operational service hardening in addition to the chatbot test runs.
 
 ### Buriza
 
@@ -134,9 +145,10 @@ The main gaps are:
   unless they were visible in local project/history files
 - Buriza has a focused website-build record, but not a deep multi-week operating
   history yet
-- the broad Dalya April platform/dashboard/CRM entry should be split later if
-  more session-level evidence is recovered; the chatbot test sprint has already
-  been split into run-level events
+- Dalya now has feature-level records for most visible product areas, but some
+  April work is still reconstructed from file timestamps and shipped-feature
+  docs rather than exact commit history because the local Dalya folder is not a
+  git repository
 - Zaya Life research entries are artifact-timestamp based rather than
   conversation-log based
 - no production Supabase activity has been reconciled against this import yet
