@@ -255,7 +255,7 @@ Current local project mappings:
 | Dalya | `dalya` | `/Users/eric/dalya-ai` | Codex, Claude Code |
 | Buriza | `buriza` | `/Users/eric/buriza-website` | Codex, Claude Code |
 | Zaya Life | `zaya-life` | `/Users/eric/surrogacy-site` | Codex, Claude Code |
-| Zaya Life | `zaya-life` | `/Users/eric/surrogacy-research` | Codex, Claude Code |
+| Zaya Life | `zaya-life` | `/Users/eric/surrogacy-website-research` | Codex, Claude Code |
 
 Register a project directory:
 

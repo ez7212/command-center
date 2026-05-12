@@ -210,11 +210,11 @@ const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "bod
     {
       type: "manual_note",
       title: "Connected clinic site and research work",
-      body: "Zaya Life spans surrogacy-site and surrogacy-research local directories.",
+      body: "Zaya Life spans surrogacy-site and surrogacy-website-research local directories.",
       metadata: {
         localPaths: [
           "/Users/eric/surrogacy-site",
-          "/Users/eric/surrogacy-research",
+          "/Users/eric/surrogacy-website-research",
         ],
       },
     },
@@ -328,7 +328,7 @@ export const mockDocuments: Document[] = mockProjects.flatMap((project, projectI
     kind: "strategy",
     bodyMd:
       project.slug === "zaya-life"
-        ? "Track both /Users/eric/surrogacy-site and /Users/eric/surrogacy-research under Zaya Life."
+        ? "Track both /Users/eric/surrogacy-site and /Users/eric/surrogacy-website-research under Zaya Life."
         : `Track local work for ${project.name} through Codex and Claude Code events.`,
     externalUrl: null,
     createdAt: "2026-05-12T06:20:00.000Z",
