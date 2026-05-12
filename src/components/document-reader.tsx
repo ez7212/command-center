@@ -107,8 +107,28 @@ function parseMarkdown(markdown: string) {
   return blocks;
 }
 
-function MarkdownReader({ markdown }: { markdown: string }) {
-  const blocks = parseMarkdown(markdown);
+function normalizeHeading(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function MarkdownReader({
+  markdown,
+  title,
+}: {
+  markdown: string;
+  title: string;
+}) {
+  const parsedBlocks = parseMarkdown(markdown);
+  const blocks =
+    parsedBlocks[0]?.type === "heading" &&
+    normalizeHeading(parsedBlocks[0].text) === normalizeHeading(title)
+      ? parsedBlocks.slice(1)
+      : parsedBlocks;
 
   return (
     <div className="space-y-5 text-stone-700">
@@ -210,7 +230,7 @@ export function DocumentReader({
           </div>
 
           {document.bodyMd ? (
-            <MarkdownReader markdown={document.bodyMd} />
+            <MarkdownReader markdown={document.bodyMd} title={document.title} />
           ) : (
             <EmptyState title="This document is empty" />
           )}

@@ -19,13 +19,6 @@ export default async function BacklogPage({ params }: BacklogPageProps) {
 
   return (
     <main className="px-4 py-6 md:px-6">
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold tracking-tight">Backlog</h2>
-        <p className="mt-1 max-w-2xl text-sm leading-6 text-stone-600">
-          Living backlog document for major completed work, active priorities,
-          and future workflow improvements.
-        </p>
-      </div>
       <DocumentReader
         comments={workspace.comments}
         documents={documents}

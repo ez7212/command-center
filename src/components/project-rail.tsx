@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Activity,
   BookOpenText,
@@ -10,6 +12,7 @@ import {
   PlugZap,
 } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import type { Project } from "@/lib/types";
 
@@ -33,6 +36,9 @@ export function ProjectRail({
   projects: Project[];
   currentProject: Project;
 }) {
+  const pathname = usePathname();
+  const projectBasePath = `/dashboard/${currentProject.slug}`;
+
   return (
     <aside className="border-b border-stone-200 bg-stone-950 text-white md:min-h-screen md:w-64 md:border-b-0 md:border-r">
       <div className="px-4 py-4">
@@ -66,10 +72,20 @@ export function ProjectRail({
       <nav className="grid grid-cols-2 gap-1 border-t border-stone-800 px-3 py-3 md:block md:space-y-1">
         {links.map((item) => {
           const Icon = item.icon;
+          const href = `${projectBasePath}${item.href}`;
+          const isActive =
+            item.href === ""
+              ? pathname === projectBasePath
+              : pathname === href || pathname.startsWith(`${href}/`);
+
           return (
             <Link
-              className="flex items-center gap-2 rounded-md px-2 py-2 text-sm text-stone-300 hover:bg-stone-900 hover:text-white"
-              href={`/dashboard/${currentProject.slug}${item.href}`}
+              className={`flex items-center gap-2 rounded-md px-2 py-2 text-sm ${
+                isActive
+                  ? "bg-white text-stone-950"
+                  : "text-stone-300 hover:bg-stone-900 hover:text-white"
+              }`}
+              href={href}
               key={item.label}
             >
               <Icon aria-hidden="true" size={16} />

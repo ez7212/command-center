@@ -18,13 +18,6 @@ export default async function BriefPage({ params }: BriefPageProps) {
 
   return (
     <main className="px-4 py-6 md:px-6">
-      <div className="mb-4">
-        <h2 className="text-xl font-semibold tracking-tight">Project Brief</h2>
-        <p className="mt-1 max-w-2xl text-sm leading-6 text-stone-600">
-          Living project overview: mission, product context, built features,
-          and current strategy.
-        </p>
-      </div>
       <DocumentReader
         comments={workspace.comments}
         documents={documents}
