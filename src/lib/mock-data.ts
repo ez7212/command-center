@@ -45,7 +45,8 @@ export const mockProjects: Project[] = [
     id: "11111111-1111-4111-8111-111111111111",
     name: "Dalya",
     slug: "dalya",
-    description: "AI software for real estate brokerages.",
+    description:
+      "Build AI software that helps real estate brokerages operate with better speed, visibility, and client follow-through.",
     mission:
       "Build AI software that helps real estate brokerages operate with better speed, visibility, and client follow-through.",
     createdBy: mockProfiles[0].id,
