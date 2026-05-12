@@ -78,11 +78,15 @@ The main themes visible from logs and artifacts:
 2. SPA parser and listing registration proof of concept
 3. MVP hardening sprint across platform internals
 4. seller portal + CRM + operations layer
-5. repeated persona-based chatbot test runs
+5. repeated persona-based chatbot test runs, now reconstructed as individual
+   run-level events
 6. knowledge-base audits and fact correction work
 
 The repeated `_progress.log` files in `reports/` are especially valuable
 because they show real test cadence and timestamps from May 5 through May 11.
+The companion `VERIFICATION.md` and `_aggregate.json` files provide the reason
+for each run, the known issue list going in, the fixes being verified, and the
+outcome.
 
 ### Buriza
 
@@ -131,7 +135,8 @@ The main gaps are:
 - Buriza has a focused website-build record, but not a deep multi-week operating
   history yet
 - the broad Dalya April platform/dashboard/CRM entry should be split later if
-  more session-level evidence is recovered
+  more session-level evidence is recovered; the chatbot test sprint has already
+  been split into run-level events
 - Zaya Life research entries are artifact-timestamp based rather than
   conversation-log based
 - no production Supabase activity has been reconciled against this import yet
@@ -169,6 +174,10 @@ For dashboard backfill, each JSON item is already close to what we need:
 - `workLabels`
 - `purpose`
 - `processSummary`
+- `priorIssues`
+- `issuesIdentified`
+- `fixesMade`
+- `testRun`
 - `outcome`
 
 The most likely next implementation is:

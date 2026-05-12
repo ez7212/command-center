@@ -100,7 +100,11 @@ const historicalEventSchema = z.object({
   workLabels: z.array(z.string().trim().min(1)).default([]),
   purpose: z.string().trim().min(1),
   processSummary: z.string().trim().min(1),
+  priorIssues: z.array(z.string().trim().min(1)).default([]),
+  issuesIdentified: z.array(z.string().trim().min(1)).default([]),
+  fixesMade: z.array(z.string().trim().min(1)).default([]),
   outcome: z.string().trim().min(1),
+  testRun: z.record(z.string(), z.unknown()).optional(),
   confidence: z.enum(["high", "medium", "low"]),
   evidence: z.array(z.string().trim().min(1)).default([]),
 });
@@ -210,11 +214,26 @@ function normalizeLabels(values: string[]) {
 }
 
 function buildBody(item: HistoricalEvent) {
-  return [
+  const sections = [
     `Purpose: ${item.purpose}`,
     `Process: ${item.processSummary}`,
-    `Outcome: ${item.outcome}`,
-  ].join("\n\n");
+  ];
+
+  if (item.priorIssues.length > 0) {
+    sections.push(`Prior issues: ${item.priorIssues.join(" ")}`);
+  }
+
+  if (item.issuesIdentified.length > 0) {
+    sections.push(`Issues identified: ${item.issuesIdentified.join(" ")}`);
+  }
+
+  if (item.fixesMade.length > 0) {
+    sections.push(`Fixes made: ${item.fixesMade.join(" ")}`);
+  }
+
+  sections.push(`Outcome: ${item.outcome}`);
+
+  return sections.join("\n\n");
 }
 
 function buildMetadata(item: HistoricalEvent) {
@@ -225,6 +244,10 @@ function buildMetadata(item: HistoricalEvent) {
     endedAt: item.endedAt ?? null,
     timePrecision: item.timePrecision,
     confidence: item.confidence,
+    testRun: item.testRun ?? null,
+    priorIssues: item.priorIssues,
+    issuesIdentified: item.issuesIdentified,
+    fixesMade: item.fixesMade,
     evidence: item.evidence,
     purpose: item.purpose,
     processSummary: item.processSummary,
@@ -324,7 +347,7 @@ async function insertHistoricalEvent(
       source_provider: sourceProvider,
       work_type: normalizeSlug(item.workType) || "general",
       work_labels: normalizeLabels(item.workLabels),
-      metadata: buildMetadata(item),
+      metadata: buildMetadata(item) as Json,
       created_at: item.endedAt ?? item.startedAt,
     })
     .select("id")
