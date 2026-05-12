@@ -128,5 +128,45 @@
       "docs/HISTORICAL_ACTIVITY_BACKFILL.md",
       "docs/BACKLOG.md"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-external-project-instructions",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Propagated activity logging instructions to project folders",
+    "startedAt": "2026-05-12T11:15:00Z",
+    "endedAt": "2026-05-12T11:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "operations",
+    "workLabels": [
+      "automation",
+      "logging",
+      "project-setup"
+    ],
+    "purpose": "Make future Codex and Claude conversations in Dalya, Buriza, and Zaya Life follow the Command Center activity logging standard.",
+    "processSummary": "Added or updated AGENTS.md and CLAUDE.md files in each tracked project folder with project-specific activity-log commands, live telemetry examples, and the automation-first rule for repetitive workflow events.",
+    "priorIssues": [
+      "Only the Command Center repo had persistent instructions to log meaningful work",
+      "External project sessions could miss the activity logging standard"
+    ],
+    "issuesIdentified": [
+      "Claude instruction examples needed to route live telemetry through the Claude provider instead of Codex"
+    ],
+    "fixesMade": [
+      "Added marked Command Center logging sections to Dalya, Buriza, Zaya Life site, and Zaya Life research folders",
+      "Corrected provider examples for Codex versus Claude files"
+    ],
+    "outcome": "Future agent sessions in all tracked project folders now have local instructions to capture meaningful work through Command Center and to automate recurring event patterns.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/dalya-ai/AGENTS.md",
+      "/Users/eric/dalya-ai/CLAUDE.md",
+      "/Users/eric/buriza-website/AGENTS.md",
+      "/Users/eric/buriza-website/CLAUDE.md",
+      "/Users/eric/surrogacy-site/AGENTS.md",
+      "/Users/eric/surrogacy-site/CLAUDE.md",
+      "/Users/eric/surrogacy-website-research/AGENTS.md",
+      "/Users/eric/surrogacy-website-research/CLAUDE.md"
+    ]
   }
 ]
