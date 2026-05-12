@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "agent-log": "tsx scripts/agent-log.ts"
+    "agent-log": "tsx scripts/agent-log.ts",
+    "import-historical-activity": "tsx scripts/import-historical-activity.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.3",
