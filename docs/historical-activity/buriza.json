@@ -1,0 +1,52 @@
+[
+  {
+    "id": "buriza-2026-05-07-brand-strategy-site-plan",
+    "projectSlug": "buriza",
+    "projectName": "Buriza",
+    "title": "Turned the Buriza exec brief into a website strategy and design system",
+    "startedAt": "2026-05-07T04:48:00Z",
+    "endedAt": "2026-05-07T04:54:00Z",
+    "timePrecision": "high",
+    "workType": "strategy",
+    "workLabels": [
+      "website",
+      "branding",
+      "copy",
+      "design-system"
+    ],
+    "purpose": "Translate the Buriza executive brief into a credible single-page web presence for the liquidity and settlement consultancy.",
+    "processSummary": "Read the Buriza executive PDF, established the canonical brand and copy direction, wrote the brand/copy spec, and created a design system to guide the implementation.",
+    "outcome": "Buriza had a clear web narrative and visual system before coding started, which gave the later single-page site a sharper institutional tone.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
+      "/Users/eric/buriza-website/Buriza Exec doc.pdf",
+      "/Users/eric/buriza-website/app/BRAND_AND_COPY.md",
+      "/Users/eric/buriza-website/app/DESIGN_SYSTEM.md"
+    ]
+  },
+  {
+    "id": "buriza-2026-05-07-single-page-site",
+    "projectSlug": "buriza",
+    "projectName": "Buriza",
+    "title": "Built and verified the Buriza single-page marketing site",
+    "startedAt": "2026-05-07T04:49:00Z",
+    "endedAt": "2026-05-07T05:02:00Z",
+    "timePrecision": "high",
+    "workType": "coding",
+    "workLabels": [
+      "website",
+      "frontend",
+      "marketing"
+    ],
+    "purpose": "Ship a polished initial site quickly so Buriza had a live web presence anchored in the exec brief.",
+    "processSummary": "Scaffolded a Next.js app, implemented the single-page site from the design and copy specs, ran build verification, launched the dev server, and browser-checked the page.",
+    "outcome": "Buriza ended the session with a compiled, verified single-page website in a dedicated Next.js app folder.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
+      "/Users/eric/buriza-website/app/app/page.tsx",
+      "/Users/eric/buriza-website/app/package.json"
+    ]
+  }
+]

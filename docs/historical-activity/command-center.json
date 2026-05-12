@@ -1,0 +1,82 @@
+[
+  {
+    "id": "command-center-2026-05-12-v0-foundation",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Built the v0 command center foundation",
+    "startedAt": "2026-05-12T00:25:00Z",
+    "endedAt": "2026-05-12T02:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "dashboard",
+      "schema",
+      "auth",
+      "ingest",
+      "cli"
+    ],
+    "purpose": "Create the first working version of the shared progress dashboard with Supabase schema, RLS, auth, ingest, and the local agent-log CLI.",
+    "processSummary": "Built the data model and RLS policies, added server/browser/service Supabase clients, protected dashboard auth flow, implemented the /api/ingest route, and added the TypeScript CLI to post events from local work.",
+    "outcome": "The project gained a working v0 architecture: Postgres schema, permissions, secure ingest path, and a CLI that could route Eric's local telemetry into the dashboard.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/.git/logs/HEAD",
+      "/Users/eric/command-center/src/app/api/ingest/route.ts",
+      "/Users/eric/command-center/scripts/agent-log.ts"
+    ]
+  },
+  {
+    "id": "command-center-2026-05-12-dashboard-comments-realtime",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Expanded the dashboard into a usable review surface",
+    "startedAt": "2026-05-12T02:30:00Z",
+    "endedAt": "2026-05-12T07:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "dashboard",
+      "comments",
+      "realtime",
+      "readiness"
+    ],
+    "purpose": "Turn the foundation into a real dashboard David could read and comment on across projects.",
+    "processSummary": "Built the main dashboard pages and components, added comments on core objects, added realtime/polling updates, documented manual Supabase setup and deployment steps, and reframed the product as a shared co-work dashboard instead of a one-way Eric view.",
+    "outcome": "The product became a coherent review tool with project pages, comments, live updates, and deployment/readiness docs, while keeping read/comment-only permissions intact.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/README.md",
+      "/Users/eric/command-center/src/components/comment-thread.tsx",
+      "/Users/eric/command-center/src/lib/use-realtime-project-updates.ts"
+    ]
+  },
+  {
+    "id": "command-center-2026-05-12-multi-project-agentic",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Added multi-project routing, labeled work, and agentic setup views",
+    "startedAt": "2026-05-12T07:45:00Z",
+    "endedAt": "2026-05-12T12:09:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "multi-project",
+      "routing",
+      "work-labels",
+      "source-health",
+      "manual-capture"
+    ],
+    "purpose": "Make the dashboard useful across multiple local project directories and support labeled work beyond pure coding.",
+    "processSummary": "Added the local project registry flow for multiple folders, created source setup and health views, added workType/workLabel tagging through ingest and the CLI, added session detail views, and added a manual activity composer for non-coding work.",
+    "outcome": "The dashboard now supports Command Center, Dalya, Buriza, and Zaya Life as distinct projects, with filterable work labels and owner/editor manual event logging.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/src/app/dashboard/[projectSlug]/setup/page.tsx",
+      "/Users/eric/command-center/src/lib/work.ts",
+      "/Users/eric/command-center/src/components/manual-event-composer.tsx"
+    ]
+  }
+]

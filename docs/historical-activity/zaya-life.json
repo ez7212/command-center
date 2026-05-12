@@ -1,0 +1,77 @@
+[
+  {
+    "id": "zaya-life-2026-03-21-research-foundation",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Compiled the surrogacy research foundation and competitor analysis",
+    "startedAt": "2026-03-21T11:58:00Z",
+    "endedAt": "2026-03-21T12:22:00Z",
+    "timePrecision": "high",
+    "workType": "research",
+    "workLabels": [
+      "competitive-research",
+      "copy",
+      "positioning"
+    ],
+    "purpose": "Assemble reference material and market analysis to guide the clinic website's messaging and structure.",
+    "processSummary": "Captured competitor pages and reference materials into the research repo, then synthesized them into a long-form report focused on UAE-market positioning, messaging gaps, and landing-page structure.",
+    "outcome": "Zaya Life gained a dedicated research base and a synthesized copy brief that could feed both the site and future positioning work.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/surrogacy-website-research/surrogacy-research-report.md",
+      "/Users/eric/surrogacy-website-research/raw/embrymama.com/homepage.md",
+      "/Users/eric/surrogacy-website-research/raw/hatch.us/homepage-faq-process.md",
+      "/Users/eric/surrogacy-website-research/raw/rsmcglobal.com/homepage-services.md"
+    ]
+  },
+  {
+    "id": "zaya-life-2026-03-21-site-brand-copy-pass",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Refined the clinic website's brand, tone, and parent-facing copy",
+    "startedAt": "2026-03-21T00:00:00Z",
+    "endedAt": "2026-03-21T18:30:00Z",
+    "timePrecision": "approximate-day",
+    "workType": "marketing",
+    "workLabels": [
+      "website",
+      "branding",
+      "copy",
+      "patient-education"
+    ],
+    "purpose": "Make the initial surrogacy site feel more trustworthy, less corporate, and better aligned with intended parents.",
+    "processSummary": "Updated naming and logo usage, softened the font and tone, rewrote the homepage and parent-facing copy to remove choppy phrases and heavy legalistic language, and removed price references for a more careful early presentation.",
+    "outcome": "The Zaya Life site moved from a rough initial draft toward a more emotionally calibrated and parent-friendly marketing surface.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/surrogacy-site/src",
+      "/Users/eric/surrogacy-site/public"
+    ]
+  },
+  {
+    "id": "zaya-life-2026-03-21-site-productionization",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Productionized the intake and polished the site layout",
+    "startedAt": "2026-03-21T18:30:00Z",
+    "endedAt": "2026-03-22T02:00:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "website",
+      "forms",
+      "responsiveness",
+      "ux"
+    ],
+    "purpose": "Convert the marketing site from a static draft into something closer to a usable intake surface.",
+    "processSummary": "Connected the intake flow through Formspree, added validation for email and phone fields, repaired CTA behavior, added WhatsApp contact, iterated on images for parent and program pages, and ran a responsiveness pass with follow-up layout fixes.",
+    "outcome": "The site became much more usable: intake submission was wired, navigation behaved properly, and the main marketing pages were adapted for better mobile and desktop presentation.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/surrogacy-site/RESPONSIVE_UPDATE.md",
+      "/Users/eric/surrogacy-site/src"
+    ]
+  }
+]

@@ -96,6 +96,26 @@ Event examples:
 - deployment_shipped
 - manual_note
 
+## Activity Logging Standard
+
+Going forward, every meaningful feature, fix, bug, review, strategy change, non-coding workstream, and key event should be recorded, summarized, and displayed in the dashboard.
+
+Historical and reconstructed activity records live by project under:
+
+- `docs/historical-activity/<projectSlug>.json`
+
+Each record should explain:
+
+- the purpose of the task
+- the process or investigation
+- known issues before the work
+- issues identified during the work
+- fixes or decisions made
+- the outcome
+- evidence files, logs, commits, or artifacts
+
+Use this as the standard for Command Center, Dalya, Buriza, Zaya Life, and future projects.
+
 ## Ingestion
 
 Create a secure `/api/ingest` endpoint.

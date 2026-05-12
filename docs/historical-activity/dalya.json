@@ -1,68 +1,5 @@
 [
   {
-    "id": "command-center-2026-05-12-v0-foundation",
-    "projectSlug": "command-center",
-    "projectName": "Command Center",
-    "title": "Built the v0 command center foundation",
-    "startedAt": "2026-05-12T00:25:00Z",
-    "endedAt": "2026-05-12T02:30:00Z",
-    "timePrecision": "approximate",
-    "workType": "coding",
-    "workLabels": ["dashboard", "schema", "auth", "ingest", "cli"],
-    "purpose": "Create the first working version of the shared progress dashboard with Supabase schema, RLS, auth, ingest, and the local agent-log CLI.",
-    "processSummary": "Built the data model and RLS policies, added server/browser/service Supabase clients, protected dashboard auth flow, implemented the /api/ingest route, and added the TypeScript CLI to post events from local work.",
-    "outcome": "The project gained a working v0 architecture: Postgres schema, permissions, secure ingest path, and a CLI that could route Eric's local telemetry into the dashboard.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/command-center/.codex/history.jsonl",
-      "/Users/eric/command-center/.git/logs/HEAD",
-      "/Users/eric/command-center/src/app/api/ingest/route.ts",
-      "/Users/eric/command-center/scripts/agent-log.ts"
-    ]
-  },
-  {
-    "id": "command-center-2026-05-12-dashboard-comments-realtime",
-    "projectSlug": "command-center",
-    "projectName": "Command Center",
-    "title": "Expanded the dashboard into a usable review surface",
-    "startedAt": "2026-05-12T02:30:00Z",
-    "endedAt": "2026-05-12T07:30:00Z",
-    "timePrecision": "approximate",
-    "workType": "coding",
-    "workLabels": ["dashboard", "comments", "realtime", "readiness"],
-    "purpose": "Turn the foundation into a real dashboard David could read and comment on across projects.",
-    "processSummary": "Built the main dashboard pages and components, added comments on core objects, added realtime/polling updates, documented manual Supabase setup and deployment steps, and reframed the product as a shared co-work dashboard instead of a one-way Eric view.",
-    "outcome": "The product became a coherent review tool with project pages, comments, live updates, and deployment/readiness docs, while keeping read/comment-only permissions intact.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/command-center/.codex/history.jsonl",
-      "/Users/eric/command-center/README.md",
-      "/Users/eric/command-center/src/components/comment-thread.tsx",
-      "/Users/eric/command-center/src/lib/use-realtime-project-updates.ts"
-    ]
-  },
-  {
-    "id": "command-center-2026-05-12-multi-project-agentic",
-    "projectSlug": "command-center",
-    "projectName": "Command Center",
-    "title": "Added multi-project routing, labeled work, and agentic setup views",
-    "startedAt": "2026-05-12T07:45:00Z",
-    "endedAt": "2026-05-12T12:09:00Z",
-    "timePrecision": "approximate",
-    "workType": "coding",
-    "workLabels": ["multi-project", "routing", "work-labels", "source-health", "manual-capture"],
-    "purpose": "Make the dashboard useful across multiple local project directories and support labeled work beyond pure coding.",
-    "processSummary": "Added the local project registry flow for multiple folders, created source setup and health views, added workType/workLabel tagging through ingest and the CLI, added session detail views, and added a manual activity composer for non-coding work.",
-    "outcome": "The dashboard now supports Command Center, Dalya, Buriza, and Zaya Life as distinct projects, with filterable work labels and owner/editor manual event logging.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/command-center/.codex/history.jsonl",
-      "/Users/eric/command-center/src/app/dashboard/[projectSlug]/setup/page.tsx",
-      "/Users/eric/command-center/src/lib/work.ts",
-      "/Users/eric/command-center/src/components/manual-event-composer.tsx"
-    ]
-  },
-  {
     "id": "dalya-2026-03-27-oasis-research-bootstrap",
     "projectSlug": "dalya",
     "projectName": "Dalya",
@@ -71,7 +8,12 @@
     "endedAt": "2026-03-27T08:30:00Z",
     "timePrecision": "approximate",
     "workType": "research",
-    "workLabels": ["knowledge-base", "market-research", "oasis", "product"],
+    "workLabels": [
+      "knowledge-base",
+      "market-research",
+      "oasis",
+      "product"
+    ],
     "purpose": "Create structured community intelligence for Dalya's first off-plan resale assistant, starting with The Oasis by Emaar.",
     "processSummary": "Used a trend-research workflow to gather detailed project knowledge, community intelligence, and copy inputs, then folded those findings into Dalya's emerging research and knowledge-base assets.",
     "outcome": "Dalya got its first serious market-intelligence foundation for The Oasis, which later powered listing context, pricing narratives, and buyer answers.",
@@ -91,7 +33,12 @@
     "endedAt": "2026-03-28T18:00:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["chatbot", "spa-parser", "listing-ingest", "poc"],
+    "workLabels": [
+      "chatbot",
+      "spa-parser",
+      "listing-ingest",
+      "poc"
+    ],
     "purpose": "Prove that a seller could upload an SPA, register a listing, and have the AI answer buyer questions against that data.",
     "processSummary": "Extracted project brief materials, wired the first SPA parsing and listing-registration path, debugged listing lookup problems around Oasis / Palace Ostra, and validated that the bot could answer against parsed listing data.",
     "outcome": "Dalya reached a real proof of concept: SPA upload and registration worked, listing data could drive chatbot responses, and the team could see where parser fixes were still needed.",
@@ -112,7 +59,13 @@
     "endedAt": "2026-04-01T05:00:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["platform", "health", "logging", "dashboard", "testing"],
+    "workLabels": [
+      "platform",
+      "health",
+      "logging",
+      "dashboard",
+      "testing"
+    ],
     "purpose": "Move Dalya from a fragile proof of concept toward an operational MVP with better observability and core product plumbing.",
     "processSummary": "Planned and ran a parallel work sprint covering health checks, structured logging, cross-listing recommendations, rate limiting, a multi-listing dashboard, and multilingual end-to-end testing.",
     "outcome": "Dalya's core platform became more production-shaped, with stronger operational visibility and a clearer backlog split between shipped features and remaining work.",
@@ -132,12 +85,29 @@
     "endedAt": "2026-03-30T17:45:00Z",
     "timePrecision": "approximate",
     "workType": "marketing",
-    "workLabels": ["branding", "positioning", "copy", "go-to-market", "website"],
+    "workLabels": [
+      "branding",
+      "positioning",
+      "copy",
+      "go-to-market",
+      "website"
+    ],
     "purpose": "Define how Dalya should present itself before scaling the product UI: a licensed, AI-enabled off-plan resale brokerage with a 0.15% seller-side commission and a trust-first market story.",
     "processSummary": "Produced the positioning and marketing narrative, brand guide, Mahoroba website copy, and early visual/design instructions. The work clarified the core objection-handling: lower commission should read as AI efficiency and RERA/DLD discipline, not as lower service quality.",
-    "priorIssues": ["Dalya had working product pieces but needed a credible market narrative and language system.", "The team needed to avoid framing the product as just a generic chatbot or cheap brokerage."],
-    "issuesIdentified": ["Consumer-facing language around 'chatbot' weakened trust.", "The 0.15% claim needed to be paired with licensing, data quality, and transaction diligence.", "The brand needed a stronger distinction between Dalya AI and Mahoroba Realty."],
-    "fixesMade": ["Wrote the positioning and marketing brief.", "Created the brand guide with AI naming rules, trust language, color guidance, and audience-specific messaging.", "Created Mahoroba copy and design guidance for the related brokerage surface."],
+    "priorIssues": [
+      "Dalya had working product pieces but needed a credible market narrative and language system.",
+      "The team needed to avoid framing the product as just a generic chatbot or cheap brokerage."
+    ],
+    "issuesIdentified": [
+      "Consumer-facing language around 'chatbot' weakened trust.",
+      "The 0.15% claim needed to be paired with licensing, data quality, and transaction diligence.",
+      "The brand needed a stronger distinction between Dalya AI and Mahoroba Realty."
+    ],
+    "fixesMade": [
+      "Wrote the positioning and marketing brief.",
+      "Created the brand guide with AI naming rules, trust language, color guidance, and audience-specific messaging.",
+      "Created Mahoroba copy and design guidance for the related brokerage surface."
+    ],
     "outcome": "Dalya gained a coherent brand and positioning base that later shaped the marketing site, chatbot wording, seller dashboard, and bot rules.",
     "confidence": "high",
     "evidence": [
@@ -156,12 +126,28 @@
     "endedAt": "2026-04-02T17:15:00Z",
     "timePrecision": "approximate-range",
     "workType": "coding",
-    "workLabels": ["website", "frontend", "marketing", "design-system", "nextjs"],
+    "workLabels": [
+      "website",
+      "frontend",
+      "marketing",
+      "design-system",
+      "nextjs"
+    ],
     "purpose": "Give Dalya a public web presence and reusable frontend primitives before the seller app and dashboard were built.",
     "processSummary": "Scaffolded the frontend, added shared UI components and layout elements, built marketing routes, and created sections for hero, trust bar, market intelligence, listing gallery, buyer savings, seller value, AI showcase, about, and how-it-works content.",
-    "priorIssues": ["Dalya had product logic but no polished public surface.", "The brand guide needed translation into real frontend components and page sections."],
-    "issuesIdentified": ["The website needed to explain AI-enabled brokerage without feeling like generic SaaS.", "Marketing and app routes needed separation so the seller dashboard could later use a denser operational layout."],
-    "fixesMade": ["Created the frontend app structure and shared UI primitives.", "Built marketing pages and sections around seller value, buyer savings, trust, listings, and AI behavior.", "Separated marketing routes from app routes."],
+    "priorIssues": [
+      "Dalya had product logic but no polished public surface.",
+      "The brand guide needed translation into real frontend components and page sections."
+    ],
+    "issuesIdentified": [
+      "The website needed to explain AI-enabled brokerage without feeling like generic SaaS.",
+      "Marketing and app routes needed separation so the seller dashboard could later use a denser operational layout."
+    ],
+    "fixesMade": [
+      "Created the frontend app structure and shared UI primitives.",
+      "Built marketing pages and sections around seller value, buyer savings, trust, listings, and AI behavior.",
+      "Separated marketing routes from app routes."
+    ],
     "outcome": "Dalya gained a working marketing frontend and design system foundation, making it easier to add auth, dashboard, listing cards, and app screens later.",
     "confidence": "high",
     "evidence": [
@@ -181,12 +167,29 @@
     "endedAt": "2026-04-02T17:10:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["auth", "supabase", "seller-portal", "frontend", "security"],
+    "workLabels": [
+      "auth",
+      "supabase",
+      "seller-portal",
+      "frontend",
+      "security"
+    ],
     "purpose": "Move Dalya from a public site into an authenticated seller/admin product with protected routes.",
     "processSummary": "Added Supabase browser/server clients, backend JWT verification through JWKS, the login page, auth callback route, auth provider, API helpers, and route protection through the frontend proxy.",
-    "priorIssues": ["Seller workflows could not be exposed safely without authentication.", "Dashboard and admin routes needed a protected app layout distinct from public marketing pages."],
-    "issuesIdentified": ["The browser needed anon-key access only while privileged operations stayed server-side.", "Admin access needed a simple owner gate before a richer roles system existed."],
-    "fixesMade": ["Added Supabase client utilities and auth callback handling.", "Added ES256 JWT verification in the FastAPI backend.", "Protected app/admin routes with frontend middleware/proxy checks.", "Created the standalone login page and app layout."],
+    "priorIssues": [
+      "Seller workflows could not be exposed safely without authentication.",
+      "Dashboard and admin routes needed a protected app layout distinct from public marketing pages."
+    ],
+    "issuesIdentified": [
+      "The browser needed anon-key access only while privileged operations stayed server-side.",
+      "Admin access needed a simple owner gate before a richer roles system existed."
+    ],
+    "fixesMade": [
+      "Added Supabase client utilities and auth callback handling.",
+      "Added ES256 JWT verification in the FastAPI backend.",
+      "Protected app/admin routes with frontend middleware/proxy checks.",
+      "Created the standalone login page and app layout."
+    ],
     "outcome": "Dalya had a secure app shell for seller dashboard and admin CRM work, with Google/email auth and server-side user verification in place.",
     "confidence": "high",
     "evidence": [
@@ -207,12 +210,29 @@
     "endedAt": "2026-04-05T21:00:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["seller-dashboard", "spa-upload", "listing-management", "frontend"],
+    "workLabels": [
+      "seller-dashboard",
+      "spa-upload",
+      "listing-management",
+      "frontend"
+    ],
     "purpose": "Give sellers a usable app surface for viewing listings, uploading SPAs, and managing account details.",
     "processSummary": "Built the dashboard layout, My Listings page, new listing upload page, listing cards, settings page, React Query provider, API helpers, and supporting app layout/navigation pieces.",
-    "priorIssues": ["The SPA parser existed, but sellers did not yet have a self-serve path to submit listings.", "Listing state was invisible outside backend/API calls."],
-    "issuesIdentified": ["Upload needed a guided flow rather than a raw file endpoint.", "The dashboard needed stable cards and stats so sellers could understand listing status and activity.", "Account phone/name data needed a place to live for later WhatsApp and seller-mode flows."],
-    "fixesMade": ["Added seller dashboard pages and layout.", "Built listing cards with status, price, lead, escalation, and last-activity fields.", "Added the SPA upload page and settings page.", "Added shared query/API utilities to fetch seller data."],
+    "priorIssues": [
+      "The SPA parser existed, but sellers did not yet have a self-serve path to submit listings.",
+      "Listing state was invisible outside backend/API calls."
+    ],
+    "issuesIdentified": [
+      "Upload needed a guided flow rather than a raw file endpoint.",
+      "The dashboard needed stable cards and stats so sellers could understand listing status and activity.",
+      "Account phone/name data needed a place to live for later WhatsApp and seller-mode flows."
+    ],
+    "fixesMade": [
+      "Added seller dashboard pages and layout.",
+      "Built listing cards with status, price, lead, escalation, and last-activity fields.",
+      "Added the SPA upload page and settings page.",
+      "Added shared query/API utilities to fetch seller data."
+    ],
     "outcome": "Dalya became a seller-facing product instead of only a backend parser and chatbot. Sellers could enter the app, see listings, and begin listing submission through the dashboard.",
     "confidence": "high",
     "evidence": [
@@ -232,12 +252,30 @@
     "endedAt": "2026-04-07T21:10:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["crm", "admin", "chatbot", "buyer-tracking", "intent-rules"],
+    "workLabels": [
+      "crm",
+      "admin",
+      "chatbot",
+      "buyer-tracking",
+      "intent-rules"
+    ],
     "purpose": "Create an internal operating layer for buyers, conversations, and listing intelligence while improving chatbot API support.",
     "processSummary": "Added admin CRM routes, buyer list/detail views, migration support for CRM columns, chatbot test scripts, Seahaven/Oasis test artifacts, intent rules, bedroom lookup, and SPA parser API refinements.",
-    "priorIssues": ["Buyer conversations and offers were not yet organized for operations.", "The team needed a way to inspect leads, stages, conversation history, and chatbot behavior across listings."],
-    "issuesIdentified": ["The platform needed admin-only CRM protection.", "Buyer stages, notes, and conversation inspection needed a UI.", "Chatbot logic needed test harnesses and richer intent rules to handle real buyer language."],
-    "fixesMade": ["Built admin CRM pages and admin layout.", "Added CRM migration support and backend CRM API surface.", "Added intent rules and bedroom lookup support.", "Created early chatbot test scripts and listing-specific test fixtures."],
+    "priorIssues": [
+      "Buyer conversations and offers were not yet organized for operations.",
+      "The team needed a way to inspect leads, stages, conversation history, and chatbot behavior across listings."
+    ],
+    "issuesIdentified": [
+      "The platform needed admin-only CRM protection.",
+      "Buyer stages, notes, and conversation inspection needed a UI.",
+      "Chatbot logic needed test harnesses and richer intent rules to handle real buyer language."
+    ],
+    "fixesMade": [
+      "Built admin CRM pages and admin layout.",
+      "Added CRM migration support and backend CRM API surface.",
+      "Added intent rules and bedroom lookup support.",
+      "Created early chatbot test scripts and listing-specific test fixtures."
+    ],
     "outcome": "Dalya gained a native admin CRM surface and better chatbot/listing plumbing, making buyer operations and debugging much more visible.",
     "confidence": "high",
     "evidence": [
@@ -258,12 +296,32 @@
     "endedAt": "2026-04-13T20:00:00Z",
     "timePrecision": "approximate-range",
     "workType": "coding",
-    "workLabels": ["listing-detail", "activity-feed", "community-research", "knowledge-base", "scaling"],
+    "workLabels": [
+      "listing-detail",
+      "activity-feed",
+      "community-research",
+      "knowledge-base",
+      "scaling"
+    ],
     "purpose": "Make each listing operationally inspectable and build the system that lets Dalya scale community intelligence beyond hand-written KB files.",
     "processSummary": "Added listing detail layout, overview/offers/SPA tabs, activity feed, listing stages, KB schema validation, community researcher, research auditor, admin research API, staged KB review workflow, auto-attach behavior, and scalable community-data indexing.",
-    "priorIssues": ["Sellers needed listing-level detail beyond simple cards.", "Community knowledge was useful but would not scale if every community was hand-managed.", "Known projects needed structured data validation and admin review before becoming live chatbot context."],
-    "issuesIdentified": ["Community lookup would become too slow with hundreds of communities if it scanned every file and alias.", "Approving new research should not force a full index rebuild.", "Research jobs needed concurrency/rate limits to control cost and avoid API spikes."],
-    "fixesMade": ["Built listing overview/offers/SPA detail pages and activity feed.", "Added canonical KB schema and validation CLI.", "Built Opus/Tavily community research and audit workflow.", "Added admin research endpoints for trigger/list/approve/reject/re-research.", "Added inverted-index community lookup, incremental index adds, concurrency limits, dynamic re-audit rate, and Tavily search cache."],
+    "priorIssues": [
+      "Sellers needed listing-level detail beyond simple cards.",
+      "Community knowledge was useful but would not scale if every community was hand-managed.",
+      "Known projects needed structured data validation and admin review before becoming live chatbot context."
+    ],
+    "issuesIdentified": [
+      "Community lookup would become too slow with hundreds of communities if it scanned every file and alias.",
+      "Approving new research should not force a full index rebuild.",
+      "Research jobs needed concurrency/rate limits to control cost and avoid API spikes."
+    ],
+    "fixesMade": [
+      "Built listing overview/offers/SPA detail pages and activity feed.",
+      "Added canonical KB schema and validation CLI.",
+      "Built Opus/Tavily community research and audit workflow.",
+      "Added admin research endpoints for trigger/list/approve/reject/re-research.",
+      "Added inverted-index community lookup, incremental index adds, concurrency limits, dynamic re-audit rate, and Tavily search cache."
+    ],
     "outcome": "Dalya gained both listing-level product depth and a scalable community intelligence pipeline. The dashboard could show real listing stages and the chatbot could rely on reviewed, structured community data.",
     "confidence": "high",
     "evidence": [
@@ -287,12 +345,28 @@
     "endedAt": "2026-04-24T12:30:00Z",
     "timePrecision": "high",
     "workType": "research",
-    "workLabels": ["seo", "content-strategy", "multilingual", "distribution", "research"],
+    "workLabels": [
+      "seo",
+      "content-strategy",
+      "multilingual",
+      "distribution",
+      "research"
+    ],
     "purpose": "Identify what seller-intent off-plan resale content Dalya should publish across English, Arabic, Russian, Mandarin, and Hindi.",
     "processSummary": "Ran a public-source supply/demand analysis across languages, audited competitor content, created demand and gap tables, generated charts, and produced a 12-week publishing plan plus multilingual architecture notes.",
-    "priorIssues": ["Dalya needed distribution beyond product build.", "Seller-side Dubai off-plan resale search demand and competitor supply were not yet organized by language or topic."],
-    "issuesIdentified": ["English had more existing content than other languages, while Arabic and Russian had large seller-side gaps.", "Mandarin and Hindi required selective publication rather than blanket translation.", "WeChat and some social/forum signals were closed or blocked, so parts of the demand picture had to be flagged as inferred."],
-    "fixesMade": ["Created the main markdown report, demand CSV, gap money table, publishing plan, multilingual architecture notes, and visualizations.", "Separated primary/secondary language recommendations by strategic value instead of defaulting every post to every language."],
+    "priorIssues": [
+      "Dalya needed distribution beyond product build.",
+      "Seller-side Dubai off-plan resale search demand and competitor supply were not yet organized by language or topic."
+    ],
+    "issuesIdentified": [
+      "English had more existing content than other languages, while Arabic and Russian had large seller-side gaps.",
+      "Mandarin and Hindi required selective publication rather than blanket translation.",
+      "WeChat and some social/forum signals were closed or blocked, so parts of the demand picture had to be flagged as inferred."
+    ],
+    "fixesMade": [
+      "Created the main markdown report, demand CSV, gap money table, publishing plan, multilingual architecture notes, and visualizations.",
+      "Separated primary/secondary language recommendations by strategic value instead of defaulting every post to every language."
+    ],
     "outcome": "Dalya gained a concrete SEO/content roadmap: 12 prioritized posts, language choices, technical architecture notes, and visual gap evidence for the seller-research acquisition strategy.",
     "confidence": "high",
     "evidence": [
@@ -314,12 +388,27 @@
     "endedAt": "2026-04-28T14:50:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["spa-parser", "payment-schedule", "data-quality", "chatbot"],
+    "workLabels": [
+      "spa-parser",
+      "payment-schedule",
+      "data-quality",
+      "chatbot"
+    ],
     "purpose": "Stop the bot from relying on stale paid-to-date snapshots and make payment-plan answers reflect the current date and confirmed payment facts.",
     "processSummary": "Added payment computation logic and extended SPA schemas with per-instalment `actually_paid` and `paid_date` fields so the system can distinguish date-inferred payment status from confirmed payment status.",
-    "priorIssues": ["Payment answers could drift if the prompt used an old static paid percentage.", "The product needed a way to represent instalments that were confirmed paid or confirmed unpaid independent of due date."],
-    "issuesIdentified": ["Without per-instalment truth fields, the bot could only infer payment status from dates.", "SPA payment-plan answers risked implying certainty where the database only had inferred values."],
-    "fixesMade": ["Added `payment_compute.py`.", "Updated SPA schemas to accept `actually_paid` and `paid_date`.", "Documented future UI/backfill needs for marking real instalment payment status."],
+    "priorIssues": [
+      "Payment answers could drift if the prompt used an old static paid percentage.",
+      "The product needed a way to represent instalments that were confirmed paid or confirmed unpaid independent of due date."
+    ],
+    "issuesIdentified": [
+      "Without per-instalment truth fields, the bot could only infer payment status from dates.",
+      "SPA payment-plan answers risked implying certainty where the database only had inferred values."
+    ],
+    "fixesMade": [
+      "Added `payment_compute.py`.",
+      "Updated SPA schemas to accept `actually_paid` and `paid_date`.",
+      "Documented future UI/backfill needs for marking real instalment payment status."
+    ],
     "outcome": "Dalya gained the data model needed for more truthful payment-plan responses and later admin controls around actual paid milestones.",
     "confidence": "high",
     "evidence": [
@@ -338,12 +427,28 @@
     "endedAt": "2026-05-05T18:45:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["spa-parser", "fresh-parse", "data-model", "real-listing", "qa"],
+    "workLabels": [
+      "spa-parser",
+      "fresh-parse",
+      "data-model",
+      "real-listing",
+      "qa"
+    ],
     "purpose": "Ensure the real Ostra listing and parser output were reliable before the larger persona test cycles depended on them.",
     "processSummary": "Updated SPA parser behavior, bedroom lookup artifacts, database models, and produced a fresh-parse verification report around P1/P2 parser/data issues.",
-    "priorIssues": ["The test suite was moving from fixtures to real parsed listing data.", "Parser/model errors could contaminate chatbot QA by feeding the bot wrong facts."],
-    "issuesIdentified": ["Real-listing data needed verification before being used as canonical test input.", "Parser confidence, bedrooms, BUA/plot, payment schedule, and model fields needed to align with the database and prompt expectations."],
-    "fixesMade": ["Refined SPA parser and related model behavior.", "Generated a fresh parse verification report.", "Prepared the real Ostra listing for the May 5 real-listing 10-persona run."],
+    "priorIssues": [
+      "The test suite was moving from fixtures to real parsed listing data.",
+      "Parser/model errors could contaminate chatbot QA by feeding the bot wrong facts."
+    ],
+    "issuesIdentified": [
+      "Real-listing data needed verification before being used as canonical test input.",
+      "Parser confidence, bedrooms, BUA/plot, payment schedule, and model fields needed to align with the database and prompt expectations."
+    ],
+    "fixesMade": [
+      "Refined SPA parser and related model behavior.",
+      "Generated a fresh parse verification report.",
+      "Prepared the real Ostra listing for the May 5 real-listing 10-persona run."
+    ],
     "outcome": "The real-listing test suite had a more trustworthy data foundation, reducing the chance that chatbot issues were actually parser/data issues.",
     "confidence": "medium",
     "evidence": [
@@ -362,12 +467,28 @@
     "endedAt": "2026-05-08T19:35:00Z",
     "timePrecision": "approximate",
     "workType": "documentation",
-    "workLabels": ["documentation", "bot-rules", "backlog", "feature-inventory", "operations"],
+    "workLabels": [
+      "documentation",
+      "bot-rules",
+      "backlog",
+      "feature-inventory",
+      "operations"
+    ],
     "purpose": "Make Dalya's growing behavior surface understandable by turning prompt rules, engine logic, shipped features, and deferred work into stable reference docs.",
     "processSummary": "Updated FEATURES.md, BACKLOG.md, and created the consolidated BOT_RULES.md reference covering identity, formatting, escalation logic, privacy invariants, seller mode, regulatory handling, professional/conveyancing behavior, and phase history.",
-    "priorIssues": ["The chatbot had accumulated many phase-specific prompt and engine rules.", "Future work would be hard to reason about without a single human-readable map of shipped behavior and deferred items."],
-    "issuesIdentified": ["Rules were split across code, prompt text, verification reports, and memory.", "Backlog items needed separation from shipped behavior so old known gaps were not confused with active bugs."],
-    "fixesMade": ["Updated shipped feature inventory.", "Updated open backlog.", "Created BOT_RULES.md as a non-engineer-readable source map for bot behavior and phase history."],
+    "priorIssues": [
+      "The chatbot had accumulated many phase-specific prompt and engine rules.",
+      "Future work would be hard to reason about without a single human-readable map of shipped behavior and deferred items."
+    ],
+    "issuesIdentified": [
+      "Rules were split across code, prompt text, verification reports, and memory.",
+      "Backlog items needed separation from shipped behavior so old known gaps were not confused with active bugs."
+    ],
+    "fixesMade": [
+      "Updated shipped feature inventory.",
+      "Updated open backlog.",
+      "Created BOT_RULES.md as a non-engineer-readable source map for bot behavior and phase history."
+    ],
     "outcome": "Dalya gained a durable operating manual for chatbot behavior and product state, making future QA, onboarding, and bug triage much easier.",
     "confidence": "high",
     "evidence": [
@@ -385,12 +506,31 @@
     "endedAt": "2026-05-10T23:15:00Z",
     "timePrecision": "approximate",
     "workType": "coding",
-    "workLabels": ["operations", "summary-worker", "debounce", "api", "database-resilience"],
+    "workLabels": [
+      "operations",
+      "summary-worker",
+      "debounce",
+      "api",
+      "database-resilience"
+    ],
     "purpose": "Strengthen the backend services that keep the chatbot, CRM, Telegram bridge, research jobs, and summary workflows reliable after the major chatbot polish work.",
     "processSummary": "Updated CRUD/session logic, chatbot engine, debounce worker, WhatsApp, Telegram, seller, CRM, research APIs, research auditor, summary worker, app main, and DB resiliency tests around the same operational hardening window.",
-    "priorIssues": ["The product now had many moving services: WhatsApp webhook, Telegram replies, CRM APIs, seller APIs, research jobs, summary worker, and database connections.", "Reliability problems in any one of those could make the dashboard or bot look broken even if the prompt logic was correct."],
-    "issuesIdentified": ["Database sleep disconnects needed keepalive/recycle protection.", "Conversation summaries and debounce behavior needed stable background workers.", "Multiple API modules had to remain syntactically and behaviorally aligned after Phase 9 changes.", "Tests needed coverage for DB resiliency and response policy."],
-    "fixesMade": ["Updated database session handling.", "Updated summary worker and debounce worker.", "Updated WhatsApp, Telegram, seller, CRM, research, and main API modules.", "Added/updated DB resiliency, chatbot, and response-policy tests."],
+    "priorIssues": [
+      "The product now had many moving services: WhatsApp webhook, Telegram replies, CRM APIs, seller APIs, research jobs, summary worker, and database connections.",
+      "Reliability problems in any one of those could make the dashboard or bot look broken even if the prompt logic was correct."
+    ],
+    "issuesIdentified": [
+      "Database sleep disconnects needed keepalive/recycle protection.",
+      "Conversation summaries and debounce behavior needed stable background workers.",
+      "Multiple API modules had to remain syntactically and behaviorally aligned after Phase 9 changes.",
+      "Tests needed coverage for DB resiliency and response policy."
+    ],
+    "fixesMade": [
+      "Updated database session handling.",
+      "Updated summary worker and debounce worker.",
+      "Updated WhatsApp, Telegram, seller, CRM, research, and main API modules.",
+      "Added/updated DB resiliency, chatbot, and response-policy tests."
+    ],
     "outcome": "Dalya's operational backend became more resilient around the live-chat pipeline and admin surfaces, reducing the risk that background tasks, database connections, or bridge APIs would fail under pilot usage.",
     "confidence": "medium",
     "evidence": [
@@ -414,12 +554,29 @@
     "endedAt": "2026-04-27T23:30:05Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "persona-testing", "baseline", "offers", "multilingual"],
+    "workLabels": [
+      "chatbot",
+      "persona-testing",
+      "baseline",
+      "offers",
+      "multilingual"
+    ],
     "purpose": "Establish a real end-to-end baseline before launch by testing buyer, broker, adversarial, Arabic, Hinglish, and offer-escalation flows against live localhost.",
     "processSummary": "Ran 10 personas and 85 conversation turns against the live chatbot. The run intentionally mixed normal buyers, multilingual buyers, a zero-context offer spammer, a social engineer, a competing broker, and prompt-injection attempts.",
-    "priorIssues": ["The team did not yet know whether natural-language promises to pass offers were reliably connected to structured seller alerts.", "Multilingual offer detection and Seahaven threshold behavior had not been tested across realistic conversations."],
-    "issuesIdentified": ["Seahaven above-threshold offers were acknowledged by the bot but did not fire seller escalation flags.", "Arabic and Hinglish offers were not reliably detected as offer submissions.", "One seller-facing escalation summary hallucinated a wrong asking price.", "Arabic conversations lacked Dalya / Mahoroba identity disclosure.", "Zero-context offer behavior could not be judged cleanly because the threshold bug masked the signal."],
-    "fixesMade": ["Created the fix order: repair offer-to-escalation wiring, add Arabic and Hinglish offer phrases, ground seller summaries with listing price fields, add Arabic identity preamble, and rerun the same suite after fixes."],
+    "priorIssues": [
+      "The team did not yet know whether natural-language promises to pass offers were reliably connected to structured seller alerts.",
+      "Multilingual offer detection and Seahaven threshold behavior had not been tested across realistic conversations."
+    ],
+    "issuesIdentified": [
+      "Seahaven above-threshold offers were acknowledged by the bot but did not fire seller escalation flags.",
+      "Arabic and Hinglish offers were not reliably detected as offer submissions.",
+      "One seller-facing escalation summary hallucinated a wrong asking price.",
+      "Arabic conversations lacked Dalya / Mahoroba identity disclosure.",
+      "Zero-context offer behavior could not be judged cleanly because the threshold bug masked the signal."
+    ],
+    "fixesMade": [
+      "Created the fix order: repair offer-to-escalation wiring, add Arabic and Hinglish offer phrases, ground seller summaries with listing price fields, add Arabic identity preamble, and rerun the same suite after fixes."
+    ],
     "outcome": "The run surfaced two production-blocking P0s around offer delivery and multilingual offer detection, plus price-grounding and brand-disclosure issues. It became the baseline for the later hardening sprint.",
     "testRun": {
       "personas": 10,
@@ -447,18 +604,41 @@
     "endedAt": "2026-04-28T23:02:14Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "persona-testing", "escalation", "regression"],
+    "workLabels": [
+      "chatbot",
+      "persona-testing",
+      "escalation",
+      "regression"
+    ],
     "purpose": "Verify whether the first escalation and multilingual fixes improved the baseline failures from April 27.",
     "processSummary": "Ran the same 10-persona orchestrator again. The progress log shows Sara, Priya, Khalid, Dmitri, Tom, FastCash, Ahmed, Adversarial, and BrokerProbe all completing with escalation turns now appearing in expected flows.",
-    "priorIssues": ["April 27 showed zero Seahaven escalations for legitimate above-threshold offers.", "Arabic and Hinglish offers were not consistently converted into structured escalation events."],
-    "issuesIdentified": ["Tom's lower below-threshold offers still appeared as rubric issues, but his above-threshold turns escalated.", "FastCash still escalated on a zero-context offer, showing the engagement-gate/product-decision gap remained.", "Arabic identity disclosure and Mohammed hypothetical-offer handling still appeared as issues."],
-    "fixesMade": ["Verified the initial offer escalation wiring and multilingual trigger improvements by rerunning the same suite.", "Kept FastCash, hypothetical offers, and Arabic disclosure on the follow-up list."],
+    "priorIssues": [
+      "April 27 showed zero Seahaven escalations for legitimate above-threshold offers.",
+      "Arabic and Hinglish offers were not consistently converted into structured escalation events."
+    ],
+    "issuesIdentified": [
+      "Tom's lower below-threshold offers still appeared as rubric issues, but his above-threshold turns escalated.",
+      "FastCash still escalated on a zero-context offer, showing the engagement-gate/product-decision gap remained.",
+      "Arabic identity disclosure and Mohammed hypothetical-offer handling still appeared as issues."
+    ],
+    "fixesMade": [
+      "Verified the initial offer escalation wiring and multilingual trigger improvements by rerunning the same suite.",
+      "Kept FastCash, hypothetical offers, and Arabic disclosure on the follow-up list."
+    ],
     "outcome": "The most dangerous failure improved: legitimate offers started producing structured escalation turns. The run also proved that offer-spam gating and stricter first-turn identity rules still needed work.",
     "testRun": {
       "personas": 10,
       "completedPersonas": 10,
       "durationSeconds": 542,
-      "notableEscalations": ["Priya T9", "Khalid T7", "Dmitri T9", "Tom T8/T9/T10", "FastCash T3", "Ahmed T2/T9", "BrokerProbe T10"]
+      "notableEscalations": [
+        "Priya T9",
+        "Khalid T7",
+        "Dmitri T9",
+        "Tom T8/T9/T10",
+        "FastCash T3",
+        "Ahmed T2/T9",
+        "BrokerProbe T10"
+      ]
     },
     "confidence": "high",
     "evidence": [
@@ -476,12 +656,30 @@
     "endedAt": "2026-05-05T18:30:16Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "real-listing", "thresholds", "spa", "persona-testing"],
+    "workLabels": [
+      "chatbot",
+      "real-listing",
+      "thresholds",
+      "spa",
+      "persona-testing"
+    ],
     "purpose": "Stop relying on a hand-crafted Ostra fixture and verify the bot against the real parsed Ostra SPA, real asking price, real threshold, and real unit facts.",
     "processSummary": "Changed the test harness to use the real Ostra listing UUID, updated persona offer values and assertions, then reran the 10-persona suite. The run exercised both sides of Ostra's threshold gate: Sara's 16.5M offer was suppressed and her 17M offer escalated.",
-    "priorIssues": ["The previous fixture had threshold gaps that did not represent the real Ostra SPA.", "The team needed confidence that SPA-derived facts and threshold behavior worked on production-like listing data."],
-    "issuesIdentified": ["Khalid's Arabic disclosure check became a rubric mismatch because the bot used Arabic script instead of Latin 'Dalya' text.", "Tom's below-threshold suppressions were flagged by stale checks even though suppression was correct.", "FastCash still skipped the first-turn identity preamble and escalated zero-context offers.", "Some checks over-penalized hedged market-premium language."],
-    "fixesMade": ["Updated the test suite to point at the real parsed Ostra listing.", "Updated hardcoded price and threshold assertions to the real 17,253,444 AED asking price and 16,894,000 AED negotiation threshold.", "Confirmed SPA purchase price protection by grepping for 15,173 / 15.17 leakage."],
+    "priorIssues": [
+      "The previous fixture had threshold gaps that did not represent the real Ostra SPA.",
+      "The team needed confidence that SPA-derived facts and threshold behavior worked on production-like listing data."
+    ],
+    "issuesIdentified": [
+      "Khalid's Arabic disclosure check became a rubric mismatch because the bot used Arabic script instead of Latin 'Dalya' text.",
+      "Tom's below-threshold suppressions were flagged by stale checks even though suppression was correct.",
+      "FastCash still skipped the first-turn identity preamble and escalated zero-context offers.",
+      "Some checks over-penalized hedged market-premium language."
+    ],
+    "fixesMade": [
+      "Updated the test suite to point at the real parsed Ostra listing.",
+      "Updated hardcoded price and threshold assertions to the real 17,253,444 AED asking price and 16,894,000 AED negotiation threshold.",
+      "Confirmed SPA purchase price protection by grepping for 15,173 / 15.17 leakage."
+    ],
     "outcome": "The real-listing path worked: 10/10 personas completed, Ostra threshold gating behaved correctly, and SPA price protection held. The run shifted the remaining work from core threshold wiring to edge policy, spam gating, and rubric cleanup.",
     "testRun": {
       "personas": 10,
@@ -506,12 +704,30 @@
     "endedAt": "2026-05-05T19:48:56Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "persona-testing", "seller-mode", "pdpl", "no-listing"],
+    "workLabels": [
+      "chatbot",
+      "persona-testing",
+      "seller-mode",
+      "pdpl",
+      "no-listing"
+    ],
     "purpose": "Broaden the test surface beyond buyers into professionals, sellers, regulatory requests, no-listing fallback, and returning-buyer continuity.",
     "processSummary": "Extended the suite from 10 to 20 personas. The new personas covered mortgage brokers, lawyers, existing owners, investment advisors, seller performance checks, seller price changes, seller offer acceptance, PDPL deletion requests, empty listing context, and returning buyer continuity.",
-    "priorIssues": ["The previous tests mostly covered buyer-mode and adversarial behavior.", "Seller-side flows, regulatory routing, no-listing behavior, and returning-buyer continuity were still unproven."],
-    "issuesIdentified": ["No-listing fallback hallucinated Dubai Marina coverage.", "Seller-mode recognized the seller phone but had no completed state machine, so price changes and offer acceptance did not escalate correctly.", "PDPL deletion requests were misclassified as bypass attempts instead of regulatory escalations.", "Professional/lawyer requests needed clearer product decisions.", "Several false-positive rubric checks remained around sourced market ranges and privacy phrasing."],
-    "fixesMade": ["Wrote the recommended fix order: no-listing prompt/active-listing query, regulatory_request intent, seller-mode auth/state routing, lawyer handling decision, and rubric v3 cleanup.", "Confirmed Tom multi-offer revision summaries with the [REVISED OFFER] prefix."],
+    "priorIssues": [
+      "The previous tests mostly covered buyer-mode and adversarial behavior.",
+      "Seller-side flows, regulatory routing, no-listing behavior, and returning-buyer continuity were still unproven."
+    ],
+    "issuesIdentified": [
+      "No-listing fallback hallucinated Dubai Marina coverage.",
+      "Seller-mode recognized the seller phone but had no completed state machine, so price changes and offer acceptance did not escalate correctly.",
+      "PDPL deletion requests were misclassified as bypass attempts instead of regulatory escalations.",
+      "Professional/lawyer requests needed clearer product decisions.",
+      "Several false-positive rubric checks remained around sourced market ranges and privacy phrasing."
+    ],
+    "fixesMade": [
+      "Wrote the recommended fix order: no-listing prompt/active-listing query, regulatory_request intent, seller-mode auth/state routing, lawyer handling decision, and rubric v3 cleanup.",
+      "Confirmed Tom multi-offer revision summaries with the [REVISED OFFER] prefix."
+    ],
     "outcome": "The expanded suite converted unknown risk into a concrete fix plan. Buyer-mode was mostly healthy, but seller-mode, PDPL routing, and no-listing fallback became top P0 work.",
     "testRun": {
       "personas": 20,
@@ -537,12 +753,33 @@
     "endedAt": "2026-05-05T22:17:25Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "p0-fixes", "seller-mode", "pdpl", "regression"],
+    "workLabels": [
+      "chatbot",
+      "p0-fixes",
+      "seller-mode",
+      "pdpl",
+      "regression"
+    ],
     "purpose": "Confirm that the P0s found in the 20-persona expansion were actually fixed before moving to polish.",
     "processSummary": "Reran all 20 personas after shipping phases 1 through 5 of the fix plan. The run specifically checked no-listing hallucination, seller-mode authentication, PDPL escalation, handover date, premium-claim lock, lawyer routing, response validator, rubric v3, 3-message engagement gate, and 0.15% fee lock.",
-    "priorIssues": ["Run 6 had a no-listing Dubai Marina hallucination.", "Seller price-change and offer-acceptance actions did not reliably escalate.", "PDPL requests were silent-logged as bypass attempts.", "Zero-context FastCash offers generated noise."],
-    "issuesIdentified": ["Raj and Lisa showed a new classifier regression where 'my client' routed non-lawyers into legitimate_conveyancing.", "FastCash still violated the first-turn identity rule, though the engagement gate behavior improved.", "Seller performance and no-listing checks had stale rubric expectations.", "Seller-mode markdown and broad 'team' metrics needed cleanup."],
-    "fixesMade": ["Closed no-listing hallucination by querying active listings and refusing unsupported communities.", "Implemented seller-mode authentication/material-action escalation.", "Added PDPL regulatory_request routing.", "Added lawyer Option B matching, response validation, rubric v3, 3-message engagement gate, and 0.15% fee lock."],
+    "priorIssues": [
+      "Run 6 had a no-listing Dubai Marina hallucination.",
+      "Seller price-change and offer-acceptance actions did not reliably escalate.",
+      "PDPL requests were silent-logged as bypass attempts.",
+      "Zero-context FastCash offers generated noise."
+    ],
+    "issuesIdentified": [
+      "Raj and Lisa showed a new classifier regression where 'my client' routed non-lawyers into legitimate_conveyancing.",
+      "FastCash still violated the first-turn identity rule, though the engagement gate behavior improved.",
+      "Seller performance and no-listing checks had stale rubric expectations.",
+      "Seller-mode markdown and broad 'team' metrics needed cleanup."
+    ],
+    "fixesMade": [
+      "Closed no-listing hallucination by querying active listings and refusing unsupported communities.",
+      "Implemented seller-mode authentication/material-action escalation.",
+      "Added PDPL regulatory_request routing.",
+      "Added lawyer Option B matching, response validation, rubric v3, 3-message engagement gate, and 0.15% fee lock."
+    ],
     "outcome": "The run improved from 10/20 clean to 15/20 clean and closed the main P0s. It also identified a narrower Phase 6 follow-up list around classifier precision, markdown stripping, and rubric alignment.",
     "testRun": {
       "personas": 20,
@@ -567,12 +804,32 @@
     "endedAt": "2026-05-05T23:07:08Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "phase-6", "classifier", "data-integrity", "pilot-readiness"],
+    "workLabels": [
+      "chatbot",
+      "phase-6",
+      "classifier",
+      "data-integrity",
+      "pilot-readiness"
+    ],
     "purpose": "Verify the Phase 6 fixes that followed the P0 pass and determine whether the chatbot was pilot-ready.",
     "processSummary": "Ran the 20-persona suite after fixing lawyer/professional classification, seller-mode voice, KB premium attribution, deflective team phrasing, intent-aware closing-question targets, FastCash transactional-demand handling, and no-listing rubric behavior.",
-    "priorIssues": ["Non-lawyer professionals were being routed into legal/conveyancing fallback messages.", "Seller-mode responses still had markdown and duplicate phrasing risks.", "FastCash identity checks and no-listing checks were still noisy.", "A stale Ostra fixture row was still in the database."],
-    "issuesIdentified": ["The run was 19/20 clean during execution; the remaining no-listing issue was traced to a stale fixture listing in the DB rather than chatbot logic.", "Residual markdown-bold and 'team' metrics were mostly validator/rubric alignment follow-ups, not launch blockers."],
-    "fixesMade": ["Tightened the lawyer classifier to require legal self-identification.", "Added a professional_inquiry path for mortgage brokers and advisors.", "Updated seller-mode prompt and message persistence.", "Added FastCash transactional-demand carve-out.", "Deleted the stale test-ostra-2805-fixture row from the DB and spot-checked the active portfolio."],
+    "priorIssues": [
+      "Non-lawyer professionals were being routed into legal/conveyancing fallback messages.",
+      "Seller-mode responses still had markdown and duplicate phrasing risks.",
+      "FastCash identity checks and no-listing checks were still noisy.",
+      "A stale Ostra fixture row was still in the database."
+    ],
+    "issuesIdentified": [
+      "The run was 19/20 clean during execution; the remaining no-listing issue was traced to a stale fixture listing in the DB rather than chatbot logic.",
+      "Residual markdown-bold and 'team' metrics were mostly validator/rubric alignment follow-ups, not launch blockers."
+    ],
+    "fixesMade": [
+      "Tightened the lawyer classifier to require legal self-identification.",
+      "Added a professional_inquiry path for mortgage brokers and advisors.",
+      "Updated seller-mode prompt and message persistence.",
+      "Added FastCash transactional-demand carve-out.",
+      "Deleted the stale test-ostra-2805-fixture row from the DB and spot-checked the active portfolio."
+    ],
     "outcome": "The Phase 6 run closed all substantive issues from the prior run. After stale fixture cleanup, the system was assessed as ready for pilot launch.",
     "testRun": {
       "personas": 20,
@@ -598,12 +855,33 @@
     "endedAt": "2026-05-07T20:31:36Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "phase-7", "escalation", "seller-mode", "validator"],
+    "workLabels": [
+      "chatbot",
+      "phase-7",
+      "escalation",
+      "seller-mode",
+      "validator"
+    ],
     "purpose": "Verify a deeper production-hardening pass around above-threshold escalation, marginal offers, below-threshold language, response validation, seller-mode routing, and PDPL state isolation.",
     "processSummary": "Reran 20 personas after shipping Phase 7.1 through 7.8 plus many 7.6 sub-fixes. The run checked broker-context offers, 2% marginal-offer buffer, below-threshold response variety, closing-question reduction, validator scope, lawyer classifier hardening, seller dashboard-only routing, PDPL state isolation, and the stray numbered-prefix fix.",
-    "priorIssues": ["The bot needed offer escalation to work outside pure buyer intent, especially broker/professional contexts.", "Below-threshold wording risked leaking gaps or promising to pass along suppressed offers.", "Seller-mode needed to avoid exposing buyer/offer specifics over WhatsApp.", "Validator cleanup needed to cover every response path."],
-    "issuesIdentified": ["Khalid's Arabic first-turn identity rule regressed stochastically.", "Four remaining checks were stale rubric issues around short NOC answers, FastCash asking-price anchoring, bribe-resistance wording, and numbered no-listing enumeration."],
-    "fixesMade": ["Added is_firm_offer hard gating independent of intent.", "Added 2% marginal-offer escalation buffer.", "Added below-threshold language rules.", "Refactored response validator to one entry point.", "Added seller dashboard routing with privacy reasoning.", "Added PDPL state isolation and trigger-message formatting fixes."],
+    "priorIssues": [
+      "The bot needed offer escalation to work outside pure buyer intent, especially broker/professional contexts.",
+      "Below-threshold wording risked leaking gaps or promising to pass along suppressed offers.",
+      "Seller-mode needed to avoid exposing buyer/offer specifics over WhatsApp.",
+      "Validator cleanup needed to cover every response path."
+    ],
+    "issuesIdentified": [
+      "Khalid's Arabic first-turn identity rule regressed stochastically.",
+      "Four remaining checks were stale rubric issues around short NOC answers, FastCash asking-price anchoring, bribe-resistance wording, and numbered no-listing enumeration."
+    ],
+    "fixesMade": [
+      "Added is_firm_offer hard gating independent of intent.",
+      "Added 2% marginal-offer escalation buffer.",
+      "Added below-threshold language rules.",
+      "Refactored response validator to one entry point.",
+      "Added seller dashboard routing with privacy reasoning.",
+      "Added PDPL state isolation and trigger-message formatting fixes."
+    ],
     "outcome": "The Phase 7 run passed all five fleet quality metrics and closed the most consequential commercial escalation bug: above-threshold offers now fired even from broker/professional contexts. Remaining items were mostly rubric refresh plus Arabic identity reinforcement.",
     "testRun": {
       "personas": 20,
@@ -629,12 +907,33 @@
     "endedAt": "2026-05-08T09:21:33Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "phase-8", "privacy", "offers", "conveyancing"],
+    "workLabels": [
+      "chatbot",
+      "phase-8",
+      "privacy",
+      "offers",
+      "conveyancing"
+    ],
     "purpose": "Confirm the Phase 8 fixes that made critical chatbot behavior deterministic where prompt-only control was too fragile.",
     "processSummary": "Reran 20 personas after shipping Phase 8.1 through 8.11. The run tested deterministic above-threshold templates, SPA price arithmetic protection, FastCash substantive-engagement gate, DLD/trustees-office closing mechanics, soft-offer escalation, Form A escalation, conveyancing privacy phrasing, direct intermediary fee answers, seller-mode privacy explanation tracking, and promise-language escalation invariants.",
-    "priorIssues": ["Above-threshold offers could receive contradictory 'still short' language.", "Payment-plan answers risked exposing SPA purchase price through arithmetic.", "Zero-context offers needed a stronger substantive-engagement gate.", "Conveyancing phrasing risked confirming or denying another buyer's offer status."],
-    "issuesIdentified": ["The only remaining rubric issue was FastCash asking-price anchoring on a first-turn transactional demand, which was considered defensible.", "David Chen T2 still revealed a classifier stickiness limitation, but the prompt-level privacy invariant compensated for it."],
-    "fixesMade": ["Introduced deterministic templates for above-threshold and marginal offers.", "Stopped disclosing paid-to-date plus remaining-balance arithmetic together.", "Added substantive-message gating for offer escalation.", "Added DLD/NOC/trustees-office mechanics guidance.", "Added Form A and soft-offer escalation paths.", "Unified conveyancing privacy wording and added promise-to-escalation fallback."],
+    "priorIssues": [
+      "Above-threshold offers could receive contradictory 'still short' language.",
+      "Payment-plan answers risked exposing SPA purchase price through arithmetic.",
+      "Zero-context offers needed a stronger substantive-engagement gate.",
+      "Conveyancing phrasing risked confirming or denying another buyer's offer status."
+    ],
+    "issuesIdentified": [
+      "The only remaining rubric issue was FastCash asking-price anchoring on a first-turn transactional demand, which was considered defensible.",
+      "David Chen T2 still revealed a classifier stickiness limitation, but the prompt-level privacy invariant compensated for it."
+    ],
+    "fixesMade": [
+      "Introduced deterministic templates for above-threshold and marginal offers.",
+      "Stopped disclosing paid-to-date plus remaining-balance arithmetic together.",
+      "Added substantive-message gating for offer escalation.",
+      "Added DLD/NOC/trustees-office mechanics guidance.",
+      "Added Form A and soft-offer escalation paths.",
+      "Unified conveyancing privacy wording and added promise-to-escalation fallback."
+    ],
     "outcome": "The run was 19/20 clean by rubric, all P0 issues were closed, and high-risk behaviors became structurally safer rather than purely prompt-dependent.",
     "testRun": {
       "personas": 20,
@@ -660,12 +959,35 @@
     "endedAt": "2026-05-08T18:54:03Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "phase-9", "pilot-polish", "returning-buyer", "brn"],
+    "workLabels": [
+      "chatbot",
+      "phase-9",
+      "pilot-polish",
+      "returning-buyer",
+      "brn"
+    ],
     "purpose": "Polish the chatbot for pilot launch by improving broker framing, cost explanation, offer-template variety, BRN handling, seller listing-change routing, and returning-buyer behavior.",
     "processSummary": "Reran the 20-persona suite after Phase 9 changes. The run verified Eric Lead Broker introduction, three-bucket total-cost framing, downward offer revision detection, above-threshold template rotation, FastCash gate audit, BRN requests distinct from Form A, named-buyer privacy, seller listing-change dashboard routing, and returning-buyer escalation.",
-    "priorIssues": ["The product needed a clearer human handoff identity around Eric.", "Total-cost answers needed to avoid confusing asking price, DLD fee, brokerage, seller equity, and remaining developer payments.", "BRN requests were too close to generic Form A requests.", "Returning-buyer state needed better offer-record lookup and escalation."],
-    "issuesIdentified": ["Three rubric flags remained around FastCash asking-price anchoring, Mohammed hypothetical/promise behavior, and Priya's closing follow-up.", "Returning-buyer detection initially missed Sara Returning T1 because prior shared phone state made it look like turn 16 of the same conversation."],
-    "fixesMade": ["Added Eric Lead Broker introduction variants.", "Added three-bucket total-cost framing.", "Added downward-offer revision language.", "Added above-threshold template rotation and Arabic variants.", "Added BRN-specific escalation subtype.", "Added named-buyer privacy hard invariant.", "Routed seller listing changes to dashboard-only templates.", "Patched returning-buyer detection to remove the early-turn gate and use an already-surfaced check."],
+    "priorIssues": [
+      "The product needed a clearer human handoff identity around Eric.",
+      "Total-cost answers needed to avoid confusing asking price, DLD fee, brokerage, seller equity, and remaining developer payments.",
+      "BRN requests were too close to generic Form A requests.",
+      "Returning-buyer state needed better offer-record lookup and escalation."
+    ],
+    "issuesIdentified": [
+      "Three rubric flags remained around FastCash asking-price anchoring, Mohammed hypothetical/promise behavior, and Priya's closing follow-up.",
+      "Returning-buyer detection initially missed Sara Returning T1 because prior shared phone state made it look like turn 16 of the same conversation."
+    ],
+    "fixesMade": [
+      "Added Eric Lead Broker introduction variants.",
+      "Added three-bucket total-cost framing.",
+      "Added downward-offer revision language.",
+      "Added above-threshold template rotation and Arabic variants.",
+      "Added BRN-specific escalation subtype.",
+      "Added named-buyer privacy hard invariant.",
+      "Routed seller listing changes to dashboard-only templates.",
+      "Patched returning-buyer detection to remove the early-turn gate and use an already-surfaced check."
+    ],
     "outcome": "Pilot readiness was green. All Phase 9 P0/P1 items were closed, all five fleet quality metrics passed, and returning-buyer follow-up was live-verified after the run.",
     "testRun": {
       "personas": 20,
@@ -692,18 +1014,41 @@
     "endedAt": "2026-05-10T22:03:18Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "regression", "latency", "seller-mode", "rubric"],
+    "workLabels": [
+      "chatbot",
+      "regression",
+      "latency",
+      "seller-mode",
+      "rubric"
+    ],
     "purpose": "Revalidate the 20-persona suite after additional revision work and observe whether the pilot-hardening fixes held under a slower, longer run.",
     "processSummary": "Ran the full 20-persona orchestrator again. The run completed all personas but took 2555 seconds, much longer than prior runs, making latency/timeouts part of the QA signal.",
-    "priorIssues": ["Phase 9 left mostly stale rubric flags and some classifier stickiness limitations.", "The team still needed to confirm that seller-mode, professional-mode, and returning-buyer behavior held after further revisions."],
-    "issuesIdentified": ["Sara still had a fee-mention rubric issue.", "FastCash remained a stale asking-price-anchor rubric edge.", "Mohammed hypothetical-offer handling was flagged by old expectations.", "Seller price-change still produced an escalation_present issue in aggregate.", "The run showed materially slower response times across several personas."],
-    "fixesMade": ["Used the revision run as a regression snapshot rather than a new feature pass.", "Identified the need for a focused targeted run on the high-signal remaining personas instead of rerunning the entire suite blindly."],
+    "priorIssues": [
+      "Phase 9 left mostly stale rubric flags and some classifier stickiness limitations.",
+      "The team still needed to confirm that seller-mode, professional-mode, and returning-buyer behavior held after further revisions."
+    ],
+    "issuesIdentified": [
+      "Sara still had a fee-mention rubric issue.",
+      "FastCash remained a stale asking-price-anchor rubric edge.",
+      "Mohammed hypothetical-offer handling was flagged by old expectations.",
+      "Seller price-change still produced an escalation_present issue in aggregate.",
+      "The run showed materially slower response times across several personas."
+    ],
+    "fixesMade": [
+      "Used the revision run as a regression snapshot rather than a new feature pass.",
+      "Identified the need for a focused targeted run on the high-signal remaining personas instead of rerunning the entire suite blindly."
+    ],
     "outcome": "The regression pass completed 20/20 personas and preserved most prior behavior, but it showed latency strain and narrowed the next QA target to Sara, Mohammed, FastCash, seller price changes, and returning-buyer continuity.",
     "testRun": {
       "personas": 20,
       "completedPersonas": 20,
       "durationSeconds": 2556,
-      "notableIssues": ["fee_mentioned_t7", "no_asking_price_anchor_for_spam", "hypothetical_t9_NOT_escalated", "seller price-change escalation_present"]
+      "notableIssues": [
+        "fee_mentioned_t7",
+        "no_asking_price_anchor_for_spam",
+        "hypothetical_t9_NOT_escalated",
+        "seller price-change escalation_present"
+      ]
     },
     "confidence": "medium",
     "evidence": [
@@ -721,12 +1066,30 @@
     "endedAt": "2026-05-10T22:30:58Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "targeted-testing", "regression", "returning-buyer", "seller-mode"],
+    "workLabels": [
+      "chatbot",
+      "targeted-testing",
+      "regression",
+      "returning-buyer",
+      "seller-mode"
+    ],
     "purpose": "Avoid another full slow run and focus directly on the flows that had recently produced issues: Sara, Mohammed, FastCash, seller price change, and Sara Returning.",
     "processSummary": "Cleaned prior test data, seeded seller phones, and ran a targeted suite with five personas. The run stressed real-listing buyer answers, hypothetical offers, zero-context spam, seller price-change routing, and returning-buyer continuity.",
-    "priorIssues": ["The full May 10 revision run showed latency plus residual flags in Sara fee phrasing, FastCash spam handling, seller price-change routing, and returning-buyer behavior."],
-    "issuesIdentified": ["Sara hit two 180-second read timeouts but still completed.", "Sara still had a fee-mentioned rubric issue.", "Sara Returning still had an identity/disclosure issue while triggering returning-buyer escalation at T1.", "FastCash completed with zero issues and no escalations.", "Seller price change completed cleanly with a single intended escalation."],
-    "fixesMade": ["Narrowed the regression surface to isolate high-risk flows.", "Confirmed FastCash and seller price-change behavior after the revision run.", "Kept Sara latency and returning-buyer identity/disclosure as follow-up signals."],
+    "priorIssues": [
+      "The full May 10 revision run showed latency plus residual flags in Sara fee phrasing, FastCash spam handling, seller price-change routing, and returning-buyer behavior."
+    ],
+    "issuesIdentified": [
+      "Sara hit two 180-second read timeouts but still completed.",
+      "Sara still had a fee-mentioned rubric issue.",
+      "Sara Returning still had an identity/disclosure issue while triggering returning-buyer escalation at T1.",
+      "FastCash completed with zero issues and no escalations.",
+      "Seller price change completed cleanly with a single intended escalation."
+    ],
+    "fixesMade": [
+      "Narrowed the regression surface to isolate high-risk flows.",
+      "Confirmed FastCash and seller price-change behavior after the revision run.",
+      "Kept Sara latency and returning-buyer identity/disclosure as follow-up signals."
+    ],
     "outcome": "The targeted run confirmed that the main spam and seller-change flows had stabilized, while surfacing performance timeouts and one returning-buyer wording issue that needed later cleanup.",
     "testRun": {
       "personas": 5,
@@ -750,12 +1113,29 @@
     "endedAt": "2026-05-11T20:35:02Z",
     "timePrecision": "high",
     "workType": "testing",
-    "workLabels": ["chatbot", "db-fact-fixes", "knowledge-base", "regression"],
+    "workLabels": [
+      "chatbot",
+      "db-fact-fixes",
+      "knowledge-base",
+      "regression"
+    ],
     "purpose": "Validate that database and factual corrections did not regress the full 20-persona chatbot behavior.",
     "processSummary": "Cleaned prior conversations/messages/offers/suspicious activity, seeded seller phones, and ran the 20-persona suite again after DB fact fixes. The run completed in 1240 seconds and generated a new HTML report.",
-    "priorIssues": ["Knowledge-base and database fact corrections had been made after prior test passes.", "The team needed to ensure updated facts did not break offer escalation, professional routing, seller-mode, no-listing fallback, or privacy behavior."],
-    "issuesIdentified": ["Mohammed's hypothetical T9 still appeared as a rubric issue despite an escalation at T9.", "Adversarial had a no_legal_advice_t5 issue.", "Raj had a factual_price_t2 issue.", "Khalifa seller-pivot behavior and seller price-change escalation still showed aggregate flags.", "FastCash stayed clean with no escalations."],
-    "fixesMade": ["Used the run as a post-fact-fix regression gate.", "Logged remaining issue labels for later rubric or policy review rather than treating them as broad launch blockers."],
+    "priorIssues": [
+      "Knowledge-base and database fact corrections had been made after prior test passes.",
+      "The team needed to ensure updated facts did not break offer escalation, professional routing, seller-mode, no-listing fallback, or privacy behavior."
+    ],
+    "issuesIdentified": [
+      "Mohammed's hypothetical T9 still appeared as a rubric issue despite an escalation at T9.",
+      "Adversarial had a no_legal_advice_t5 issue.",
+      "Raj had a factual_price_t2 issue.",
+      "Khalifa seller-pivot behavior and seller price-change escalation still showed aggregate flags.",
+      "FastCash stayed clean with no escalations."
+    ],
+    "fixesMade": [
+      "Used the run as a post-fact-fix regression gate.",
+      "Logged remaining issue labels for later rubric or policy review rather than treating them as broad launch blockers."
+    ],
     "outcome": "The DB fact-fix run completed all 20 personas and preserved the hard-won core behavior: legitimate offers escalated, FastCash stayed gated, seller/regulatory/professional flows completed, and the system remained broadly pilot-ready while leaving a short list of issue-label follow-ups.",
     "testRun": {
       "personas": 20,
@@ -786,7 +1166,12 @@
     "endedAt": "2026-05-11T23:59:00Z",
     "timePrecision": "approximate-range",
     "workType": "research",
-    "workLabels": ["knowledge-base", "qa", "oasis", "seahaven"],
+    "workLabels": [
+      "knowledge-base",
+      "qa",
+      "oasis",
+      "seahaven"
+    ],
     "purpose": "Make sure buyer answers and listing narratives were grounded in accurate community data before scaling traffic.",
     "processSummary": "Audited key Dalya knowledge-base files, especially The Oasis and Sobha Seahaven, verified unit counts and project facts, and generated specific correction lists for downstream updates.",
     "outcome": "The team reduced the risk of fluent-but-wrong property answers and created a tighter factual base for both chatbot responses and market-positioning claims.",
@@ -795,108 +1180,6 @@
       "/Users/eric/.claude/projects/-Users-eric-dalya-ai/c6911762-4354-4f34-815b-2e9ae4ecd254.jsonl",
       "/Users/eric/dalya-ai/knowledge_base/emaar_oasis.json",
       "/Users/eric/dalya-ai/knowledge_base/sobha_seahaven.json"
-    ]
-  },
-  {
-    "id": "buriza-2026-05-07-brand-strategy-site-plan",
-    "projectSlug": "buriza",
-    "projectName": "Buriza",
-    "title": "Turned the Buriza exec brief into a website strategy and design system",
-    "startedAt": "2026-05-07T04:48:00Z",
-    "endedAt": "2026-05-07T04:54:00Z",
-    "timePrecision": "high",
-    "workType": "strategy",
-    "workLabels": ["website", "branding", "copy", "design-system"],
-    "purpose": "Translate the Buriza executive brief into a credible single-page web presence for the liquidity and settlement consultancy.",
-    "processSummary": "Read the Buriza executive PDF, established the canonical brand and copy direction, wrote the brand/copy spec, and created a design system to guide the implementation.",
-    "outcome": "Buriza had a clear web narrative and visual system before coding started, which gave the later single-page site a sharper institutional tone.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
-      "/Users/eric/buriza-website/Buriza Exec doc.pdf",
-      "/Users/eric/buriza-website/app/BRAND_AND_COPY.md",
-      "/Users/eric/buriza-website/app/DESIGN_SYSTEM.md"
-    ]
-  },
-  {
-    "id": "buriza-2026-05-07-single-page-site",
-    "projectSlug": "buriza",
-    "projectName": "Buriza",
-    "title": "Built and verified the Buriza single-page marketing site",
-    "startedAt": "2026-05-07T04:49:00Z",
-    "endedAt": "2026-05-07T05:02:00Z",
-    "timePrecision": "high",
-    "workType": "coding",
-    "workLabels": ["website", "frontend", "marketing"],
-    "purpose": "Ship a polished initial site quickly so Buriza had a live web presence anchored in the exec brief.",
-    "processSummary": "Scaffolded a Next.js app, implemented the single-page site from the design and copy specs, ran build verification, launched the dev server, and browser-checked the page.",
-    "outcome": "Buriza ended the session with a compiled, verified single-page website in a dedicated Next.js app folder.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
-      "/Users/eric/buriza-website/app/app/page.tsx",
-      "/Users/eric/buriza-website/app/package.json"
-    ]
-  },
-  {
-    "id": "zaya-life-2026-03-21-research-foundation",
-    "projectSlug": "zaya-life",
-    "projectName": "Zaya Life",
-    "title": "Compiled the surrogacy research foundation and competitor analysis",
-    "startedAt": "2026-03-21T11:58:00Z",
-    "endedAt": "2026-03-21T12:22:00Z",
-    "timePrecision": "high",
-    "workType": "research",
-    "workLabels": ["competitive-research", "copy", "positioning"],
-    "purpose": "Assemble reference material and market analysis to guide the clinic website's messaging and structure.",
-    "processSummary": "Captured competitor pages and reference materials into the research repo, then synthesized them into a long-form report focused on UAE-market positioning, messaging gaps, and landing-page structure.",
-    "outcome": "Zaya Life gained a dedicated research base and a synthesized copy brief that could feed both the site and future positioning work.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/surrogacy-website-research/surrogacy-research-report.md",
-      "/Users/eric/surrogacy-website-research/raw/embrymama.com/homepage.md",
-      "/Users/eric/surrogacy-website-research/raw/hatch.us/homepage-faq-process.md",
-      "/Users/eric/surrogacy-website-research/raw/rsmcglobal.com/homepage-services.md"
-    ]
-  },
-  {
-    "id": "zaya-life-2026-03-21-site-brand-copy-pass",
-    "projectSlug": "zaya-life",
-    "projectName": "Zaya Life",
-    "title": "Refined the clinic website's brand, tone, and parent-facing copy",
-    "startedAt": "2026-03-21T00:00:00Z",
-    "endedAt": "2026-03-21T18:30:00Z",
-    "timePrecision": "approximate-day",
-    "workType": "marketing",
-    "workLabels": ["website", "branding", "copy", "patient-education"],
-    "purpose": "Make the initial surrogacy site feel more trustworthy, less corporate, and better aligned with intended parents.",
-    "processSummary": "Updated naming and logo usage, softened the font and tone, rewrote the homepage and parent-facing copy to remove choppy phrases and heavy legalistic language, and removed price references for a more careful early presentation.",
-    "outcome": "The Zaya Life site moved from a rough initial draft toward a more emotionally calibrated and parent-friendly marketing surface.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/.claude/history.jsonl",
-      "/Users/eric/surrogacy-site/src",
-      "/Users/eric/surrogacy-site/public"
-    ]
-  },
-  {
-    "id": "zaya-life-2026-03-21-site-productionization",
-    "projectSlug": "zaya-life",
-    "projectName": "Zaya Life",
-    "title": "Productionized the intake and polished the site layout",
-    "startedAt": "2026-03-21T18:30:00Z",
-    "endedAt": "2026-03-22T02:00:00Z",
-    "timePrecision": "approximate",
-    "workType": "coding",
-    "workLabels": ["website", "forms", "responsiveness", "ux"],
-    "purpose": "Convert the marketing site from a static draft into something closer to a usable intake surface.",
-    "processSummary": "Connected the intake flow through Formspree, added validation for email and phone fields, repaired CTA behavior, added WhatsApp contact, iterated on images for parent and program pages, and ran a responsiveness pass with follow-up layout fixes.",
-    "outcome": "The site became much more usable: intake submission was wired, navigation behaved properly, and the main marketing pages were adapted for better mobile and desktop presentation.",
-    "confidence": "high",
-    "evidence": [
-      "/Users/eric/.claude/history.jsonl",
-      "/Users/eric/surrogacy-site/RESPONSIVE_UPDATE.md",
-      "/Users/eric/surrogacy-site/src"
     ]
   }
 ]

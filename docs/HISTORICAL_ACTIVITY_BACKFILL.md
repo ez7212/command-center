@@ -16,9 +16,35 @@ historical events that explain:
 - what the process was
 - what the end result became
 
-The machine-readable event file is:
+The machine-readable event files are split by project:
 
-- [historical-activity-backfill.json](./historical-activity-backfill.json)
+- [historical-activity/command-center.json](./historical-activity/command-center.json)
+- [historical-activity/dalya.json](./historical-activity/dalya.json)
+- [historical-activity/buriza.json](./historical-activity/buriza.json)
+- [historical-activity/zaya-life.json](./historical-activity/zaya-life.json)
+
+This keeps each project history reviewable without loading one consolidated
+file. The importer still accepts a single JSON file via `--file`, but the
+directory above is the default source of truth.
+
+## Ongoing logging standard
+
+Going forward, every meaningful feature, fix, bug, review, new strategy,
+non-coding workstream, or key event should become a dashboard activity record.
+
+For each record, capture:
+
+- purpose
+- process summary
+- prior issues or context
+- issues identified
+- fixes, decisions, or work completed
+- outcome
+- evidence files, logs, commits, or artifacts
+
+This applies across Command Center, Dalya, Buriza, Zaya Life, and future
+projects. The goal is an agentic view of our work, including coding,
+marketing, distribution, ads, research, operations, and strategy.
 
 ## Source quality
 
@@ -155,13 +181,13 @@ The main gaps are:
 
 ## Recommended next step
 
-The importer now treats this file as the source of truth and inserts each item
-as an idempotent `manual_note` event with `source_provider =
+The importer now treats the per-project JSON directory as the source of truth
+and inserts each item as an idempotent `manual_note` event with `source_provider =
 historical_backfill`.
 
 Before importing:
 
-1. Review the JSON file and prune/rename any event titles that feel off.
+1. Review the per-project JSON files and prune/rename any event titles that feel off.
 2. Make sure Supabase has matching project slugs:
    - `command-center`
    - `dalya`
@@ -169,10 +195,14 @@ Before importing:
    - `zaya-life`
 3. Run a dry run:
    - `npm run import-historical-activity -- --dry-run`
-4. Import after review:
+4. Optionally dry-run one project:
+   - `npm run import-historical-activity -- --project dalya --dry-run`
+5. Import one project after review:
+   - `npm run import-historical-activity -- --project dalya`
+6. Import all projects after review:
    - `npm run import-historical-activity`
-5. Preserve the current JSON file as the backfill source of truth so it can be
-   revised without scraping everything again.
+7. Preserve the per-project JSON files as the backfill source of truth so they
+   can be revised without scraping everything again.
 
 ## Suggested import shape
 

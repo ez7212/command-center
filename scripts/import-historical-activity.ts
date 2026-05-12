@@ -1,5 +1,5 @@
-import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { readdir, readFile, stat } from "node:fs/promises";
+import { join, resolve } from "node:path";
 
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { z } from "zod";
@@ -9,6 +9,7 @@ type Flags = {
   dryRun: boolean;
   actorEmail: string;
   actorName: string;
+  projectSlug?: string;
 };
 
 type ProjectRow = {
@@ -115,7 +116,7 @@ type HistoricalEvent = z.infer<typeof historicalEventSchema>;
 
 function parseArgs(args: string[]): Flags {
   const flags: Flags = {
-    file: "docs/historical-activity-backfill.json",
+    file: "docs/historical-activity",
     dryRun: false,
     actorEmail: process.env.HISTORICAL_BACKFILL_ACTOR_EMAIL ?? "ericzhu0702@gmail.com",
     actorName: process.env.HISTORICAL_BACKFILL_ACTOR_NAME ?? "Eric",
@@ -137,6 +138,8 @@ function parseArgs(args: string[]): Flags {
 
     if (arg === "--file") {
       flags.file = value;
+    } else if (arg === "--project") {
+      flags.projectSlug = normalizeSlug(value);
     } else if (arg === "--actor-email") {
       flags.actorEmail = value;
     } else if (arg === "--actor-name") {
@@ -255,10 +258,60 @@ function buildMetadata(item: HistoricalEvent) {
   };
 }
 
-async function readHistoricalEvents(path: string) {
-  const raw = await readFile(resolve(process.cwd(), path), "utf8");
-  const parsed: unknown = JSON.parse(raw);
-  return historicalEventsSchema.parse(parsed);
+async function historicalEventFiles(path: string, projectSlug?: string) {
+  const resolvedPath = resolve(process.cwd(), path);
+  const pathStats = await stat(resolvedPath);
+
+  if (!pathStats.isDirectory()) {
+    return [resolvedPath];
+  }
+
+  if (projectSlug) {
+    return [join(resolvedPath, `${projectSlug}.json`)];
+  }
+
+  const entries = await readdir(resolvedPath);
+  const files = entries
+    .filter((entry) => entry.endsWith(".json"))
+    .sort()
+    .map((entry) => join(resolvedPath, entry));
+
+  if (files.length === 0) {
+    throw new Error(`No historical activity JSON files found in ${path}`);
+  }
+
+  return files;
+}
+
+async function readHistoricalEvents(path: string, projectSlug?: string) {
+  const files = await historicalEventFiles(path, projectSlug);
+  const items: HistoricalEvent[] = [];
+  const seenIds = new Set<string>();
+
+  for (const file of files) {
+    const raw = await readFile(file, "utf8");
+    const parsed: unknown = JSON.parse(raw);
+    const fileItems = historicalEventsSchema.parse(parsed);
+    const filteredItems = projectSlug
+      ? fileItems.filter((item) => item.projectSlug === projectSlug)
+      : fileItems;
+
+    for (const item of filteredItems) {
+      if (seenIds.has(item.id)) {
+        throw new Error(`Duplicate historical backfill id: ${item.id}`);
+      }
+
+      seenIds.add(item.id);
+      items.push(item);
+    }
+  }
+
+  if (items.length === 0) {
+    const scope = projectSlug ? ` for project ${projectSlug}` : "";
+    throw new Error(`No historical activity events found${scope}`);
+  }
+
+  return items;
 }
 
 function requiredEnv() {
@@ -364,7 +417,7 @@ async function main() {
   await loadDefaultEnvFiles();
 
   const flags = parseArgs(process.argv.slice(2));
-  const items = await readHistoricalEvents(flags.file);
+  const items = await readHistoricalEvents(flags.file, flags.projectSlug);
   const slugs = uniqueProjectSlugs(items);
   const env = requiredEnv();
 
