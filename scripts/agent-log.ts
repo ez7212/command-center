@@ -266,6 +266,32 @@ function findRegistryEntry(registry: ProjectRegistry, cwd: string) {
     .sort((a, b) => b.registeredPath.length - a.registeredPath.length)[0];
 }
 
+function findRegistryEntryByProject(
+  registry: ProjectRegistry,
+  projectSlug: string | undefined,
+  cwd: string,
+) {
+  if (!projectSlug) {
+    return undefined;
+  }
+
+  const normalizedCwd = normalizePath(cwd);
+  const candidates = Object.entries(registry.projects)
+    .map(([registeredPath, entry]) => ({
+      registeredPath: normalizePath(registeredPath),
+      entry,
+    }))
+    .filter(({ entry }) => entry.projectSlug === projectSlug);
+
+  return (
+    candidates.find(
+      ({ registeredPath }) =>
+        normalizedCwd === registeredPath ||
+        normalizedCwd.startsWith(`${registeredPath}/`),
+    ) ?? candidates[0]
+  );
+}
+
 function providerFromEntry(
   entry: RegistryEntry | undefined,
   flags: Flags,
@@ -354,7 +380,10 @@ async function doctor(flags: Flags) {
   const registryPath = stringValue(flags, "registry", defaultRegistryPath());
   const registry = await readRegistry(registryPath);
   const cwd = normalizePath(stringValue(flags, "cwd", defaultWorkingDir()) ?? defaultWorkingDir());
-  const match = findRegistryEntry(registry, cwd);
+  const requestedProject = stringValue(flags, "project");
+  const match =
+    findRegistryEntryByProject(registry, requestedProject, cwd) ??
+    findRegistryEntry(registry, cwd);
   const provider = providerFromEntry(match?.entry, flags);
   const ingestUrl = process.env.COMMAND_CENTER_INGEST_URL;
   const token = tokenFromProvider(provider);
@@ -384,7 +413,10 @@ async function doctor(flags: Flags) {
 async function logEvent(flags: Flags) {
   const registry = await readRegistry(stringValue(flags, "registry"));
   const cwd = normalizePath(stringValue(flags, "cwd", defaultWorkingDir()) ?? defaultWorkingDir());
-  const match = findRegistryEntry(registry, cwd);
+  const requestedProject = stringValue(flags, "project");
+  const match =
+    findRegistryEntryByProject(registry, requestedProject, cwd) ??
+    findRegistryEntry(registry, cwd);
   const entry = match?.entry;
   const provider = providerFromEntry(entry, flags);
   const ingestUrl = requireValue(
