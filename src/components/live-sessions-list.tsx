@@ -1,5 +1,8 @@
+import Link from "next/link";
+
 import { AgentSessionTree } from "@/components/agent-session-tree";
 import { EmptyState } from "@/components/empty-state";
+import { WorkBadge } from "@/components/work-badge";
 import type { ActivityEvent, AgentSession, Comment, Project } from "@/lib/types";
 
 export function LiveSessionsList({
@@ -19,7 +22,7 @@ export function LiveSessionsList({
     return (
       <EmptyState
         title="No sessions yet"
-        body="Eric's Codex and Claude Code sessions will show up when ingested."
+        body="Tagged Codex and Claude sessions will show up when ingested."
       />
     );
   }
@@ -39,10 +42,25 @@ export function LiveSessionsList({
         <div className="mt-3 space-y-3">
           {events.slice(0, 6).map((event) => (
             <div key={event.id} className="border-b border-stone-100 pb-3 last:border-0">
-              <p className="text-sm font-medium">{event.title}</p>
+              {event.sessionId ? (
+                <Link
+                  className="text-sm font-medium hover:text-stone-700"
+                  href={`/dashboard/${project.slug}/sessions/${event.sessionId}`}
+                >
+                  {event.title}
+                </Link>
+              ) : (
+                <p className="text-sm font-medium">{event.title}</p>
+              )}
               <p className="mt-1 text-xs capitalize text-stone-500">
                 {event.type.replaceAll("_", " ")}
               </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <WorkBadge value={event.workType} variant="type" />
+                {event.workLabels.slice(0, 2).map((label) => (
+                  <WorkBadge key={`${event.id}-${label}`} value={label} />
+                ))}
+              </div>
             </div>
           ))}
         </div>

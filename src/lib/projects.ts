@@ -22,6 +22,7 @@ import type {
   Project,
   ProjectWorkspace,
 } from "@/lib/types";
+import { normalizeWorkLabels, normalizeWorkType } from "@/lib/work";
 
 type AnyRecord = Record<string, unknown>;
 
@@ -73,6 +74,14 @@ function mapSession(row: AnyRecord): AgentSession {
     sourceProvider: String(row.source_provider),
     title: String(row.title),
     status: String(row.status),
+    workType: normalizeWorkType(
+      row.work_type ? String(row.work_type) : "general",
+    ),
+    workLabels: normalizeWorkLabels(
+      Array.isArray(row.work_labels)
+        ? row.work_labels.map((value) => String(value))
+        : [],
+    ),
     summary: row.summary ? String(row.summary) : null,
     startedAt: String(row.started_at),
     lastHeartbeatAt: row.last_heartbeat_at
@@ -98,6 +107,14 @@ function mapEvent(row: AnyRecord): ActivityEvent {
     body: row.body ? String(row.body) : null,
     source: String(row.source),
     sourceProvider: String(row.source_provider),
+    workType: normalizeWorkType(
+      row.work_type ? String(row.work_type) : "general",
+    ),
+    workLabels: normalizeWorkLabels(
+      Array.isArray(row.work_labels)
+        ? row.work_labels.map((value) => String(value))
+        : [],
+    ),
     metadata:
       row.metadata && typeof row.metadata === "object"
         ? (row.metadata as Record<string, unknown>)

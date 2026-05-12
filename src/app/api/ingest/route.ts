@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { hasSupabaseServiceEnv } from "@/lib/env";
 import { createSupabaseServiceClient } from "@/lib/supabase/service";
+import { normalizeWorkLabels, normalizeWorkType } from "@/lib/work";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +24,18 @@ const eventTypes = [
 ] as const;
 
 const jsonObjectSchema = z.record(z.string(), z.unknown());
+const workTypeSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .max(64)
+  .transform((value) => normalizeWorkType(value))
+  .default("general");
+const workLabelsSchema = z
+  .array(z.string().trim().min(1).max(64))
+  .max(12)
+  .transform((value) => normalizeWorkLabels(value))
+  .default([]);
 
 const ingestSchema = z.object({
   token: z.string().min(1),
@@ -34,6 +47,8 @@ const ingestSchema = z.object({
       externalSessionId: z.string().min(1).optional(),
       title: z.string().min(1),
       status: z.string().min(1).default("active"),
+      workType: workTypeSchema,
+      workLabels: workLabelsSchema,
       summary: z.string().optional(),
       metadata: jsonObjectSchema.default({}),
     })
@@ -42,6 +57,8 @@ const ingestSchema = z.object({
     type: z.enum(eventTypes),
     title: z.string().min(1),
     body: z.string().optional(),
+    workType: workTypeSchema,
+    workLabels: workLabelsSchema,
     metadata: jsonObjectSchema.default({}),
   }),
 });
@@ -150,6 +167,11 @@ async function upsertSession(
     source_provider: sourceProvider,
     title: payload.session.title,
     status: payload.session.status,
+    work_type: payload.session.workType || payload.event.workType,
+    work_labels:
+      payload.session.workLabels.length > 0
+        ? payload.session.workLabels
+        : payload.event.workLabels,
     summary: payload.session.summary ?? null,
     last_heartbeat_at:
       payload.session.status === "active" ||
@@ -211,6 +233,8 @@ async function insertEvent(
       body: payload.event.body ? redactString(payload.event.body) : null,
       source: payload.source,
       source_provider: token.source_provider || payload.sourceProvider,
+      work_type: payload.event.workType,
+      work_labels: payload.event.workLabels,
       metadata: redactMetadata(payload.event.metadata) as JsonObject,
     })
     .select("id")

@@ -40,6 +40,8 @@ const flagMap: Record<string, string> = {
   "--title": "title",
   "--body": "body",
   "--metadata": "metadata",
+  "--work-type": "workType",
+  "--labels": "labels",
 };
 
 function defaultRegistryPath() {
@@ -110,6 +112,42 @@ function parseMetadata(value: string | undefined) {
   }
 
   return parsed as Record<string, unknown>;
+}
+
+function normalizeLabel(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function parseLabels(value: string | undefined) {
+  if (!value) {
+    return [];
+  }
+
+  const values = value.trim().startsWith("[")
+    ? (() => {
+        const parsed: unknown = JSON.parse(value);
+
+        if (!Array.isArray(parsed)) {
+          throw new Error("--labels JSON must be an array of strings");
+        }
+
+        return parsed.map((entry) => {
+          if (typeof entry !== "string") {
+            throw new Error("--labels JSON array must contain only strings");
+          }
+
+          return entry;
+        });
+      })()
+    : value.split(",");
+
+  return Array.from(
+    new Set(values.map((entry) => normalizeLabel(entry)).filter(Boolean)),
+  );
 }
 
 function hasSessionFlags(flags: Flags) {
@@ -325,6 +363,8 @@ async function logEvent(flags: Flags) {
     ...(match ? { registeredPath: match.registeredPath } : {}),
     ...parseMetadata(stringValue(flags, "metadata")),
   };
+  const workType = stringValue(flags, "workType", "general") ?? "general";
+  const workLabels = parseLabels(stringValue(flags, "labels"));
 
   const payload: Record<string, unknown> = {
     token,
@@ -335,6 +375,8 @@ async function logEvent(flags: Flags) {
       type: eventType,
       title,
       body,
+      workType,
+      workLabels,
       metadata,
     },
   };
@@ -344,6 +386,8 @@ async function logEvent(flags: Flags) {
       externalSessionId: stringValue(flags, "sessionId"),
       title: stringValue(flags, "sessionTitle", title),
       status: stringValue(flags, "sessionStatus", "active"),
+      workType,
+      workLabels,
       summary: stringValue(flags, "sessionSummary"),
       metadata: { cwd },
     };

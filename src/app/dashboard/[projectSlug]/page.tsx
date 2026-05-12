@@ -2,8 +2,11 @@ import Link from "next/link";
 import { Activity, FileText, GitBranch, MessageSquareText } from "lucide-react";
 
 import { ActivityFeed } from "@/components/activity-feed";
+import { AgenticView } from "@/components/agentic-view";
 import { CommentThread } from "@/components/comment-thread";
+import { ProjectSourceHealth } from "@/components/project-source-health";
 import { StatusBadge } from "@/components/status-badge";
+import { getProjectSourceSetup } from "@/lib/project-sources";
 import { getProjectWorkspace } from "@/lib/projects";
 
 type ProjectPageProps = {
@@ -15,6 +18,7 @@ type ProjectPageProps = {
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { projectSlug } = await params;
   const workspace = await getProjectWorkspace(projectSlug);
+  const sourceSetup = await getProjectSourceSetup(projectSlug, workspace);
   const activeSessions = workspace.sessions.filter(
     (session) => session.status === "active",
   );
@@ -68,10 +72,34 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           value={shippedFeatures.length}
         />
         <MetricCard
+          href={`/dashboard/${projectSlug}/setup`}
+          icon={<StatusBadge status="configured" />}
+          label="Source setup"
+          value={sourceSetup.directories.length}
+        />
+        <MetricCard
           href={`/dashboard/${projectSlug}/documents`}
           icon={<FileText size={18} />}
           label="Docs and decisions"
           value={workspace.documents.length + workspace.decisions.length}
+        />
+      </section>
+
+      <AgenticView workspace={workspace} />
+
+      <section>
+        <div className="mb-3 flex items-center justify-between">
+          <h2 className="text-lg font-semibold">Source health</h2>
+          <Link
+            className="text-sm font-medium text-stone-600 hover:text-stone-950"
+            href={`/dashboard/${projectSlug}/setup`}
+          >
+            Open setup
+          </Link>
+        </div>
+        <ProjectSourceHealth
+          projectSlug={projectSlug}
+          sourceSetup={sourceSetup}
         />
       </section>
 

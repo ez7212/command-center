@@ -22,5 +22,5 @@ export function shortDate(value: string | null | undefined) {
 }
 
 export function labelize(value: string) {
-  return value.replaceAll("_", " ");
+  return value.replace(/[-_]+/g, " ");
 }

@@ -10,6 +10,7 @@ import {
 
 import { CommentThread } from "@/components/comment-thread";
 import { SourceBadge } from "@/components/source-badge";
+import { WorkBadge } from "@/components/work-badge";
 import { labelize, relativeTime } from "@/lib/format";
 import type { ActivityEvent, AgentSession, Comment, Project } from "@/lib/types";
 
@@ -68,6 +69,12 @@ export function ActivityEventCard({
                 {event.body}
               </p>
             ) : null}
+            <div className="mt-3 flex flex-wrap gap-2">
+              <WorkBadge value={event.workType} variant="type" />
+              {event.workLabels.map((label) => (
+                <WorkBadge key={`${event.id}-${label}`} value={label} />
+              ))}
+            </div>
             <div className="mt-3 flex flex-wrap gap-2 text-xs text-stone-500">
               <span>Actor: {event.actorName ?? "Eric"}</span>
               <span>Project: {project.name}</span>

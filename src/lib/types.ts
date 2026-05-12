@@ -17,6 +17,7 @@ export type EventType =
 export type FeatureStatus = "planned" | "in_progress" | "review" | "shipped";
 
 export type JsonRecord = Record<string, unknown>;
+export type WorkType = string;
 
 export type Profile = {
   id: string;
@@ -56,6 +57,8 @@ export type AgentSession = {
   sourceProvider: string;
   title: string;
   status: string;
+  workType: WorkType;
+  workLabels: string[];
   summary: string | null;
   startedAt: string;
   lastHeartbeatAt: string | null;
@@ -74,6 +77,8 @@ export type ActivityEvent = {
   body: string | null;
   source: string;
   sourceProvider: string;
+  workType: WorkType;
+  workLabels: string[];
   metadata: JsonRecord;
   createdAt: string;
   commentCount?: number;
@@ -133,4 +138,37 @@ export type ProjectWorkspace = {
   features: Feature[];
   documents: Document[];
   decisions: Decision[];
+};
+
+export type ProjectSourceDirectory = {
+  path: string;
+  name: string;
+  defaultProvider: string;
+  providers: Array<{
+    key: string;
+    source: string;
+    sourceProvider: string;
+    tokenEnv: string | null;
+    tokenConfigured: boolean;
+  }>;
+};
+
+export type ProjectSourceProviderHealth = {
+  key: string;
+  source: string;
+  sourceProvider: string;
+  defaultProvider: boolean;
+  mappedDirectories: number;
+  tokenEnv: string | null;
+  tokenConfigured: boolean;
+  lastEventAt: string | null;
+  lastHeartbeatAt: string | null;
+  activeSessions: number;
+};
+
+export type ProjectSourceSetup = {
+  projectSlug: string;
+  directories: ProjectSourceDirectory[];
+  providers: ProjectSourceProviderHealth[];
+  registryPath: string | null;
 };

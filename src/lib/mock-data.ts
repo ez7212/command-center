@@ -122,6 +122,15 @@ export const mockSessions: AgentSession[] = mockProjects.flatMap(
         sourceProvider: "codex",
         title: `Work on ${project.name}`,
         status: project.slug === "command-center" ? "active" : "completed",
+        workType: project.slug === "command-center" ? "coding" : "product",
+        workLabels:
+          project.slug === "command-center"
+            ? ["dashboard", "observability"]
+            : project.slug === "dalya"
+              ? ["brokerage", "ai-workflow"]
+              : project.slug === "buriza"
+                ? ["website", "liquidity"]
+                : ["website", "patient-education"],
         summary: `Codex session tracking implementation progress for ${project.name}.`,
         startedAt: "2026-05-12T06:30:00.000Z",
         lastHeartbeatAt: project.slug === "command-center" ? now : "2026-05-12T07:10:00.000Z",
@@ -143,6 +152,20 @@ export const mockSessions: AgentSession[] = mockProjects.flatMap(
         sourceProvider: "claude",
         title: `Research and review ${project.name}`,
         status: "completed",
+        workType:
+          project.slug === "buriza"
+            ? "marketing"
+            : project.slug === "zaya-life"
+              ? "research"
+              : "research",
+        workLabels:
+          project.slug === "command-center"
+            ? ["backlog", "workflow"]
+            : project.slug === "dalya"
+              ? ["positioning", "brokerage"]
+              : project.slug === "buriza"
+                ? ["messaging", "distribution"]
+                : ["research", "trust"],
         summary: `Claude Code session for research, review, and project context on ${project.name}.`,
         startedAt: "2026-05-12T06:45:00.000Z",
         lastHeartbeatAt: "2026-05-12T07:10:00.000Z",
@@ -163,18 +186,28 @@ function firstSession(project: Project) {
   return session;
 }
 
-const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "body" | "metadata">[]> = {
+const eventByProject: Record<
+  string,
+  Pick<
+    ActivityEvent,
+    "type" | "title" | "body" | "metadata" | "workType" | "workLabels"
+  >[]
+> = {
   "command-center": [
     {
       type: "code_changed",
       title: "Added local project registry backlog",
       body: "Captured multi-directory project sync and agentic dashboard roadmap.",
+      workType: "coding",
+      workLabels: ["dashboard", "registry"],
       metadata: { files: ["docs/BACKLOG.md", "scripts/agent-log.ts"] },
     },
     {
       type: "decision_logged",
       title: "Frame dashboard as shared progress",
       body: "Updated product language away from one-way visibility toward co-work progress.",
+      workType: "strategy",
+      workLabels: ["messaging", "workflow"],
       metadata: {},
     },
   ],
@@ -183,12 +216,16 @@ const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "bod
       type: "manual_note",
       title: "Defined brokerage AI positioning",
       body: "Dalya is focused on AI software for real estate brokerages.",
+      workType: "marketing",
+      workLabels: ["positioning", "brokerage"],
       metadata: { localPath: "/Users/eric/dalya-ai" },
     },
     {
       type: "search_run",
       title: "Reviewed brokerage workflow opportunities",
       body: "Mapped candidate workflows for agents, managers, and client follow-up.",
+      workType: "research",
+      workLabels: ["workflow", "brokerage"],
       metadata: { workstream: "product" },
     },
   ],
@@ -197,12 +234,16 @@ const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "bod
       type: "manual_note",
       title: "Clarified UAE liquidity management angle",
       body: "Buriza is focused on cash timing and liquidity management for UAE businesses.",
+      workType: "strategy",
+      workLabels: ["liquidity", "uae"],
       metadata: { localPath: "/Users/eric/buriza-website" },
     },
     {
       type: "doc_created",
       title: "Started liquidity messaging notes",
       body: "Created initial notes for business pain points, positioning, and distribution.",
+      workType: "marketing",
+      workLabels: ["distribution", "messaging"],
       metadata: { workstream: "marketing" },
     },
   ],
@@ -211,6 +252,8 @@ const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "bod
       type: "manual_note",
       title: "Connected clinic site and research work",
       body: "Zaya Life spans surrogacy-site and surrogacy-website-research local directories.",
+      workType: "operations",
+      workLabels: ["site", "research"],
       metadata: {
         localPaths: [
           "/Users/eric/surrogacy-site",
@@ -222,6 +265,8 @@ const eventByProject: Record<string, Pick<ActivityEvent, "type" | "title" | "bod
       type: "doc_updated",
       title: "Expanded research and patient education notes",
       body: "Tracked clinic research alongside public-facing site work.",
+      workType: "research",
+      workLabels: ["patient-education", "trust"],
       metadata: { workstream: "research" },
     },
   ],
@@ -239,6 +284,8 @@ export const mockEvents: ActivityEvent[] = mockProjects.flatMap((project, projec
     body: event.body,
     source: eventIndex === 0 ? "manual" : "codex",
     sourceProvider: eventIndex === 0 ? "manual" : "codex",
+    workType: event.workType,
+    workLabels: event.workLabels,
     metadata: event.metadata,
     createdAt:
       eventIndex === 0 ? "2026-05-12T07:05:00.000Z" : "2026-05-12T07:25:00.000Z",

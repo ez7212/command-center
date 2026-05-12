@@ -19,7 +19,7 @@ export function ActivityFeed({
     return (
       <EmptyState
         title="No activity yet"
-        body="Eric's Codex, Claude Code, and manual updates will appear here."
+        body="Codex, Claude, manual updates, and labeled work activity will appear here."
       />
     );
   }

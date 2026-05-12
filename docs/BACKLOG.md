@@ -23,6 +23,8 @@ Baseline implemented:
   presence.
 - `agent-log` can infer `projectSlug`, `source`, `sourceProvider`, and token
   env from the current directory.
+- The dashboard shows a per-project `Setup` page with mapped local directories,
+  provider health, recent events, and token-env status.
 
 Remaining work:
 
@@ -117,7 +119,8 @@ and strategy work as first-class activity, not just code events.
 
 ### UI Additions
 
-- Add a workstream filter to activity feed.
+- Add work-type and label filters to activity feed and sessions.
+- Add session and event labeling through `/api/ingest` and `agent-log`.
 - Add a non-coding event composer for manual updates.
 - Add pages or tabs for:
   - Campaigns
@@ -189,7 +192,7 @@ work means.
 
 ## P1: Session View Improvements
 
-- Add session detail pages.
+- Extend session detail pages.
 - Show session lifecycle: started, heartbeats, code changes, decisions, completed.
 - Show child sessions and delegated tasks more clearly.
 - Add stale/abandoned session detection.

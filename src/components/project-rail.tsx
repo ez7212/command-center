@@ -5,6 +5,7 @@ import {
   GitBranch,
   LayoutDashboard,
   ListChecks,
+  PlugZap,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -17,6 +18,7 @@ const links = [
   { label: "Features", href: "/features", icon: ListChecks },
   { label: "Documents", href: "/documents", icon: FileText },
   { label: "Decisions", href: "/decisions", icon: Flag },
+  { label: "Setup", href: "/setup", icon: PlugZap },
 ];
 
 export function ProjectRail({

@@ -12,7 +12,7 @@ This version is intentionally narrow:
 - V0 has one configured telemetry source: Eric's local machine.
 - David is a dashboard user with read and comment access.
 - Additional user Codex or Claude Code session linking is not implemented yet.
-- The app uses mock Dalya data when Supabase environment variables are absent.
+- The app uses mock multi-project data when Supabase environment variables are absent.
 
 See [docs/BACKLOG.md](docs/BACKLOG.md) for the product backlog, including
 multi-project local directory sync, non-coding work tracking, and the agentic
@@ -224,8 +224,8 @@ strict mode, commenters cannot update or delete comments after posting.
 ## Local Mock Mode
 
 If `NEXT_PUBLIC_SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` is missing,
-the dashboard renders mock Dalya data. This is useful for local review and
-build verification before Supabase is configured.
+the dashboard renders mock multi-project data. This is useful for local review
+and build verification before Supabase is configured.
 
 ## Agent Log CLI
 
@@ -239,6 +239,28 @@ export COMMAND_CENTER_INGEST_TOKEN="your-project-ingest-token"
 export COMMAND_CENTER_PROJECT_SLUG="dalya"
 export COMMAND_CENTER_SOURCE="codex"
 export COMMAND_CENTER_SOURCE_PROVIDER="codex"
+```
+
+### Work Labels
+
+Each session or event can be tagged with a `workType` plus optional labels so
+the dashboard can filter coding, research, marketing, distribution, and other
+work.
+
+```bash
+npm run agent-log -- \
+  --type search_run \
+  --work-type research \
+  --labels brokerage,positioning \
+  --title "Reviewed brokerage onboarding flow"
+```
+
+```bash
+npm run agent-log -- \
+  --type manual_note \
+  --work-type marketing \
+  --labels distribution,landing-page \
+  --title "Updated channel messaging"
 ```
 
 ### Local Project Registry
@@ -279,6 +301,9 @@ Check the mapping for the current directory:
 ```bash
 npm run agent-log -- doctor
 ```
+
+Each project now also exposes a `Setup` page in the dashboard that shows mapped
+directories, provider health, recent events, and token-env status.
 
 After registration, a local event can omit `--project`:
 
