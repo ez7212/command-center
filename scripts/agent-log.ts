@@ -167,6 +167,56 @@ function hasSessionFlags(flags: Flags) {
   );
 }
 
+async function loadEnvFile(path: string) {
+  let raw: string;
+
+  try {
+    raw = await readFile(path, "utf8");
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return;
+    }
+
+    throw error;
+  }
+
+  for (const line of raw.split(/\r?\n/)) {
+    const trimmed = line.trim();
+
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const assignment = trimmed.startsWith("export ")
+      ? trimmed.slice("export ".length).trim()
+      : trimmed;
+    const equalsIndex = assignment.indexOf("=");
+
+    if (equalsIndex === -1) {
+      continue;
+    }
+
+    const key = assignment.slice(0, equalsIndex).trim();
+    let value = assignment.slice(equalsIndex + 1).trim();
+
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+
+    if (key && !process.env[key]) {
+      process.env[key] = value;
+    }
+  }
+}
+
+async function loadDefaultEnvFiles() {
+  await loadEnvFile(resolve(process.cwd(), ".env"));
+  await loadEnvFile(resolve(process.cwd(), ".env.local"));
+}
+
 function emptyRegistry(): ProjectRegistry {
   return { projects: {} };
 }
@@ -435,6 +485,8 @@ async function logEvent(flags: Flags) {
 }
 
 async function main() {
+  await loadDefaultEnvFiles();
+
   const { command, flags } = parseArgs(process.argv.slice(2));
 
   if (command === "init-project") {

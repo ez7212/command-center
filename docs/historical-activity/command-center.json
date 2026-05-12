@@ -254,5 +254,37 @@
       "/Users/eric/surrogacy-site/PROJECT_BRIEF.md",
       "/Users/eric/surrogacy-website-research/PROJECT_BRIEF.md"
     ]
+  },
+  {
+    "id": "command-center-2026-05-12-agent-log-env-loading",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Fixed agent-log env loading for project tokens",
+    "startedAt": "2026-05-12T12:45:00Z",
+    "endedAt": "2026-05-12T12:55:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": [
+      "ingest",
+      "configuration",
+      "cli"
+    ],
+    "purpose": "Make agent-log read project-specific ingest token env vars from .env.local so local directory registry mappings work without manually exporting every token.",
+    "processSummary": "Added .env and .env.local loading to scripts/agent-log.ts before command parsing, then verified doctor checks for Dalya, Buriza, Zaya Life, and Command Center providers.",
+    "priorIssues": [
+      "agent-log doctor found registry mappings but reported missing ingest URL and token when tokens were only stored in .env.local"
+    ],
+    "issuesIdentified": [
+      "Command Center Codex token exists locally but returned token/project mismatch, indicating that specific Supabase ingest token row needs to be corrected"
+    ],
+    "fixesMade": [
+      "Loaded .env and .env.local in agent-log",
+      "Verified Dalya Codex test event inserted successfully"
+    ],
+    "outcome": "Project-specific ingest token env vars now work from .env.local; Dalya Codex telemetry posted successfully; Command Center token row still needs a matching hash or raw token value.",
+    "confidence": "high",
+    "evidence": [
+      "scripts/agent-log.ts"
+    ]
   }
 ]
