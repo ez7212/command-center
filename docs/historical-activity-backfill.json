@@ -1,0 +1,290 @@
+[
+  {
+    "id": "command-center-2026-05-12-v0-foundation",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Built the v0 command center foundation",
+    "startedAt": "2026-05-12T00:25:00Z",
+    "endedAt": "2026-05-12T02:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["dashboard", "schema", "auth", "ingest", "cli"],
+    "purpose": "Create the first working version of the shared progress dashboard with Supabase schema, RLS, auth, ingest, and the local agent-log CLI.",
+    "processSummary": "Built the data model and RLS policies, added server/browser/service Supabase clients, protected dashboard auth flow, implemented the /api/ingest route, and added the TypeScript CLI to post events from local work.",
+    "outcome": "The project gained a working v0 architecture: Postgres schema, permissions, secure ingest path, and a CLI that could route Eric's local telemetry into the dashboard.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/.git/logs/HEAD",
+      "/Users/eric/command-center/src/app/api/ingest/route.ts",
+      "/Users/eric/command-center/scripts/agent-log.ts"
+    ]
+  },
+  {
+    "id": "command-center-2026-05-12-dashboard-comments-realtime",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Expanded the dashboard into a usable review surface",
+    "startedAt": "2026-05-12T02:30:00Z",
+    "endedAt": "2026-05-12T07:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["dashboard", "comments", "realtime", "readiness"],
+    "purpose": "Turn the foundation into a real dashboard David could read and comment on across projects.",
+    "processSummary": "Built the main dashboard pages and components, added comments on core objects, added realtime/polling updates, documented manual Supabase setup and deployment steps, and reframed the product as a shared co-work dashboard instead of a one-way Eric view.",
+    "outcome": "The product became a coherent review tool with project pages, comments, live updates, and deployment/readiness docs, while keeping read/comment-only permissions intact.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/README.md",
+      "/Users/eric/command-center/src/components/comment-thread.tsx",
+      "/Users/eric/command-center/src/lib/use-realtime-project-updates.ts"
+    ]
+  },
+  {
+    "id": "command-center-2026-05-12-multi-project-agentic",
+    "projectSlug": "command-center",
+    "projectName": "Command Center",
+    "title": "Added multi-project routing, labeled work, and agentic setup views",
+    "startedAt": "2026-05-12T07:45:00Z",
+    "endedAt": "2026-05-12T12:09:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["multi-project", "routing", "work-labels", "source-health", "manual-capture"],
+    "purpose": "Make the dashboard useful across multiple local project directories and support labeled work beyond pure coding.",
+    "processSummary": "Added the local project registry flow for multiple folders, created source setup and health views, added workType/workLabel tagging through ingest and the CLI, added session detail views, and added a manual activity composer for non-coding work.",
+    "outcome": "The dashboard now supports Command Center, Dalya, Buriza, and Zaya Life as distinct projects, with filterable work labels and owner/editor manual event logging.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/command-center/.codex/history.jsonl",
+      "/Users/eric/command-center/src/app/dashboard/[projectSlug]/setup/page.tsx",
+      "/Users/eric/command-center/src/lib/work.ts",
+      "/Users/eric/command-center/src/components/manual-event-composer.tsx"
+    ]
+  },
+  {
+    "id": "dalya-2026-03-27-oasis-research-bootstrap",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Bootstrapped The Oasis research and knowledge-base groundwork",
+    "startedAt": "2026-03-27T05:49:00Z",
+    "endedAt": "2026-03-27T08:30:00Z",
+    "timePrecision": "approximate",
+    "workType": "research",
+    "workLabels": ["knowledge-base", "market-research", "oasis", "product"],
+    "purpose": "Create structured community intelligence for Dalya's first off-plan resale assistant, starting with The Oasis by Emaar.",
+    "processSummary": "Used a trend-research workflow to gather detailed project knowledge, community intelligence, and copy inputs, then folded those findings into Dalya's emerging research and knowledge-base assets.",
+    "outcome": "Dalya got its first serious market-intelligence foundation for The Oasis, which later powered listing context, pricing narratives, and buyer answers.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/.claude/projects/-Users-eric-dalya-ai/fab355c6-7e67-4704-bac2-e7374c8a6255.jsonl",
+      "/Users/eric/dalya-ai/knowledge_base"
+    ]
+  },
+  {
+    "id": "dalya-2026-03-27-28-spa-chatbot-poc",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Built the SPA parsing and chatbot proof of concept",
+    "startedAt": "2026-03-27T08:30:00Z",
+    "endedAt": "2026-03-28T18:00:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["chatbot", "spa-parser", "listing-ingest", "poc"],
+    "purpose": "Prove that a seller could upload an SPA, register a listing, and have the AI answer buyer questions against that data.",
+    "processSummary": "Extracted project brief materials, wired the first SPA parsing and listing-registration path, debugged listing lookup problems around Oasis / Palace Ostra, and validated that the bot could answer against parsed listing data.",
+    "outcome": "Dalya reached a real proof of concept: SPA upload and registration worked, listing data could drive chatbot responses, and the team could see where parser fixes were still needed.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/dalya-ai/app/core/spa_parser.py",
+      "/Users/eric/dalya-ai/app/api/spa_parser.py",
+      "/Users/eric/dalya-ai/chatbot"
+    ]
+  },
+  {
+    "id": "dalya-2026-03-31-mvp-sprint",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Ran an MVP hardening sprint across platform, dashboard, and testing",
+    "startedAt": "2026-03-31T13:45:00Z",
+    "endedAt": "2026-04-01T05:00:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["platform", "health", "logging", "dashboard", "testing"],
+    "purpose": "Move Dalya from a fragile proof of concept toward an operational MVP with better observability and core product plumbing.",
+    "processSummary": "Planned and ran a parallel work sprint covering health checks, structured logging, cross-listing recommendations, rate limiting, a multi-listing dashboard, and multilingual end-to-end testing.",
+    "outcome": "Dalya's core platform became more production-shaped, with stronger operational visibility and a clearer backlog split between shipped features and remaining work.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-dalya-ai/c6911762-4354-4f34-815b-2e9ae4ecd254.jsonl",
+      "/Users/eric/dalya-ai/BACKLOG.md",
+      "/Users/eric/dalya-ai/FEATURES.md"
+    ]
+  },
+  {
+    "id": "dalya-2026-04-platform-dashboard-crm",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Built the seller portal, CRM, and conversation operations layer",
+    "startedAt": "2026-04-01T05:00:00Z",
+    "endedAt": "2026-04-30T23:59:00Z",
+    "timePrecision": "approximate-range",
+    "workType": "coding",
+    "workLabels": ["seller-portal", "crm", "auth", "operations"],
+    "purpose": "Give Dalya a usable seller-facing dashboard and an internal operational view of buyers, conversations, and offers.",
+    "processSummary": "Expanded the product from chatbot-only behavior into a fuller platform: seller auth, dashboard flows, listing management, buyer tracking, admin CRM, and the related data model and APIs to support those features.",
+    "outcome": "Dalya was no longer just an AI reply engine. It had a real seller portal, buyer tracking, offer history, and operational tooling around the core resale workflow.",
+    "confidence": "medium",
+    "evidence": [
+      "/Users/eric/dalya-ai/FEATURES.md",
+      "/Users/eric/dalya-ai/app/api/crm.py",
+      "/Users/eric/dalya-ai/frontend/src/app/(app)",
+      "/Users/eric/dalya-ai/app/models/db_models.py"
+    ]
+  },
+  {
+    "id": "dalya-2026-05-05-11-persona-testing-hardening",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Stress-tested the chatbot with personas and shipped hardening fixes",
+    "startedAt": "2026-05-05T18:23:00Z",
+    "endedAt": "2026-05-11T20:30:00Z",
+    "timePrecision": "high",
+    "workType": "testing",
+    "workLabels": ["chatbot", "persona-testing", "hardening", "offers", "escalation"],
+    "purpose": "Find where the buyer-facing chatbot broke under realistic buyer behavior before going live.",
+    "processSummary": "Ran repeated 10-persona and 20-persona test suites, plus targeted revisions and DB fact-fix runs. Used those failures to tighten escalation logic, response style, pricing behavior, multilingual handling, and seller/offer flows.",
+    "outcome": "Dalya's chatbot became materially more robust. The team identified and fixed bad offer handling, false escalations, tone problems, timeout cases, and data-quality issues before pilot launch.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/dalya-ai/reports/chatbot_test_2026-05-05/_progress.log",
+      "/Users/eric/dalya-ai/reports/chatbot_test_2026-05-05_20p/_progress.log",
+      "/Users/eric/dalya-ai/reports/chatbot_test_2026-05-10_targeted/_progress.log",
+      "/Users/eric/dalya-ai/reports/chatbot_test_2026-05-11_db_fact_fixes/_progress.log"
+    ]
+  },
+  {
+    "id": "dalya-2026-05-08-11-knowledge-base-audits",
+    "projectSlug": "dalya",
+    "projectName": "Dalya",
+    "title": "Audited and corrected knowledge-base accuracy for live communities",
+    "startedAt": "2026-05-08T00:00:00Z",
+    "endedAt": "2026-05-11T23:59:00Z",
+    "timePrecision": "approximate-range",
+    "workType": "research",
+    "workLabels": ["knowledge-base", "qa", "oasis", "seahaven"],
+    "purpose": "Make sure buyer answers and listing narratives were grounded in accurate community data before scaling traffic.",
+    "processSummary": "Audited key Dalya knowledge-base files, especially The Oasis and Sobha Seahaven, verified unit counts and project facts, and generated specific correction lists for downstream updates.",
+    "outcome": "The team reduced the risk of fluent-but-wrong property answers and created a tighter factual base for both chatbot responses and market-positioning claims.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-dalya-ai/c6911762-4354-4f34-815b-2e9ae4ecd254.jsonl",
+      "/Users/eric/dalya-ai/knowledge_base/emaar_oasis.json",
+      "/Users/eric/dalya-ai/knowledge_base/sobha_seahaven.json"
+    ]
+  },
+  {
+    "id": "buriza-2026-05-07-brand-strategy-site-plan",
+    "projectSlug": "buriza",
+    "projectName": "Buriza",
+    "title": "Turned the Buriza exec brief into a website strategy and design system",
+    "startedAt": "2026-05-07T04:48:00Z",
+    "endedAt": "2026-05-07T04:54:00Z",
+    "timePrecision": "high",
+    "workType": "strategy",
+    "workLabels": ["website", "branding", "copy", "design-system"],
+    "purpose": "Translate the Buriza executive brief into a credible single-page web presence for the liquidity and settlement consultancy.",
+    "processSummary": "Read the Buriza executive PDF, established the canonical brand and copy direction, wrote the brand/copy spec, and created a design system to guide the implementation.",
+    "outcome": "Buriza had a clear web narrative and visual system before coding started, which gave the later single-page site a sharper institutional tone.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
+      "/Users/eric/buriza-website/Buriza Exec doc.pdf",
+      "/Users/eric/buriza-website/app/BRAND_AND_COPY.md",
+      "/Users/eric/buriza-website/app/DESIGN_SYSTEM.md"
+    ]
+  },
+  {
+    "id": "buriza-2026-05-07-single-page-site",
+    "projectSlug": "buriza",
+    "projectName": "Buriza",
+    "title": "Built and verified the Buriza single-page marketing site",
+    "startedAt": "2026-05-07T04:49:00Z",
+    "endedAt": "2026-05-07T05:02:00Z",
+    "timePrecision": "high",
+    "workType": "coding",
+    "workLabels": ["website", "frontend", "marketing"],
+    "purpose": "Ship a polished initial site quickly so Buriza had a live web presence anchored in the exec brief.",
+    "processSummary": "Scaffolded a Next.js app, implemented the single-page site from the design and copy specs, ran build verification, launched the dev server, and browser-checked the page.",
+    "outcome": "Buriza ended the session with a compiled, verified single-page website in a dedicated Next.js app folder.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/projects/-Users-eric-buriza-website/78dce485-ed04-4dc0-8c80-f3ffa6e781e8.jsonl",
+      "/Users/eric/buriza-website/app/app/page.tsx",
+      "/Users/eric/buriza-website/app/package.json"
+    ]
+  },
+  {
+    "id": "zaya-life-2026-03-21-research-foundation",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Compiled the surrogacy research foundation and competitor analysis",
+    "startedAt": "2026-03-21T11:58:00Z",
+    "endedAt": "2026-03-21T12:22:00Z",
+    "timePrecision": "high",
+    "workType": "research",
+    "workLabels": ["competitive-research", "copy", "positioning"],
+    "purpose": "Assemble reference material and market analysis to guide the clinic website's messaging and structure.",
+    "processSummary": "Captured competitor pages and reference materials into the research repo, then synthesized them into a long-form report focused on UAE-market positioning, messaging gaps, and landing-page structure.",
+    "outcome": "Zaya Life gained a dedicated research base and a synthesized copy brief that could feed both the site and future positioning work.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/surrogacy-website-research/surrogacy-research-report.md",
+      "/Users/eric/surrogacy-website-research/raw/embrymama.com/homepage.md",
+      "/Users/eric/surrogacy-website-research/raw/hatch.us/homepage-faq-process.md",
+      "/Users/eric/surrogacy-website-research/raw/rsmcglobal.com/homepage-services.md"
+    ]
+  },
+  {
+    "id": "zaya-life-2026-03-21-site-brand-copy-pass",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Refined the clinic website's brand, tone, and parent-facing copy",
+    "startedAt": "2026-03-21T00:00:00Z",
+    "endedAt": "2026-03-21T18:30:00Z",
+    "timePrecision": "approximate-day",
+    "workType": "marketing",
+    "workLabels": ["website", "branding", "copy", "patient-education"],
+    "purpose": "Make the initial surrogacy site feel more trustworthy, less corporate, and better aligned with intended parents.",
+    "processSummary": "Updated naming and logo usage, softened the font and tone, rewrote the homepage and parent-facing copy to remove choppy phrases and heavy legalistic language, and removed price references for a more careful early presentation.",
+    "outcome": "The Zaya Life site moved from a rough initial draft toward a more emotionally calibrated and parent-friendly marketing surface.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/surrogacy-site/src",
+      "/Users/eric/surrogacy-site/public"
+    ]
+  },
+  {
+    "id": "zaya-life-2026-03-21-site-productionization",
+    "projectSlug": "zaya-life",
+    "projectName": "Zaya Life",
+    "title": "Productionized the intake and polished the site layout",
+    "startedAt": "2026-03-21T18:30:00Z",
+    "endedAt": "2026-03-22T02:00:00Z",
+    "timePrecision": "approximate",
+    "workType": "coding",
+    "workLabels": ["website", "forms", "responsiveness", "ux"],
+    "purpose": "Convert the marketing site from a static draft into something closer to a usable intake surface.",
+    "processSummary": "Connected the intake flow through Formspree, added validation for email and phone fields, repaired CTA behavior, added WhatsApp contact, iterated on images for parent and program pages, and ran a responsiveness pass with follow-up layout fixes.",
+    "outcome": "The site became much more usable: intake submission was wired, navigation behaved properly, and the main marketing pages were adapted for better mobile and desktop presentation.",
+    "confidence": "high",
+    "evidence": [
+      "/Users/eric/.claude/history.jsonl",
+      "/Users/eric/surrogacy-site/RESPONSIVE_UPDATE.md",
+      "/Users/eric/surrogacy-site/src"
+    ]
+  }
+]
