@@ -14,44 +14,59 @@ made, and what should happen next.
 Goal: each local project folder can route agent and manual events to the right
 dashboard project with minimal friction.
 
+Baseline implemented:
+
+- `agent-log` can read `~/.command-center/projects.json`.
+- `agent-log init-project` writes directory mappings.
+- `agent-log projects` lists registered mappings.
+- `agent-log doctor` checks local mapping, provider, ingest URL, and token env
+  presence.
+- `agent-log` can infer `projectSlug`, `source`, `sourceProvider`, and token
+  env from the current directory.
+
+Remaining work:
+
 ### Project Registry
 
-- Add a local project registry file, for example `~/.command-center/projects.json`.
-- Map local directories to dashboard project slugs and ingest token env names.
-- Support multiple source providers per project: `codex`, `claude`, `manual`,
+- Add dashboard-visible source health for registry mappings.
+- Support a `manual` provider alongside `codex` and `claude`.
+- Validate token/project match without writing real events.
+- Support multiple source providers per project beyond `codex`, `claude`,
   and future integrations.
 - Example:
 
 ```json
 {
-  "/Users/eric/projects/dalya": {
+  "/Users/eric/dalya-ai": {
+    "name": "Dalya",
     "projectSlug": "dalya",
-    "source": "codex",
-    "sourceProvider": "codex",
-    "tokenEnv": "COMMAND_CENTER_DALYA_TOKEN"
-  },
-  "/Users/eric/projects/command-center": {
-    "projectSlug": "command-center",
-    "source": "codex",
-    "sourceProvider": "codex",
-    "tokenEnv": "COMMAND_CENTER_COMMAND_CENTER_TOKEN"
+    "defaultProvider": "codex",
+    "providers": {
+      "codex": {
+        "source": "codex",
+        "sourceProvider": "codex",
+        "tokenEnv": "COMMAND_CENTER_DALYA_CODEX_TOKEN"
+      },
+      "claude": {
+        "source": "claude",
+        "sourceProvider": "claude",
+        "tokenEnv": "COMMAND_CENTER_DALYA_CLAUDE_TOKEN"
+      }
+    }
   }
 }
 ```
 
 ### CLI Improvements
 
-- Let `agent-log` infer `projectSlug` from `process.cwd()` using the registry.
-- Add `agent-log init-project` to write or update registry entries.
-- Add `agent-log doctor` to verify:
+- Make `agent-log doctor` verify server-side state:
   - dashboard URL is reachable
   - project slug exists
-  - token is present locally
   - token matches the project
   - source provider is valid
-- Add `agent-log projects` to list known local directories and dashboard slugs.
-- Add `--cwd` override for scripts launched from subdirectories or hooks.
-- Add clear error when no directory mapping is found.
+- Add `agent-log remove-project`.
+- Add `agent-log set-provider-token`.
+- Add optional shell completion for project/provider names.
 
 ### Dashboard Support
 

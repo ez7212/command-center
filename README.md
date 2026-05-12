@@ -241,6 +241,58 @@ export COMMAND_CENTER_SOURCE="codex"
 export COMMAND_CENTER_SOURCE_PROVIDER="codex"
 ```
 
+### Local Project Registry
+
+`agent-log` can infer the dashboard project from the current local directory.
+The registry lives at `~/.command-center/projects.json` by default. Override it
+with `COMMAND_CENTER_PROJECT_REGISTRY` or `--registry`.
+
+Current local project mappings:
+
+| Project | Slug | Local path | Providers |
+| --- | --- | --- | --- |
+| Command Center | `command-center` | `/Users/eric/command-center` | Codex, Claude Code |
+| Dalya | `dalya` | `/Users/eric/dalya-ai` | Codex, Claude Code |
+| Buriza | `buriza` | `/Users/eric/buriza-website` | Codex, Claude Code |
+| Zaya Life | `zaya-life` | `/Users/eric/surrogacy-site` | Codex, Claude Code |
+| Zaya Life | `zaya-life` | `/Users/eric/surrogacy-research` | Codex, Claude Code |
+
+Register a project directory:
+
+```bash
+npm run agent-log -- init-project \
+  --name "Dalya" \
+  --project dalya \
+  --cwd /Users/eric/dalya-ai \
+  --codex-token-env COMMAND_CENTER_DALYA_CODEX_TOKEN \
+  --claude-token-env COMMAND_CENTER_DALYA_CLAUDE_TOKEN
+```
+
+List registered projects:
+
+```bash
+npm run agent-log -- projects
+```
+
+Check the mapping for the current directory:
+
+```bash
+npm run agent-log -- doctor
+```
+
+After registration, a local event can omit `--project`:
+
+```bash
+npm --prefix /Users/eric/command-center run agent-log -- \
+  --provider codex \
+  --type code_changed \
+  --title "Updated project page" \
+  --body "Changed copy and layout for the current project."
+```
+
+Use `--provider claude` from the same directory to route Claude Code events
+through the Claude provider token.
+
 Session start:
 
 ```bash
