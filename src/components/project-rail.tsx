@@ -1,5 +1,7 @@
 import {
   Activity,
+  BookOpenText,
+  ClipboardList,
   FileText,
   Flag,
   GitBranch,
@@ -13,6 +15,8 @@ import type { Project } from "@/lib/types";
 
 const links = [
   { label: "Overview", href: "", icon: LayoutDashboard },
+  { label: "Project Brief", href: "/brief", icon: BookOpenText },
+  { label: "Backlog", href: "/backlog", icon: ClipboardList },
   { label: "Tasks", href: "/tasks", icon: ListChecks },
   { label: "Activity", href: "/activity", icon: Activity },
   { label: "Live Sessions", href: "/sessions", icon: GitBranch },

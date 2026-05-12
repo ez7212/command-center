@@ -17,8 +17,8 @@ export default async function TasksPage({ params }: TasksPageProps) {
         <div>
           <h2 className="text-xl font-semibold tracking-tight">Tasks</h2>
           <p className="mt-1 max-w-2xl text-sm leading-6 text-stone-600">
-            High-level project board for completed work, active priorities, and
-            backlog items. Open any card to review details and comments.
+            Trello-style execution board for completed work, active priorities,
+            and backlog items. Open any card to review details and comments.
           </p>
         </div>
       </div>
