@@ -6,6 +6,9 @@ import {
   getProjectWorkspace,
 } from "@/lib/projects";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type ProjectLayoutProps = {
   children: React.ReactNode;
   params: Promise<{

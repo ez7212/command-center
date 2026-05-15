@@ -3,6 +3,9 @@ import Link from "next/link";
 import { requireUser, signOut } from "@/lib/auth";
 import { hasSupabaseEnv } from "@/lib/env";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function DashboardLayout({
   children,
 }: {

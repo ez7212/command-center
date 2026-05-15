@@ -37,12 +37,12 @@ export function useRealtimeProjectUpdates(projectId: string) {
       return;
     }
 
-    if (!isSupabaseBrowserConfigured() || mode === "polling") {
-      const interval = window.setInterval(() => {
-        router.refresh();
-      }, 45_000);
+    const pollInterval = window.setInterval(() => {
+      router.refresh();
+    }, 45_000);
 
-      return () => window.clearInterval(interval);
+    if (!isSupabaseBrowserConfigured() || mode === "polling") {
+      return () => window.clearInterval(pollInterval);
     }
 
     const supabase = createSupabaseBrowserClient();
@@ -78,6 +78,36 @@ export function useRealtimeProjectUpdates(projectId: string) {
         },
         scheduleRefresh,
       )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "features",
+          filter: `project_id=eq.${projectId}`,
+        },
+        scheduleRefresh,
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "documents",
+          filter: `project_id=eq.${projectId}`,
+        },
+        scheduleRefresh,
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "*",
+          schema: "public",
+          table: "decisions",
+          filter: `project_id=eq.${projectId}`,
+        },
+        scheduleRefresh,
+      )
       .subscribe((status) => {
         if (
           status === "CHANNEL_ERROR" ||
@@ -89,6 +119,7 @@ export function useRealtimeProjectUpdates(projectId: string) {
       });
 
     return () => {
+      window.clearInterval(pollInterval);
       supabase.removeChannel(channel);
     };
   }, [mode, projectId, router, scheduleRefresh]);
